@@ -1,1 +1,2 @@
-# bunjang_server_roger_ori
+# 2022/09/14
+ERD설계 진행중
