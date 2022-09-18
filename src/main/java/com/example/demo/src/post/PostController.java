@@ -56,8 +56,7 @@ public class PostController {
         //  테이블 분리 되어 있음 >>> 각 입력 api 만들고 transaction 사용?
 
         try {
-//            int userId = jwtService.getUserIdx();
-            int userId = 1;
+            int userId = jwtService.getUserIdx();
             PostPostRes postPostRes = postService.createPost(postPostReq, userId);
             return new BaseResponse<>(postPostRes);
         } catch (BaseException exception) {
