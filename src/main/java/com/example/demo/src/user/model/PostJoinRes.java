@@ -1,13 +1,17 @@
 package com.example.demo.src.user.model;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
-public class PostUserRes {
+@NoArgsConstructor
+public class PostJoinRes {
     private String jwt;
     private int user_id;
+
 }

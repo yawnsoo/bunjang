@@ -3,8 +3,10 @@ package com.example.demo.src.user;
 
 import com.example.demo.src.user.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -19,208 +21,120 @@ public class UserDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public List<GetUserRes> getUsers(){
-        String getUsersQuery = "select * from user";
-        return this.jdbcTemplate.query(getUsersQuery,
-                (rs,rowNum) -> new GetUserRes(
-                        rs.getInt("user_id"),
-                        rs.getString("login_id"),
-                        rs.getString("password"),
-                        rs.getString("email"),
-                        rs.getString("profile_Image_url"),
-                        rs.getString("name"),
-                        rs.getString("phone_number"),
-                        rs.getString("agree_on_mail"),
-                        rs.getString("agree_on_sms"),
-                        rs.getInt("point"),
-                        rs.getString("create_at"),
-                        rs.getString("updated_at"),
-                        rs.getBoolean("status"),
-                        rs.getString("nickname")
-                ));
+
+
+    //일반회원가입
+    @Transactional
+    public int creatUser(PostJoinReq postJoinReq)
+    {
+        String checkWithdrawUserQuery = "select user_id from user where name = ? and registration_number = ? and phone_number =?";
+        Object[] checkParams = new Object[]{postJoinReq.getName(),postJoinReq.getRegistration_number(),postJoinReq.getPhone_number()};
+
+        try{ //회원탈퇴했던 유저라면
+            int user_id = this.jdbcTemplate.queryForObject(checkWithdrawUserQuery,int.class,checkParams);
+            //status를 1로 바꿔주고 , 새로입력한 상점이름으로 바꿔준다.
+            String changeStatusQuery = "update user set status =1, market_name =? where user_id = ?";
+            Object[] changeStatusParams = new Object[]{postJoinReq.getMarket_name(),user_id};
+            this.jdbcTemplate.update(changeStatusQuery,changeStatusParams);
+            //탈퇴 테이블의 해당 유저의 status는 0으로 바꿔준다.
+            String changeQuery = "update withdraw_user_list set status =0 where user_id =?";
+            this.jdbcTemplate.update(changeQuery,user_id);
+            return user_id;
+
+        }catch (EmptyResultDataAccessException e)
+        { //아니라면
+            String createUserQuery = "insert into user(name,registration_number,phone_number,mobile_carrier_id,market_name) VALUES (?,?,?,?,?)";
+            Object[] needParams = new Object[]{postJoinReq.getName(),postJoinReq.getRegistration_number(),postJoinReq.getPhone_number(),postJoinReq.getMobile_carrier_id(),postJoinReq.getMarket_name()};
+            this.jdbcTemplate.update(createUserQuery,needParams);
+            String lastInsertUserIdQuery = "select last_insert_id()"; // 마지막 user_id를 가져올 쿼리
+            return this.jdbcTemplate.queryForObject(lastInsertUserIdQuery,int.class);
+        }
+
+
     }
 
-    public List<GetUserRes> getUsersByEmail(String email){
-        String getUsersByEmailQuery = "select * from user where email =?";
-        String getUsersByEmailParams = email;
-        return this.jdbcTemplate.query(getUsersByEmailQuery,
-                (rs, rowNum) -> new GetUserRes(
-                        rs.getInt("user_id"),
-                        rs.getString("login_id"),
-                        rs.getString("password"),
-                        rs.getString("email"),
-                        rs.getString("profile_Image_url"),
-                        rs.getString("name"),
-                        rs.getString("phone_number"),
-                        rs.getString("agree_on_mail"),
-                        rs.getString("agree_on_sms"),
-                        rs.getInt("point"),
-                        rs.getString("create_at"),
-                        rs.getString("updated_at"),
-                        rs.getBoolean("status"),
-                        rs.getString("nickname")
+
+    //중복체크
+    //상점이름 중복체크
+    public int checkMarketName(String market_name)
+    {
+        String checkMarketNameQuery ="select exists(select market_name from user where market_name = ?)";
+        String checkMarketNameParam =market_name;
+        return this.jdbcTemplate.queryForObject(checkMarketNameQuery,int.class,checkMarketNameParam);
+
+    }
+
+    //로그인
+    public int login(PostLoginReq postLoginReq)
+    {
+        String loginQuery = "select user_id from user where name =? and registration_number =? and phone_number =?";
+        Object[] loginParams = new Object[]{postLoginReq.getName(),postLoginReq.getRegistration_number(),postLoginReq.getPhone_number()};
+        String result;
+        try{
+            result = this.jdbcTemplate.queryForObject(loginQuery,String.class,loginParams);
+        }
+        catch (EmptyResultDataAccessException e)
+        {
+            result ="empty";
+        }
+
+        if(result.equals("empty")) //해당 정보를 가지고있는 유저가없어 catch문에 걸려서 empty가 저장됬다면.
+        {
+            return 0; //0을 주어 그런유저가 없다는것을 알린다.
+        }
+        else{ // 아니면 해당 유저의 index를 줌, 그리고 그 유저의 status를 체크한다.0이면 1로바꿔주고 로그인 시켜줌.
+
+            String checkStatusQuery = "select status from user where user_id =?";
+            int checkStatusParam = Integer.parseInt(result);
+
+            if(this.jdbcTemplate.queryForObject(checkStatusQuery,int.class,checkStatusParam) == 0)
+            { //탈퇴한 회원이라 status가 0이라면
+                return -1; // -1을 리턴하여 탈퇴한 회원임을 알린다. ( 재회원가입을 유도하고 , 상점명만 바꿔주고 , status바꿔주면될듯)
+            }
+
+            return Integer.parseInt(result);
+        }
+
+    }
+
+    //회원탈퇴
+    @Transactional
+    public PatchWithdrawRes withdraw(int user_id , PatchWithdrawReq patchWithdrawReq)
+    {
+        //회원탈퇴 테이블에 값추가하고 , 유저테이블의 status를 바꾸는 2개의 작업 필요
+        String withdrawUserAddQuery = "insert into withdraw_user_list(user_id,reason) VALUES(?,?)";
+        Object[] withdrawUserAddParams = new Object[]{user_id,patchWithdrawReq.getReason()};
+
+        this.jdbcTemplate.update(withdrawUserAddQuery,withdrawUserAddParams);
+
+        String changeStatusQuery= "update user set status =0 where user_id = ?";
+        int changeStatusParam = user_id;
+
+        this.jdbcTemplate.update(changeStatusQuery,changeStatusParam);
+
+        String returnWithdrawUserQuery = "select user_id,status from user where user_id = ?";
+        int returnWithdrawUserParam = user_id;
+
+        PatchWithdrawRes patchResult = jdbcTemplate.queryForObject(returnWithdrawUserQuery , (rs, rowNum) -> new PatchWithdrawRes(
+                rs.getInt("user_id"),
+                rs.getInt("status")
                 ),
+                returnWithdrawUserParam
+        );
 
-                getUsersByEmailParams);
-    }
-
-    public GetUserRes getUser(int user_id){
-        String getUserQuery = "select * from user where user_id = ?";
-        int getUserParams = user_id;
-        return this.jdbcTemplate.queryForObject(getUserQuery,
-                (rs, rowNum) -> new GetUserRes(
-                        rs.getInt("user_id"),
-                        rs.getString("login_id"),
-                        rs.getString("password"),
-                        rs.getString("email"),
-                        rs.getString("profile_Image_url"),
-                        rs.getString("name"),
-                        rs.getString("phone_number"),
-                        rs.getString("agree_on_mail"),
-                        rs.getString("agree_on_sms"),
-                        rs.getInt("point"),
-                        rs.getString("create_at"),
-                        rs.getString("updated_at"),
-                        rs.getBoolean("status"),
-                        rs.getString("nickname")
-                ),
-                getUserParams);
-    }
-
-    public List<GetAddressRes> getAddress(int user_id){
-        String getAddressQuery = "select * from user_address where user_id = ?";
-        int getUserParams = user_id;
-        return this.jdbcTemplate.query(getAddressQuery,
-                (rs, rowNum) -> new GetAddressRes(
-                        rs.getInt("user_id"),
-                        rs.getInt("user_address_id"),
-                        rs.getString("address_name"),
-                        rs.getString("full_address"),
-                        rs.getBoolean("is_main_address")
-                ),
-                getUserParams);
-    }
-    
-
-    public int createUser(PostUserReq postUserReq){
-        String createUserQuery = "insert into user (login_id,password,email,name,phone_number,nickname,agree_on_mail,agree_on_sms)  VALUES (?,?,?,?,?,?,?,?)";
-        Object[] createUserParams = new Object[]{postUserReq.getLogin_id(),postUserReq.getPassword(),postUserReq.getEmail(),postUserReq.getName(),postUserReq.getPhone_number(),postUserReq.getNickname(),postUserReq.getAgree_on_mail(),postUserReq.getAgree_on_sms()};
-        this.jdbcTemplate.update(createUserQuery, createUserParams);
-
-        String lastInserIdQuery = "select last_insert_id()";
-        return this.jdbcTemplate.queryForObject(lastInserIdQuery,int.class);
-    }
-    public int createAddress(PostAddressReq postAddressReq){
-        String createAddressQuery = "insert into user_address (user_id,address_name,full_address,is_main_address)  VALUES (?,?,?,?)";
-        Object[] createAddressParams = new Object[]{postAddressReq.getUser_id(),postAddressReq.getAddress_name(),postAddressReq.getFull_address(),postAddressReq.is_main_address()};
-        this.jdbcTemplate.update(createAddressQuery, createAddressParams);
-
-        String lastInserIdQuery = "select last_insert_id()"; // 생성 성공후 auto increment값을 가져옴
-        return this.jdbcTemplate.queryForObject(lastInserIdQuery,int.class);
-    }
-
-    public int checkEmail(String email){
-        String checkEmailQuery = "select exists(select email from user where email = ?)";
-        String checkEmailParams = email;
-        return this.jdbcTemplate.queryForObject(checkEmailQuery,
-                int.class,
-                checkEmailParams);
-    }
-    public int checkLogin_id(String login_id){
-        String checkLogin_idQuery = "select exists(select login_id from user where login_id = ?)";
-        String checkLogin_idParams = login_id;
-        return this.jdbcTemplate.queryForObject(checkLogin_idQuery,
-                int.class,
-                checkLogin_idParams);
-    }
-    public int checkNickname(String nickname){
-        String checkNicknameQuery = "select exists(select nickname from user where nickname = ?)";
-        String checkNicknameParams = nickname;
-        return this.jdbcTemplate.queryForObject(checkNicknameQuery,
-                int.class,
-                checkNicknameParams);
-    }
-    public int changeMainaddress(){
-        String changeMainAddressQuery = "update user_address set is_main_address = false";
-        return this.jdbcTemplate.update(changeMainAddressQuery);
-    }
-
-    public int modifyUserNickName(PatchUserReq patchUserReq){
-        String modifyUserNickNameQuery = "update user set nickname = ? where user_id = ? ";
-        Object[] modifyUserNameParams = new Object[]{patchUserReq.getNickname(), patchUserReq.getUser_id()};
-
-        return this.jdbcTemplate.update(modifyUserNickNameQuery,modifyUserNameParams);
-    }
-    public int modifyUserProfile_Image_url(PatchUserReq patchUserReq){
-        String modifyUserImageQuery = "update user set profile_Image_url = ? where user_id = ? ";
-        Object[] modifyUserNameParams = new Object[]{patchUserReq.getProfile_Image_url(), patchUserReq.getUser_id()};
-
-        return this.jdbcTemplate.update(modifyUserImageQuery,modifyUserNameParams);
-    }
-    public int modifyUserPassword(PatchUserReq patchUserReq){
-        String modifyUserPasswordQuery = "update user set password = ? where user_id = ? ";
-        Object[] modifyUserNameParams = new Object[]{patchUserReq.getPassword(), patchUserReq.getUser_id()};
-
-        return this.jdbcTemplate.update(modifyUserPasswordQuery,modifyUserNameParams);
-    }
-    public int modifyUserPhone_number(PatchUserReq patchUserReq){
-        String modifyUserPhoneQuery = "update user set phone_number = ? where user_id = ? ";
-        Object[] modifyUserNameParams = new Object[]{patchUserReq.getPhone_number(), patchUserReq.getUser_id()};
-
-        return this.jdbcTemplate.update(modifyUserPhoneQuery,modifyUserNameParams);
-    }
-    public int modifyUserAgree_on_mail(PatchUserReq patchUserReq){
-        String modifyUserAgree_Mail_Query = "update user set agree_on_mail = ? where user_id = ? ";
-        Object[] modifyUserNameParams = new Object[]{patchUserReq.getAgree_on_mail(), patchUserReq.getUser_id()};
-
-        return this.jdbcTemplate.update(modifyUserAgree_Mail_Query,modifyUserNameParams);
-    }
-    public int modifyUserAgree_on_sms(PatchUserReq patchUserReq){
-        String modifyUserAgree_Sms_Query = "update user set agree_on_sms = ? where user_id = ? ";
-        Object[] modifyUserNameParams = new Object[]{patchUserReq.getAgree_on_sms(), patchUserReq.getUser_id()};
-
-        return this.jdbcTemplate.update(modifyUserAgree_Sms_Query,modifyUserNameParams);
-    }
-
-
-    public User getPwd(PostLoginReq postLoginReq){
-        String getPwdQuery = "select * from user where login_id = ?";
-        String getPwdParams = postLoginReq.getLogin_id();
-
-        return this.jdbcTemplate.queryForObject(getPwdQuery,
-                (rs,rowNum)-> new User(
-                        rs.getInt("user_id"),
-                        rs.getString("login_id"),
-                        rs.getString("password"),
-                        rs.getString("email"),
-                        rs.getString("profile_Image_url"),
-                        rs.getString("name"),
-                        rs.getString("phone_number"),
-                        rs.getString("agree_on_mail"),
-                        rs.getString("agree_on_sms"),
-                        rs.getInt("point"),
-                        rs.getString("create_at"),
-                        rs.getString("updated_at"),
-                        rs.getBoolean("status"),
-                        rs.getString("nickname")
-
-                ),
-                getPwdParams
-                );
+        patchResult.setReason(patchWithdrawReq.getReason());
+        return patchResult;
 
     }
 
-    public int deleteUser(int user_id){
-        String deleteUser_Query = "delete from user where user_id = ? ";
-        int deleteUser_param = user_id;
+    //상점(유저)정보 수정
+    @Transactional
+    public int reviseUserInfo(int user_id,PatchReviseReq patchReviseReq)
+    {
+        String reviseQuery = "update user set image_path =?,market_name =?,content =? where user_id =?";
+        Object[] reviseParams = new Object[]{patchReviseReq.getImage_path(),patchReviseReq.getMarket_name(),patchReviseReq.getContent(),user_id};
 
-        return this.jdbcTemplate.update(deleteUser_Query,deleteUser_param);
-    }
-    public int deleteAddress(int user_address_id){
-        String deleteAddress_Query = "delete from user_address where user_address_id = ? ";
-        int deleteAddress_param = user_address_id;
-
-        return this.jdbcTemplate.update(deleteAddress_Query,deleteAddress_param);
+        return this.jdbcTemplate.update(reviseQuery,reviseParams); //성공하면 1 아니면 다른숫자.
     }
 
 

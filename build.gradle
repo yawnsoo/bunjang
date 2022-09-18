@@ -47,15 +47,25 @@ dependencies {
 
     // Security, Authentication
     implementation('org.springframework.boot:spring-boot-starter-security')
-    compile(group: 'io.jsonwebtoken', name: 'jjwt', version: '0.7.0')
-    compile('io.jsonwebtoken:jjwt:0.9.0')
+    compile(group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1')
+    compile('io.jsonwebtoken:jjwt:0.9.1')
 
     implementation('org.springframework.boot:spring-boot-starter')
     compile('org.springframework.boot:spring-boot-starter-web')
 
 
     //gson 소셜로그인을 위함
-    implementation 'com.google.code.gson:gson:2.8.7'
+   // implementation 'com.google.code.gson:gson:2.8.7'
+
+    //아래 3개는 jwt관련 에러발생때문에 추가함.
+    // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+
+    // https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-core
+    implementation group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0.1'
+
+    // https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl
+    implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.1'
 
 
 }

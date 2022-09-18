@@ -31,102 +31,57 @@ public class UserProvider {
         this.jwtService = jwtService;
     }
 
-    public List<GetUserRes> getUsers() throws BaseException{
+    //---중복체크
+    //상점이름 중복체크
+    public int checkMarketName(String market_name) throws BaseException{
         try{
-            List<GetUserRes> getUserRes = userDao.getUsers();
-            return getUserRes;
-        }
-        catch (Exception exception) {
-            System.out.println(exception);
-            throw new BaseException(DATABASE_ERROR);
-        }
-    }
-
-    public List<GetUserRes> getUsersByEmail(String email) throws BaseException{
-        try{
-            List<GetUserRes> getUsersRes = userDao.getUsersByEmail(email);
-            return getUsersRes;
-        }
-        catch (Exception exception) {
-            throw new BaseException(DATABASE_ERROR);
-        }
-                    }
-
-
-    public GetUserRes getUser(int user_id) throws BaseException {
-        try {
-            GetUserRes getUserRes = userDao.getUser(user_id);
-            return getUserRes;
-        } catch (Exception exception) {
-            throw new BaseException(DATABASE_ERROR);
-        }
-    }
-    public List<GetAddressRes> getAddress(int user_id) throws BaseException {
-        try {
-            List<GetAddressRes> getAddressRes = userDao.getAddress(user_id);
-            return getAddressRes;
-        } catch (Exception exception) {
+            return userDao.checkMarketName(market_name);
+        }catch (Exception exception)
+        {
             exception.printStackTrace();
             throw new BaseException(DATABASE_ERROR);
+
         }
     }
 
-    public int checkEmail(String email) throws BaseException{
+
+    //일반 로그인
+    public PostLoginRes login(PostLoginReq postLoginReq) throws BaseException
+    {
         try{
-            return userDao.checkEmail(email);
-        } catch (Exception exception){
+            int user_id = userDao.login(postLoginReq);
+            if(user_id ==0) // 없는 유저라는것이므로 종료
+            {
+                throw new BaseException(NOT_EXIST_USER);
+            }
+            if(user_id ==-1) // 탈퇴한 회원임을 알린다.
+            {
+                throw new BaseException(WITHDRAW_USER);
+            }
+            else{
+                String jwt =jwtService.createJwt(user_id);
+
+                PostLoginRes postLoginRes = new PostLoginRes();
+                postLoginRes.setUser_id(user_id);
+                postLoginRes.setJwt(jwt);
+
+                return postLoginRes;
+            }
+
+
+        }
+        catch (Exception exception)
+        {
             exception.printStackTrace();
-            throw new BaseException(DATABASE_ERROR);
-        }
-    }
-    public int checkLogin_id(String login_id) throws BaseException{
-        try{
-            return userDao.checkLogin_id(login_id);
-        } catch (Exception exception){
-            exception.printStackTrace();
-            throw new BaseException(DATABASE_ERROR);
-        }
-    }
-    public int checkNickname(String nickname) throws BaseException{
-        try{
-            return userDao.checkNickname(nickname);
-        } catch (Exception exception){
-            exception.printStackTrace();
-            throw new BaseException(DATABASE_ERROR);
-        }
-    }
-
-    public int changeMainaddress() throws BaseException{
-        try{
-            return userDao.changeMainaddress();
-        } catch (Exception exception){
-            exception.printStackTrace();
-            throw new BaseException(DATABASE_ERROR);
-        }
-    }
-
-
-
-    public PostLoginRes logIn(PostLoginReq postLoginReq) throws BaseException{
-        User user = userDao.getPwd(postLoginReq);
-        String encryptPwd;
-        try {
-            encryptPwd=new SHA256().encrypt(postLoginReq.getPassword());
-        } catch (Exception ignored) {
-            ignored.printStackTrace();
-            throw new BaseException(PASSWORD_DECRYPTION_ERROR);
+            throw exception; // not_exist_user을 날리기위해.
         }
 
-        if(user.getPassword().equals(encryptPwd)){
-            int userIdx = user.getUser_id();
-            boolean status = user.isStatus(); // status값도 전달하기위해
-            String jwt = jwtService.createJwt(userIdx);
-            return new PostLoginRes(userIdx,jwt,status);
-        }
-        else{
-            throw new BaseException(FAILED_TO_LOGIN);
-        }
 
     }
+
+
+
+
+
 
 }
