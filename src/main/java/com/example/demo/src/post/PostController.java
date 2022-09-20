@@ -2,6 +2,8 @@ package com.example.demo.src.post;
 
 import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
+import com.example.demo.src.post.model.PostPhotoReq;
+import com.example.demo.src.post.model.PostPhotoRes;
 import com.example.demo.src.post.model.PostPostReq;
 import com.example.demo.src.post.model.PostPostRes;
 import com.example.demo.utils.JwtService;
@@ -9,6 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/app/post")
@@ -31,7 +35,7 @@ public class PostController {
 
    /*
    * 판매글 등록 API
-   * [Post] /post/new
+   * [Post] /post
    * @return BaseResponse<PostPostRes>
    * */
     @ResponseBody
@@ -39,15 +43,14 @@ public class PostController {
     public BaseResponse<PostPostRes> createPost(@RequestBody PostPostReq postPostReq) {
 
         //FIXME
-        // - condition 타입 varchar >>> int로 수정
-        // - 테스트 때문에 post 테이블 L,M,S category null로 수정함 >>> not null로 다시 수정
-        // - sql문 syntaxerror 때문에 condition -> pcondition으로 바꿈
+        // - (post 테이블) condition : sql문 syntaxerror 때문에 condition -> pcondition으로 바꿈, 타입 varchar >>> int로 수정
+        // - 테스트 때문에 post 테이블 L,M,S category null로 수정함 >>> not null로 다시 수정할 예정
+        //
 
         //TODO
-        // - user_id를 어떻게 이어주지..?
-        //  >>> 임의로 user_id:1 로 진행, 해더에 X-ACCESS-TOKEN으로 진행해야 하는데, user 테이블에 토큰 저장하는 column 추가 필요할듯.
         // - validation 추가
-        //  > content 10자 이상, 2000자 이하
+        //  > 사진, 제목, 카테고리, 가격, 본문내용 필수 입력
+        //  > 본문(content) 10자 이상, 2000자 이하
         //  > 수량 : 0~999개 까지 입력 가능
         // - 판매글 등록시,
         //  1. 사진(post_photos)
@@ -66,6 +69,25 @@ public class PostController {
     }
 
 
+    @ResponseBody
+    @PostMapping("/{post_id}/photo")
+    public BaseResponse<PostPhotoRes> addPhoto(@PathVariable("post_id") int post_id , @RequestBody PostPhotoReq postPhotoReq) {
+
+        //TODO
+        // 사진 1개만 등록 가능.... 한번에 여러개 추가 가능하도록 수정
+
+        try {
+            postPhotoReq.setPost_id(post_id);
+
+            PostPhotoRes postPhotoRes = postService.addPhoto(postPhotoReq);
+            return new BaseResponse<>(postPhotoRes);
+        }
+        catch (BaseException exception){
+            exception.printStackTrace();
+            return new BaseResponse<>(exception.getStatus());
+        }
+
+    }
 
 
 }

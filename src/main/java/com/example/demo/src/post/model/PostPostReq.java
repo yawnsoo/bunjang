@@ -4,10 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
 public class PostPostReq {
+
     private String title;
     private int price;
     private String content;
@@ -26,6 +29,17 @@ public class PostPostReq {
 * 2. 카테고리 입력시 카테고리 조회 api랑 연동 시켜야할듯... 근데 어떻게..? # body에 입력하는 방식이 아닌 선택하는 방식으로 구현
 *
 *
+*
+    {
+    "title" : "testw/JWT",
+    "price" : 111,
+    "content" : "상품설명 10자 이상이어야함",
+    "count" : 1,
+    "is_exchangable" : 0,
+    "safepay" : 1,
+    "delivery_fee" : 0,
+    "pcondition" : 0
+    }
 *
 *
 *

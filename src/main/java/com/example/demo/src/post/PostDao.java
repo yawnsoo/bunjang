@@ -1,5 +1,6 @@
 package com.example.demo.src.post;
 
+import com.example.demo.src.post.model.PostPhotoReq;
 import com.example.demo.src.post.model.PostPostReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -24,5 +25,15 @@ public class PostDao {
 
         String lastInsertIdQuery = "select last_insert_id()";
         return this.jdbcTemplate.queryForObject(lastInsertIdQuery, int.class);
+    }
+
+    public int addPhoto(PostPhotoReq postPhotoReq) {
+        String addPhotoQuery = "Insert into post_photos (post_id, image_path) values (?,?)";
+        Object[] addPhotoParams = new Object[]{postPhotoReq.getPost_id(), postPhotoReq.getImage_path()};
+        this.jdbcTemplate.update(addPhotoQuery, addPhotoParams);
+
+        String postPhotosQuery = "select last_insert_id()";
+        return this.jdbcTemplate.queryForObject(postPhotosQuery, int.class);
+
     }
 }

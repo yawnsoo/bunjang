@@ -1,6 +1,8 @@
 package com.example.demo.src.post;
 
 import com.example.demo.config.BaseException;
+import com.example.demo.src.post.model.PostPhotoReq;
+import com.example.demo.src.post.model.PostPhotoRes;
 import com.example.demo.src.post.model.PostPostReq;
 import com.example.demo.src.post.model.PostPostRes;
 import com.example.demo.src.user.UserDao;
@@ -13,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @Service
 public class PostService {
@@ -38,6 +42,12 @@ public class PostService {
 //        } catch (Exception exception) {
 //            throw new BaseException(DATABAS_ERROR);
 //        }
+    }
+
+    public PostPhotoRes addPhoto(PostPhotoReq postPhotoReq) throws BaseException{
+
+        int post_photo_id = postDao.addPhoto(postPhotoReq);
+        return new PostPhotoRes(post_photo_id);
     }
 
 }

@@ -14,6 +14,8 @@ com/example/demo/src/post/PostProvider.java
  com.example.demo.src.post.PostProvider
 com/example/demo/src/user/model/PostLoginRes.java
  com.example.demo.src.user.model.PostLoginRes
+com/example/demo/src/post/model/PostPhotoReq.java
+ com.example.demo.src.post.model.PostPhotoReq
 com/example/demo/src/user/UserDao.java
  com.example.demo.src.user.UserDao
 com/example/demo/config/BaseResponseStatus.java
@@ -56,6 +58,8 @@ com/example/demo/DemoApplication.java
  com.example.demo.DemoApplication
 com/example/demo/utils/JwtService.java
  com.example.demo.utils.JwtService
+com/example/demo/src/post/model/PostPhotoRes.java
+ com.example.demo.src.post.model.PostPhotoRes
 com/example/demo/src/user/model/PostAddressReq.java
  com.example.demo.src.user.model.PostAddressReq
 com/example/demo/src/user/UserProvider.java
