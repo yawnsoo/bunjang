@@ -104,6 +104,7 @@ public class PostController {
 
         //TODO
         // - validation
+        // - 태그 1개만 등록 가능.... 한번에 여러개 추가 가능하도록 수정
 
         try{
             postTagReq.setPost_id(post_id);
@@ -116,6 +117,20 @@ public class PostController {
             return new BaseResponse<>(exception.getStatus());
         }
     }
+
+    /*
+     * 판매글 카테고리 등록 API
+     * [Post] /post/:post_id/category
+     * @return BaseResponse<>
+     *
+     * ???
+     * 카테고리 조회 API와 동일?? >> 살짝 다름.
+     * - 판매글 카테고리 등록 API : 대분류 > 중분류 > 소분류 선택하는 방식, 최소 범위까지 선택해야함
+     * - 카테고리 조회 API : 대분류 선택시 물건 보여주고, > 중분류 선택시 물건 보여주고... 중간 선택에 따라 보여지는 판매글이 달라짐.
+     *
+     * 카테고리 조회 API의 경우 대분류,중,소 3가지 각각 만들어야하나?? >>> ㅇㅇㅇ 그렇게 해야할듯
+     *
+     * */
 
 
 
