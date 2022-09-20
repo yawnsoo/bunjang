@@ -30,6 +30,8 @@ com/example/demo/src/user/model/GetAddressRes.java
  com.example.demo.src.user.model.GetAddressRes
 com/example/demo/src/test/TestController.java
  com.example.demo.src.test.TestController
+com/example/demo/src/post/model/PostTagReq.java
+ com.example.demo.src.post.model.PostTagReq
 com/example/demo/src/post/PostService.java
  com.example.demo.src.post.PostService
 com/example/demo/src/user/model/PostLoginReq.java
@@ -50,6 +52,8 @@ com/example/demo/src/user/UserService.java
  com.example.demo.src.user.UserService
 com/example/demo/src/user/model/GetUserRes.java
  com.example.demo.src.user.model.GetUserRes
+com/example/demo/src/post/model/PostTagRes.java
+ com.example.demo.src.post.model.PostTagRes
 com/example/demo/src/post/model/PostPostRes.java
  com.example.demo.src.post.model.PostPostRes
 com/example/demo/config/BaseException.java

@@ -2,6 +2,7 @@ package com.example.demo.src.post;
 
 import com.example.demo.src.post.model.PostPhotoReq;
 import com.example.demo.src.post.model.PostPostReq;
+import com.example.demo.src.post.model.PostTagReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -36,4 +37,17 @@ public class PostDao {
         return this.jdbcTemplate.queryForObject(postPhotosQuery, int.class);
 
     }
+
+
+    public int addTag(PostTagReq postTagReq) {
+        String addTagQuery = "Insert into post_tags (post_id, name) values (?,?)";
+        Object[] addTagParams = new Object[]{postTagReq.getPost_id(), postTagReq.getName()};
+        this.jdbcTemplate.update(addTagQuery, addTagParams);
+
+        String postTagsQuery = "select last_insert_id()";
+        return this.jdbcTemplate.queryForObject(postTagsQuery, int.class);
+
+    }
+
+
 }

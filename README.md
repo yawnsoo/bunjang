@@ -1,3 +1,14 @@
+### git
+git pull origin post
+git add .
+git commit -m '[메세지]'
+git push -u origin post
+
+### Spring
+sudo ./gradlew clean build
+java -jar build/libs/demo-0.0.1-SNAPSHOT.jar
+
+
 # 2022/09/14
 ERD설계 진행중
 개발일지

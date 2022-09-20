@@ -1,10 +1,7 @@
 package com.example.demo.src.post;
 
 import com.example.demo.config.BaseException;
-import com.example.demo.src.post.model.PostPhotoReq;
-import com.example.demo.src.post.model.PostPhotoRes;
-import com.example.demo.src.post.model.PostPostReq;
-import com.example.demo.src.post.model.PostPostRes;
+import com.example.demo.src.post.model.*;
 import com.example.demo.src.user.UserDao;
 import com.example.demo.src.user.UserProvider;
 import com.example.demo.src.user.UserService;
@@ -48,6 +45,12 @@ public class PostService {
 
         int post_photo_id = postDao.addPhoto(postPhotoReq);
         return new PostPhotoRes(post_photo_id);
+    }
+
+    public PostTagRes addTag(PostTagReq postTagReq) throws BaseException{
+
+        int post_tag_id = postDao.addTag(postTagReq);
+        return new PostTagRes(post_tag_id);
     }
 
 }

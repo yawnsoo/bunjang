@@ -2,10 +2,7 @@ package com.example.demo.src.post;
 
 import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
-import com.example.demo.src.post.model.PostPhotoReq;
-import com.example.demo.src.post.model.PostPhotoRes;
-import com.example.demo.src.post.model.PostPostReq;
-import com.example.demo.src.post.model.PostPostRes;
+import com.example.demo.src.post.model.*;
 import com.example.demo.utils.JwtService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -69,12 +66,18 @@ public class PostController {
     }
 
 
+    /*
+     * 판매글 사진 등록 API
+     * [Post] /post/:post_id/photo
+     * @return BaseResponse<PostPhotoRes>
+     * */
     @ResponseBody
     @PostMapping("/{post_id}/photo")
     public BaseResponse<PostPhotoRes> addPhoto(@PathVariable("post_id") int post_id , @RequestBody PostPhotoReq postPhotoReq) {
 
         //TODO
-        // 사진 1개만 등록 가능.... 한번에 여러개 추가 가능하도록 수정
+        // - validation
+        // - 사진 1개만 등록 가능.... 한번에 여러개 추가 가능하도록 수정
 
         try {
             postPhotoReq.setPost_id(post_id);
@@ -88,6 +91,32 @@ public class PostController {
         }
 
     }
+
+
+    /*
+     * 판매글 태그 등록 API
+     * [Post] /post/:post_id/tag
+     * @return BaseResponse<PostTagRes>
+     * */
+    @ResponseBody
+    @PostMapping("/{post_id}/tag")
+    public BaseResponse<PostTagRes> addTag(@PathVariable("post_id") int post_id, @RequestBody PostTagReq postTagReq) {
+
+        //TODO
+        // - validation
+
+        try{
+            postTagReq.setPost_id(post_id);
+
+            PostTagRes postTagRes = postService.addTag(postTagReq);
+            return new BaseResponse<>(postTagRes);
+        }
+        catch (BaseException exception){
+            exception.printStackTrace();
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
+
 
 
 }
