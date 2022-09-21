@@ -330,10 +330,4 @@ public class TalkController {
 
 
 
-
-
-
-
-
-
 }
