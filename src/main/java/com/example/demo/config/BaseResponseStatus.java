@@ -24,6 +24,11 @@ public enum BaseResponseStatus {
     NOT_EXIST_USER(false,2004,"존재하지않는 유저입니다."),
     WITHDRAW_USER(false,2005,"탈퇴한 유저입니다."),
     WRONG_AUTH_NUMBER(false,2006,"잘못된 인증번호입니다."),
+    NOT_EXIST_POST_ID(false,2007,"존재하지 POST_ID(판매글아이디)입니다."),
+    NOT_EXIST_OPPOSITE_USER(false,2008,"상대방이 존재하지않는 유저입니다."),
+    WITHDRAW_OPPOSITE_USER(false,2009,"상대방은 탈퇴한 유저입니다."),
+    EXIST_CHAT_ROOM(false, 2010, "이미 채팅방이 존재합니다."),
+    NOT_EXIST_CHAT_ROOM(false, 2011, "존재하지않는 방아이디입니다."),
 
     // POST user info EMPTY 2010~
     USERS_EMPTY_USER_NAME(false, 2010, "이름을 입력해주세요."),
@@ -42,6 +47,7 @@ public enum BaseResponseStatus {
 
     //Post user info 중복값 입력 2200 ~
     USERS_EXIST_MARKET_NAME(false, 2200, "존재하는 상점이름입니다."),
+
 
 
     /**
