@@ -93,4 +93,74 @@ public class PostDao {
                 ), getSCategoryParam);
 
     }
+
+
+    public List<GetPostRes> getPosts() {
+        String getPostsQuery = "select p.post_id, price, title, safepay, image_path\n" +
+                "from post p\n" +
+                "    left join post_photos pp on p.post_id = pp.post_id\n" +
+                "group by p.post_id";
+        return this.jdbcTemplate.query(getPostsQuery,
+                (rs, rowNum) -> new GetPostRes(
+                        rs.getInt("post_id"),
+                        rs.getInt("price"),
+                        rs.getString("title"),
+                        rs.getInt("safepay"),
+                        rs.getString("image_path")
+                ));
+    }
+
+    public List<GetPostRes> getPostsByLC(Integer LCId) {
+        String getPostsByLCQuery = "select p.post_id, price, title, safepay, pp.image_path, p.large_category_id\n" +
+                "from post p\n" +
+                "    left join post_photos pp on p.post_id = pp.post_id\n" +
+                "    left join large_category lc on lc.large_category_id = p.large_category_id\n" +
+                "where p.large_category_id = ?\n" +
+                "group by p.post_id";
+        Integer getPostsByLCParam = LCId;
+        return this.jdbcTemplate.query(getPostsByLCQuery,
+                (rs, rowNum) -> new GetPostRes(
+                        rs.getInt("post_id"),
+                        rs.getInt("price"),
+                        rs.getString("title"),
+                        rs.getInt("safepay"),
+                        rs.getString("image_path")
+                ), getPostsByLCParam);
+    }
+
+    public List<GetPostRes> getPostsByMC(Integer MCId) {
+        String getPostsByMCQuery = "select p.post_id, price, title, safepay, pp.image_path, p.middle_category_id\n" +
+                "from post p\n" +
+                "    left join post_photos pp on p.post_id = pp.post_id\n" +
+                "    left join middle_category mc on mc.middle_category_id = p.middle_category_id\n" +
+                "where p.middle_category_id=?\n" +
+                "group by p.post_id";
+        Integer getPostsByMCParam = MCId;
+        return this.jdbcTemplate.query(getPostsByMCQuery,
+                (rs, rowNum) -> new GetPostRes(
+                        rs.getInt("post_id"),
+                        rs.getInt("price"),
+                        rs.getString("title"),
+                        rs.getInt("safepay"),
+                        rs.getString("image_path")
+                ), getPostsByMCParam);
+    }
+
+    public List<GetPostRes> getPostsBySC(Integer SCId) {
+        String getPostsBySCQuery = "select p.post_id, price, title, safepay, pp.image_path, p.small_category_id\n" +
+                "from post p\n" +
+                "    left join post_photos pp on p.post_id = pp.post_id\n" +
+                "    left join small_category sc on sc.small_category_id = p.small_category_id\n" +
+                "where p.small_category_id=?\n" +
+                "group by p.post_id";
+        Integer getPostsBySCParam = SCId;
+        return this.jdbcTemplate.query(getPostsBySCQuery,
+                (rs, rowNum) -> new GetPostRes(
+                        rs.getInt("post_id"),
+                        rs.getInt("price"),
+                        rs.getString("title"),
+                        rs.getInt("safepay"),
+                        rs.getString("image_path")
+                ), getPostsBySCParam);
+    }
 }

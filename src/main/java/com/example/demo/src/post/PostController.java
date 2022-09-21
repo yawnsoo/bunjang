@@ -40,9 +40,10 @@ public class PostController {
     public BaseResponse<PostPostRes> createPost(@RequestBody PostPostReq postPostReq) {
 
         //FIXME
+        // - 카테고리 입력 받는거로 수정해야함
         // - (post 테이블) condition : sql문 syntaxerror 때문에 condition -> pcondition으로 바꿈, 타입 varchar >>> int로 수정
         // - 테스트 때문에 post 테이블 L,M,S category null로 수정함 >>> not null로 다시 수정할 예정
-        //
+
 
         //TODO
         // - validation 추가
@@ -63,6 +64,41 @@ public class PostController {
             exception.printStackTrace();
             return new BaseResponse<>((exception.getStatus()));
         }
+    }
+
+
+    /*
+    * 판매글 카테고리별 조회 API
+    * [GET] /post/category?LCId=&MCId=&SCId=
+    * @return BaseResponse<List<GetPostRes>>
+    * */
+    @ResponseBody
+    @GetMapping("/category")
+    public BaseResponse<List<GetPostRes>> getPostsByCategory(@RequestParam(required = false) Integer LCId, @RequestParam(required = false) Integer MCId, @RequestParam(required = false) Integer SCId) {
+
+        //TODO
+        // - Query String 이렇게 설정 하는게 맞을까..? 더 고민해보자.
+
+        try{
+            if (LCId != null && MCId == null && SCId == null) {
+                List<GetPostRes> getPostsRes = postProvider.getPostsByLC(LCId);
+                return new BaseResponse<>(getPostsRes);
+            } else if (MCId != null && SCId == null) {
+                List<GetPostRes> getPostsRes = postProvider.getPostsByMC(MCId);
+                return new BaseResponse<>(getPostsRes);
+            } else if (SCId != null) {
+                List<GetPostRes> getPostsRes = postProvider.getPostsBySC(SCId);
+                return new BaseResponse<>(getPostsRes);
+            }
+
+            List<GetPostRes> getPostsRes = postProvider.getPosts();
+            return new BaseResponse<>(getPostsRes);
+
+        } catch (BaseException exception) {
+            exception.printStackTrace();
+            return new BaseResponse<>((exception.getStatus()));
+        }
+
     }
 
 
@@ -119,17 +155,9 @@ public class PostController {
     }
 
     /*
-     * 판매글 카테고리 등록 API
-     * [Post] /post/:post_id/category
-     * @return BaseResponse<>
-     *
-     * ???
-     * 카테고리 조회 API와 동일?? >> 살짝 다름.
-     * - 판매글 카테고리 등록 API : 대분류 > 중분류 > 소분류 선택하는 방식, 최소 범위까지 선택해야함
-     * - 카테고리 조회 API : 대분류 선택시 물건 보여주고, > 중분류 선택시 물건 보여주고... 중간 선택에 따라 보여지는 판매글이 달라짐.
-     *
-     * 카테고리 조회 API의 경우 대분류,중,소 3가지 각각 만들어야하나?? >>> ㅇㅇㅇ 그렇게 해야할듯
-     *
+     * 판매글 카테고리 대분류 선택 API
+     * [Get] /post/category-large
+     * @return BaseResponse<List<GetLCategoryRes>>
      * */
     @ResponseBody
     @GetMapping("/category-large")
@@ -145,6 +173,11 @@ public class PostController {
 
     }
 
+    /*
+     * 판매글 카테고리 중분류 선택 API
+     * [Get] /post/category-middle?LCId=
+     * @return BaseResponse<List<GetMCategoryRes>>
+     * */
     @ResponseBody
     @GetMapping("/category-middle")
     public BaseResponse<List<GetMCategoryRes>> getMCategory(@RequestParam() int LCId) {
@@ -159,6 +192,11 @@ public class PostController {
 
     }
 
+    /*
+     * 판매글 카테고리 소분류 선택 API
+     * [Get] /post/category-small?MCId=
+     * @return BaseResponse<List<GetSCategoryRes>>
+     * */
     @ResponseBody
     @GetMapping("/category-small")
     public BaseResponse<List<GetSCategoryRes>> getSCategory(@RequestParam() int MCId) {

@@ -12,6 +12,8 @@ com/example/demo/src/post/model/PostPostReq.java
  com.example.demo.src.post.model.PostPostReq
 com/example/demo/src/post/PostProvider.java
  com.example.demo.src.post.PostProvider
+com/example/demo/src/post/model/GetPostRes.java
+ com.example.demo.src.post.model.GetPostRes
 com/example/demo/src/user/model/PostLoginRes.java
  com.example.demo.src.user.model.PostLoginRes
 com/example/demo/src/post/model/PostPhotoReq.java

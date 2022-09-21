@@ -3,6 +3,7 @@ package com.example.demo.src.post;
 import com.example.demo.config.BaseException;
 import com.example.demo.src.post.model.GetLCategoryRes;
 import com.example.demo.src.post.model.GetMCategoryRes;
+import com.example.demo.src.post.model.GetPostRes;
 import com.example.demo.src.post.model.GetSCategoryRes;
 import com.example.demo.utils.JwtService;
 import org.slf4j.Logger;
@@ -43,4 +44,21 @@ public class PostProvider {
         return getSCategoryRes;
     }
 
+    public List<GetPostRes> getPosts() throws BaseException {
+        List<GetPostRes> getPostsRes = postDao.getPosts();
+        return getPostsRes;
+    }
+
+    public List<GetPostRes> getPostsByLC(Integer LCId) throws BaseException {
+        List<GetPostRes> getPostsRes = postDao.getPostsByLC(LCId);
+        return getPostsRes;
+    }
+    public List<GetPostRes> getPostsByMC(Integer MCId) throws BaseException {
+        List<GetPostRes> getPostsRes = postDao.getPostsByMC(MCId);
+        return getPostsRes;
+    }
+    public List<GetPostRes> getPostsBySC(Integer SCId) throws BaseException {
+        List<GetPostRes> getPostsRes = postDao.getPostsBySC(SCId);
+        return getPostsRes;
+    }
 }
