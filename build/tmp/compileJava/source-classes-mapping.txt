@@ -26,6 +26,8 @@ com/example/demo/src/user/model/PostAddressRes.java
  com.example.demo.src.user.model.PostAddressRes
 com/example/demo/src/WebSecurityConfig.java
  com.example.demo.src.WebSecurityConfig
+com/example/demo/src/post/model/GetLCategoryRes.java
+ com.example.demo.src.post.model.GetLCategoryRes
 com/example/demo/src/user/model/GetAddressRes.java
  com.example.demo.src.user.model.GetAddressRes
 com/example/demo/src/test/TestController.java
@@ -38,6 +40,8 @@ com/example/demo/src/user/model/PostLoginReq.java
  com.example.demo.src.user.model.PostLoginReq
 com/example/demo/config/secret/Secret.java
  com.example.demo.config.secret.Secret
+com/example/demo/src/post/model/GetSCategoryRes.java
+ com.example.demo.src.post.model.GetSCategoryRes
 com/example/demo/src/post/PostDao.java
  com.example.demo.src.post.PostDao
 com/example/demo/src/user/model/PostUserRes.java
@@ -46,6 +50,8 @@ com/example/demo/src/user/UserController.java
  com.example.demo.src.user.UserController
 com/example/demo/config/BaseResponse.java
  com.example.demo.config.BaseResponse
+com/example/demo/src/post/model/GetMCategoryRes.java
+ com.example.demo.src.post.model.GetMCategoryRes
 com/example/demo/src/user/model/User.java
  com.example.demo.src.user.model.User
 com/example/demo/src/user/UserService.java

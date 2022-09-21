@@ -131,6 +131,56 @@ public class PostController {
      * 카테고리 조회 API의 경우 대분류,중,소 3가지 각각 만들어야하나?? >>> ㅇㅇㅇ 그렇게 해야할듯
      *
      * */
+    @ResponseBody
+    @GetMapping("/category-large")
+    public BaseResponse<List<GetLCategoryRes>> getLCategory() {
+        try {
+            List<GetLCategoryRes> getLCategoryRes = postProvider.getLCategory();
+            return new BaseResponse<>(getLCategoryRes);
+        }
+        catch (BaseException exception){
+            exception.printStackTrace();
+            return new BaseResponse<>(exception.getStatus());
+        }
+
+    }
+
+    @ResponseBody
+    @GetMapping("/category-middle")
+    public BaseResponse<List<GetMCategoryRes>> getMCategory(@RequestParam() int LCId) {
+        try {
+            List<GetMCategoryRes> getMCategoryRes = postProvider.getMCategory(LCId);
+            return new BaseResponse<>(getMCategoryRes);
+        }
+        catch (BaseException exception){
+            exception.printStackTrace();
+            return new BaseResponse<>(exception.getStatus());
+        }
+
+    }
+
+    @ResponseBody
+    @GetMapping("/category-small")
+    public BaseResponse<List<GetSCategoryRes>> getSCategory(@RequestParam() int MCId) {
+        try {
+            List<GetSCategoryRes> getSCategoryRes = postProvider.getSCategory(MCId);
+            return new BaseResponse<>(getSCategoryRes);
+        }
+        catch (BaseException exception){
+            exception.printStackTrace();
+            return new BaseResponse<>(exception.getStatus());
+        }
+
+    }
+
+
+
+    /*
+    * 옵션 선택 API
+    * 지금은 createPost에서 한번에 입력하는데,
+    * 수량,상품상태,교환 Post 방식 API를 따로 빼서 만들어야하나??
+    * */
+
 
 
 

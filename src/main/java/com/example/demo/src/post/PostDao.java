@@ -1,13 +1,12 @@
 package com.example.demo.src.post;
 
-import com.example.demo.src.post.model.PostPhotoReq;
-import com.example.demo.src.post.model.PostPostReq;
-import com.example.demo.src.post.model.PostTagReq;
+import com.example.demo.src.post.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.util.List;
 
 @Repository
 public class PostDao {
@@ -49,5 +48,49 @@ public class PostDao {
 
     }
 
+    public List<GetLCategoryRes> getLCategory() {
+        String getLCategoryQuery = "select * from large_category";
+        return this.jdbcTemplate.query(getLCategoryQuery,
+                (rs, rowNum) -> new GetLCategoryRes(
+                        rs.getInt("large_category_id"),
+                        rs.getString("name")
+                ));
 
+    }
+
+    public List<GetMCategoryRes> getMCategory(int LCategory_id) {
+        String getMCategoryQuery = "select lc.large_category_id, lc.name, middle_category_id, mc.name\n" +
+                "from middle_category mc\n" +
+                "    inner join large_category lc on mc.large_category_id = lc.large_category_id\n" +
+                "where mc.large_category_id=?;";
+        int getMCategoryParam = LCategory_id;
+        return this.jdbcTemplate.query(getMCategoryQuery,
+                (rs, rowNum) -> new GetMCategoryRes(
+                        rs.getInt("large_category_id"),
+                        rs.getString("lc.name"),
+                        rs.getInt("middle_category_id"),
+                        rs.getString("mc.name")
+                ), getMCategoryParam);
+
+    }
+
+
+    public List<GetSCategoryRes> getSCategory(int MCategory_id) {
+        String getSCategoryQuery = "select lc.large_category_id, lc.name, mc.middle_category_id, mc.name, small_category_id, sc.name\n" +
+                "from small_category sc\n" +
+                "    inner join middle_category mc on sc.middle_category_id = mc.middle_category_id\n" +
+                "    inner join large_category lc on mc.large_category_id = lc.large_category_id\n" +
+                "where sc.middle_category_id=?;";
+        int getSCategoryParam = MCategory_id;
+        return this.jdbcTemplate.query(getSCategoryQuery,
+                (rs, rowNum) -> new GetSCategoryRes(
+                        rs.getInt("large_category_id"),
+                        rs.getString("lc.name"),
+                        rs.getInt("middle_category_id"),
+                        rs.getString("mc.name"),
+                        rs.getInt("small_category_id"),
+                        rs.getString("sc.name")
+                ), getSCategoryParam);
+
+    }
 }
