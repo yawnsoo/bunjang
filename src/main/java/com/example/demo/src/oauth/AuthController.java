@@ -38,8 +38,8 @@ public class AuthController {
     {
         System.out.println("code = " + code);
 
-//        String token = authService.getKakaoAccessToken(code); // 엑세스 토큰 받고.
-//
+        String token = authService.getKakaoAccessToken(code); // 엑세스 토큰 받고.
+        System.out.println("token = " + token);
 //        try{
 //            authService.loginKakao(token); //카카오연동회원찾아서 로그인시켜주거나 일반회원을 카카오 연동시켜서 로그인시켜주기
 ////            authProvider.checkScope(token);

@@ -44,35 +44,59 @@ com/example/demo/src/bungaeTalk/model/PostTalkMessageRes.java
  com.example.demo.src.bungaeTalk.model.PostTalkMessageRes
 com/example/demo/src/bungaeTalk/model/PostTalkRoomReq.java
  com.example.demo.src.bungaeTalk.model.PostTalkRoomReq
+com/example/demo/src/point/model/PostPointHistoryReq.java
+ com.example.demo.src.point.model.PostPointHistoryReq
+com/example/demo/src/point/model/PostPointHistoryRes.java
+ com.example.demo.src.point.model.PostPointHistoryRes
+com/example/demo/src/bungaeTalk/TalkDao.java
+ com.example.demo.src.bungaeTalk.TalkDao
+com/example/demo/src/bungaeTalk/model/GetMessageRes.java
+ com.example.demo.src.bungaeTalk.model.GetMessageRes
+com/example/demo/src/bungaeTalk/model/GetRoomListRes.java
+ com.example.demo.src.bungaeTalk.model.GetRoomListRes
 com/example/demo/src/oauth/AuthController.java
  com.example.demo.src.oauth.AuthController
+com/example/demo/src/point/PointService.java
+ com.example.demo.src.point.PointService
+com/example/demo/src/point/PointDao.java
+ com.example.demo.src.point.PointDao
 com/example/demo/src/oauth/AuthProvider.java
  com.example.demo.src.oauth.AuthProvider
-com/example/demo/src/user/UserProvider.java
- com.example.demo.src.user.UserProvider
+com/example/demo/src/bungaeTalk/TalkController.java
+ com.example.demo.src.bungaeTalk.TalkController
+com/example/demo/src/point/PointProvider.java
+ com.example.demo.src.point.PointProvider
 com/example/demo/src/user/UserController.java
  com.example.demo.src.user.UserController
-com/example/demo/src/oauth/AuthService.java
- com.example.demo.src.oauth.AuthService
+com/example/demo/src/bungaeTalk/TalkService.java
+ com.example.demo.src.bungaeTalk.TalkService
 com/example/demo/config/BaseResponse.java
  com.example.demo.config.BaseResponse
 com/example/demo/src/user/UserService.java
  com.example.demo.src.user.UserService
 com/example/demo/config/BaseResponseStatus.java
  com.example.demo.config.BaseResponseStatus
-com/example/demo/utils/JwtService.java
- com.example.demo.utils.JwtService
 com/example/demo/config/BaseException.java
  com.example.demo.config.BaseException
-com/example/demo/src/bungaeTalk/model/GetMessageRes.java
- com.example.demo.src.bungaeTalk.model.GetMessageRes
-com/example/demo/src/bungaeTalk/TalkService.java
- com.example.demo.src.bungaeTalk.TalkService
+com/example/demo/src/oauth/AuthService.java
+ com.example.demo.src.oauth.AuthService
+com/example/demo/utils/JwtService.java
+ com.example.demo.utils.JwtService
 com/example/demo/src/bungaeTalk/TalkProvider.java
  com.example.demo.src.bungaeTalk.TalkProvider
-com/example/demo/src/bungaeTalk/TalkController.java
- com.example.demo.src.bungaeTalk.TalkController
-com/example/demo/src/bungaeTalk/model/GetRoomListRes.java
- com.example.demo.src.bungaeTalk.model.GetRoomListRes
-com/example/demo/src/bungaeTalk/TalkDao.java
- com.example.demo.src.bungaeTalk.TalkDao
+com/example/demo/src/user/UserProvider.java
+ com.example.demo.src.user.UserProvider
+com/example/demo/src/pay/PayProvider.java
+ com.example.demo.src.pay.PayProvider
+com/example/demo/src/pay/model/PostPayHistoryReq.java
+ com.example.demo.src.pay.model.PostPayHistoryReq
+com/example/demo/src/pay/PayDao.java
+ com.example.demo.src.pay.PayDao
+com/example/demo/src/pay/model/PostPayHistoryRes.java
+ com.example.demo.src.pay.model.PostPayHistoryRes
+com/example/demo/src/pay/PayController.java
+ com.example.demo.src.pay.PayController
+com/example/demo/src/pay/PayService.java
+ com.example.demo.src.pay.PayService
+com/example/demo/src/point/PointController.java
+ com.example.demo.src.point.PointController

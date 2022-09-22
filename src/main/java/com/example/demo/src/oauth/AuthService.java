@@ -82,6 +82,7 @@ public class AuthService {
         return access_Token;
     }
 
+
     @Transactional
     public PostKakaoLoginRes loginKakao(String token) throws BaseException { //받은 토큰을 이용하여 카카오서버에서 회원정보를 받아온다.
         //받아온 회원정보(카카오 고유아이디,닉네임(이름),생일) 를 내 DB서버 이용자 정보와 비교하여
