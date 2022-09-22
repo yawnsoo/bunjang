@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com/example/demo/src/user/model/PostJoinReq.java
  com.example.demo.src.user.model.PostJoinReq
 com/example/demo/src/user/model/PatchWithdrawReq.java
@@ -6,6 +7,10 @@ com/example/demo/src/oauth/AuthController.java
  com.example.demo.src.oauth.AuthController
 com/example/demo/src/bungaeTalk/model/PostTalkMessageReq.java
  com.example.demo.src.bungaeTalk.model.PostTalkMessageReq
+=======
+com/example/demo/src/post/PostController.java
+ com.example.demo.src.post.PostController
+>>>>>>> 8a2651a7fcfad5fc7b071ec5b72f1c5efe193f9c
 com/example/demo/utils/SHA256.java
  com.example.demo.utils.SHA256
 com/example/demo/src/user/model/PatchReviseReq.java
@@ -18,8 +23,16 @@ com/example/demo/src/bungaeTalk/TalkController.java
  com.example.demo.src.bungaeTalk.TalkController
 com/example/demo/utils/ValidationRegex.java
  com.example.demo.utils.ValidationRegex
+com/example/demo/src/post/model/PostPostReq.java
+ com.example.demo.src.post.model.PostPostReq
+com/example/demo/src/post/PostProvider.java
+ com.example.demo.src.post.PostProvider
+com/example/demo/src/post/model/GetPostRes.java
+ com.example.demo.src.post.model.GetPostRes
 com/example/demo/src/user/model/PostLoginRes.java
  com.example.demo.src.user.model.PostLoginRes
+com/example/demo/src/post/model/PostPhotoReq.java
+ com.example.demo.src.post.model.PostPhotoReq
 com/example/demo/src/user/UserDao.java
  com.example.demo.src.user.UserDao
 com/example/demo/config/BaseResponseStatus.java
@@ -30,6 +43,7 @@ com/example/demo/src/bungaeTalk/model/PostTalkMessageRes.java
  com.example.demo.src.bungaeTalk.model.PostTalkMessageRes
 com/example/demo/src/WebSecurityConfig.java
  com.example.demo.src.WebSecurityConfig
+<<<<<<< HEAD
 com/example/demo/src/bungaeTalk/model/GetMessageRes.java
  com.example.demo.src.bungaeTalk.model.GetMessageRes
 com/example/demo/src/user/model/PatchWithdrawRes.java
@@ -42,36 +56,79 @@ com/example/demo/src/test/TestController.java
  com.example.demo.src.test.TestController
 com/example/demo/src/bungaeTalk/model/PostTalkRoomReq.java
  com.example.demo.src.bungaeTalk.model.PostTalkRoomReq
+=======
+com/example/demo/src/post/model/GetLCategoryRes.java
+ com.example.demo.src.post.model.GetLCategoryRes
+com/example/demo/src/user/model/GetAddressRes.java
+ com.example.demo.src.user.model.GetAddressRes
+com/example/demo/src/test/TestController.java
+ com.example.demo.src.test.TestController
+com/example/demo/src/post/model/PostTagReq.java
+ com.example.demo.src.post.model.PostTagReq
+com/example/demo/src/post/PostService.java
+ com.example.demo.src.post.PostService
+>>>>>>> 8a2651a7fcfad5fc7b071ec5b72f1c5efe193f9c
 com/example/demo/src/user/model/PostLoginReq.java
  com.example.demo.src.user.model.PostLoginReq
 com/example/demo/src/oauth/model/PostKakaoLoginReq.java
  com.example.demo.src.oauth.model.PostKakaoLoginReq
 com/example/demo/config/secret/Secret.java
  com.example.demo.config.secret.Secret
+<<<<<<< HEAD
 com/example/demo/src/user/model/PostJoinRes.java
  com.example.demo.src.user.model.PostJoinRes
+=======
+com/example/demo/src/post/model/GetSCategoryRes.java
+ com.example.demo.src.post.model.GetSCategoryRes
+com/example/demo/src/post/PostDao.java
+ com.example.demo.src.post.PostDao
+com/example/demo/src/user/model/PostUserRes.java
+ com.example.demo.src.user.model.PostUserRes
+>>>>>>> 8a2651a7fcfad5fc7b071ec5b72f1c5efe193f9c
 com/example/demo/src/user/UserController.java
  com.example.demo.src.user.UserController
 com/example/demo/src/bungaeTalk/TalkService.java
  com.example.demo.src.bungaeTalk.TalkService
 com/example/demo/config/BaseResponse.java
  com.example.demo.config.BaseResponse
+<<<<<<< HEAD
 com/example/demo/src/bungaeTalk/model/PostTalkRoomRes.java
  com.example.demo.src.bungaeTalk.model.PostTalkRoomRes
 com/example/demo/src/bungaeTalk/model/GetRoomListRes.java
  com.example.demo.src.bungaeTalk.model.GetRoomListRes
 com/example/demo/src/user/UserService.java
  com.example.demo.src.user.UserService
+=======
+com/example/demo/src/post/model/GetMCategoryRes.java
+ com.example.demo.src.post.model.GetMCategoryRes
+com/example/demo/src/user/model/User.java
+ com.example.demo.src.user.model.User
+com/example/demo/src/user/UserService.java
+ com.example.demo.src.user.UserService
+com/example/demo/src/user/model/GetUserRes.java
+ com.example.demo.src.user.model.GetUserRes
+com/example/demo/src/post/model/PostTagRes.java
+ com.example.demo.src.post.model.PostTagRes
+com/example/demo/src/post/model/PostPostRes.java
+ com.example.demo.src.post.model.PostPostRes
+>>>>>>> 8a2651a7fcfad5fc7b071ec5b72f1c5efe193f9c
 com/example/demo/config/BaseException.java
  com.example.demo.config.BaseException
 com/example/demo/DemoApplication.java
  com.example.demo.DemoApplication
 com/example/demo/utils/JwtService.java
  com.example.demo.utils.JwtService
+<<<<<<< HEAD
 com/example/demo/src/oauth/AuthDao.java
  com.example.demo.src.oauth.AuthDao
 com/example/demo/src/oauth/model/PostKakaoLoginRes.java
  com.example.demo.src.oauth.model.PostKakaoLoginRes
+=======
+com/example/demo/src/post/model/PostPhotoRes.java
+ com.example.demo.src.post.model.PostPhotoRes
+com/example/demo/src/user/model/PostAddressReq.java
+ com.example.demo.src.user.model.PostAddressReq
+>>>>>>> 8a2651a7fcfad5fc7b071ec5b72f1c5efe193f9c
 com/example/demo/src/user/UserProvider.java
  com.example.demo.src.user.UserProvider
 com/example/demo/src/bungaeTalk/TalkProvider.java
