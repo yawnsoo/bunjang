@@ -6,6 +6,8 @@ com/example/demo/src/user/model/PostUserReq.java
  com.example.demo.src.user.model.PostUserReq
 com/example/demo/config/Constant.java
  com.example.demo.config.Constant
+com/example/demo/src/post/model/GetPostDetailRes.java
+ com.example.demo.src.post.model.GetPostDetailRes
 com/example/demo/utils/ValidationRegex.java
  com.example.demo.utils.ValidationRegex
 com/example/demo/src/post/model/PostPostReq.java
@@ -16,6 +18,8 @@ com/example/demo/src/post/model/GetPostRes.java
  com.example.demo.src.post.model.GetPostRes
 com/example/demo/src/user/model/PostLoginRes.java
  com.example.demo.src.user.model.PostLoginRes
+com/example/demo/src/post/model/PostPostAssemble.java
+ com.example.demo.src.post.model.PostPostAssemble
 com/example/demo/src/post/model/PostPhotoReq.java
  com.example.demo.src.post.model.PostPhotoReq
 com/example/demo/src/user/UserDao.java

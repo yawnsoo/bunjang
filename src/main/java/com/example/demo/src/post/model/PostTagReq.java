@@ -9,6 +9,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class PostTagReq {
 
-    private int post_id;
+//    private int post_id;
     private String name;
 }

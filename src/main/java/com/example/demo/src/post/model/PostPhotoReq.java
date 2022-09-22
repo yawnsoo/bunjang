@@ -9,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class PostPhotoReq {
 
-    private int post_id;
+//    private int post_id;
     private String image_path;
 
 }
