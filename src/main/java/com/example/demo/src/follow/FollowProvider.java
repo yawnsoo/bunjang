@@ -1,8 +1,9 @@
-package com.example.demo.src.pay;
+package com.example.demo.src.follow;
 
 
 import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponseStatus;
+import com.example.demo.src.follow.model.PostFollowReq;
 import com.example.demo.src.oauth.AuthDao;
 import com.example.demo.src.oauth.model.PostKakaoLoginRes;
 import com.example.demo.src.point.PointDao;
@@ -19,15 +20,18 @@ import java.net.URL;
 import com.example.demo.utils.JwtService;
 import org.springframework.transaction.annotation.Transactional;
 import static com.example.demo.config.BaseResponseStatus.*;
+
+
 @Service
-public class PayProvider {
-    private final PayDao payDao;
+public class FollowProvider {
+
+    private final FollowDao followDao;
     private final JwtService jwtService;
 
     @Autowired
-    public PayProvider(PayDao payDao , JwtService jwtService)
+    public FollowProvider(FollowDao followDao , JwtService jwtService)
     {
-        this.payDao = payDao;
+        this.followDao = followDao;
         this.jwtService = jwtService;
 
     }
@@ -35,7 +39,7 @@ public class PayProvider {
     public int checkUser(int user_id) throws BaseException
     {
         try{
-            return payDao.checkUserStatus(user_id);
+            return followDao.checkUserStatus(user_id);
 
         }catch (Exception exception)
         {
@@ -45,17 +49,7 @@ public class PayProvider {
     }
 
 
-    public int checkPostStatus (int post_id) throws BaseException
-    {
-        try{
-            return payDao.checkPostStatus(post_id);
 
-        }catch (Exception exception)
-        {
-            exception.printStackTrace();
-            throw new BaseException(DATABASE_ERROR);
-        }
-    }
 
 
 }

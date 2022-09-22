@@ -1,7 +1,7 @@
-package com.example.demo.src.pay;
+package com.example.demo.src.follow;
+
 import com.example.demo.src.bungaeTalk.model.*;
-import com.example.demo.src.pay.model.PostPayHistoryReq;
-import com.example.demo.src.pay.model.PostPayHistoryRes;
+import com.example.demo.src.follow.model.PostFollowReq;
 import com.example.demo.src.point.model.PostPointHistoryReq;
 import com.example.demo.src.point.model.PostPointHistoryRes;
 import com.example.demo.src.user.model.*;
@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 import java.util.List;
 
 @Repository
-public class PayDao {
+public class FollowDao {
 
     private JdbcTemplate jdbcTemplate;
 
@@ -23,7 +23,6 @@ public class PayDao {
     public void setDataSource(DataSource dataSource){
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
-
 
     public int checkUserStatus(int user_id) // 존재하는 유저인지 , 탈퇴한 유저인지 체크하는 함수.
     //없는유저라면 0, 탈퇴한유저라면 -1 , 존재하는 유저라면 해당 유저아이디를 리턴해준다.
@@ -56,38 +55,22 @@ public class PayDao {
     }
 
 
-    //결제내역 생성
     @Transactional
-    public PostPayHistoryRes createPaymentDetail (PostPayHistoryReq postPayHistoryReq)
+    public int createFollow(PostFollowReq postFollowReq)
     {
-        String createPaymentDetailQuery = "insert into payment_detail(buyer_id,post_id,used_point,total_price,method) VALUES(?,?,?,?,?)";
-        Object[] createPaymentDetailParams = new Object[]{postPayHistoryReq.getBuyer_id(),postPayHistoryReq.getPost_id(),postPayHistoryReq.getUsed_point(),postPayHistoryReq.getTotal_price(),postPayHistoryReq.getMethod()};
+        //팔로우 했던 기록이 있다면(다시 언팔을 했던간에) 새로 만들필요없이 status값만 바꿔주면됨
+        String checkExistFollowId = "select exists(select follow_id from follw where follwer_id =? and followee_id = ?)";
+        Object[] checkExistFollowIdParams = new Object[]{postFollowReq.getFollwer_id(),postFollowReq.getFollowee_id()};
 
-        this.jdbcTemplate.update(createPaymentDetailQuery,createPaymentDetailParams);
+        int result = this.jdbcTemplate.queryForObject(checkExistFollowId,int.class,checkExistFollowIdParams);
+        if(result ==1) // 이미 존재하는거니까 status만 바꿔줌 ( 0이였으면 1로 , 1이였으면 0으로)
+        {
 
-        //결제되었으므로 해당 post의 status를 0으로 바꿔줌.
-        String postStatusChange = "update post set status =0 where post_id =?";
-        this.jdbcTemplate.update(postStatusChange,postPayHistoryReq.getPost_id());
+        }
 
-        //used_point가 0이 아니라면 포인트 변동 내역을 추가해줌.
-        String createPointHistory = "insert into point_history(user_id,amount) VALUES(?,?)";
-        Object[] createPointHistoryParams = new Object[]{postPayHistoryReq.getBuyer_id(),postPayHistoryReq.getUsed_point()};
-        this.jdbcTemplate.update(createPointHistory,createPointHistoryParams);
+        //팔로우했던 기록이없다면 새로만들어 주면됨.
 
-
-        String temp = "select last_insert_id()";
-        int payment_detail_id = this.jdbcTemplate.queryForObject(temp,int.class);
-
-        PostPayHistoryRes postPayHistoryRes = new PostPayHistoryRes(payment_detail_id, postPayHistoryReq.getBuyer_id(), postPayHistoryReq.getPost_id(), postPayHistoryReq.getUsed_point(), postPayHistoryReq.getTotal_price(), postPayHistoryReq.getMethod());
-        return postPayHistoryRes;
-
-    }
-
-    public int checkPostStatus (int post_id)
-    {
-        String checkPostStatusQuery = "select status from post where post_id = ?";
-        int result = this.jdbcTemplate.queryForObject(checkPostStatusQuery,int.class,post_id);
-        return result;
+        String createFollowQuery = "";
     }
 
 

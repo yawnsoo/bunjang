@@ -1,9 +1,8 @@
-package com.example.demo.src.pay;
-
+package com.example.demo.src.follow;
 
 import com.example.demo.src.bungaeTalk.*;
 
-import com.example.demo.src.pay.model.PostPayHistoryReq;
+import com.example.demo.src.follow.model.PostFollowReq;
 import com.example.demo.src.pay.model.PostPayHistoryRes;
 import com.example.demo.src.point.PointProvider;
 import com.example.demo.src.point.PointService;
@@ -25,39 +24,35 @@ import static com.example.demo.config.BaseResponseStatus.*;
 
 
 @RestController
-@RequestMapping("/pay")
-public class PayController {
-
+@RequestMapping("/follow")
+public class FollowController {
     final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
-    private final PayProvider payProvider;
+    private final FollowProvider followProvider;
     @Autowired
-    private final PayService payService;
+    private final FollowService followService;
     @Autowired
     private final JwtService jwtService;
 
-    public PayController (PayProvider payProvider ,PayService payService ,JwtService jwtService )
+    public FollowController (FollowProvider followProvider ,FollowService followService ,JwtService jwtService )
     {
-        this.payProvider = payProvider;
-        this.payService = payService;
+        this.followProvider = followProvider;
+        this.followService = followService;
         this.jwtService = jwtService;
     }
 
 
-
-    /**
-     * 결제내역 생성 api
-     * */
     @Transactional
     @ResponseBody
     @PostMapping("{user_id}")
-    public BaseResponse<PostPayHistoryRes> createPaymentDetail (@PathVariable("user_id") int user_id , @RequestBody PostPayHistoryReq postPayHistoryReq)
+    public BaseResponse<String> createFollow (@PathVariable("user_id")int user_id , PostFollowReq postFollowReq)
     {
-        postPayHistoryReq.setBuyer_id(user_id);
+
+        postFollowReq.setFollwer_id(user_id);
 
         //pathvariable로 입력받는 user_id에 대한 validation처리 (활성화된 아이디인지)
         try{
-            int user_result = payProvider.checkUser(user_id);
+            int user_result = followProvider.checkUser(user_id);
 
             if(user_result ==0)
             {
@@ -71,22 +66,23 @@ public class PayController {
             exception.printStackTrace();
             return new BaseResponse<>(exception.getStatus());
         }
-        //입력받은 post_id를 이용 , 비활성화(판매완료)된 판매글의 id를 받아왔는지 체크.
-        try{
-            int result = payProvider.checkPostStatus(postPayHistoryReq.getPost_id());
-            if(result ==0) //판매완료된글 (status ==0)인 판매글이라면
-            {
-                return new BaseResponse<>(STATUS_ZERO_POST);
-            }
 
+        //팔로우하려는 상대방도 체크해야함.
+        try{
+            int user_result = followProvider.checkUser(postFollowReq.getFollowee_id());
+
+            if(user_result ==0)
+            {
+                return new BaseResponse<>(NOT_EXIST_OPPOSITE_USER);
+            }else if(user_result ==-1)
+            {
+                return new BaseResponse<>(WITHDRAW_OPPOSITE_USER);
+            }
         }catch (BaseException exception)
         {
             exception.printStackTrace();
             return new BaseResponse<>(exception.getStatus());
         }
-
-
-
 
         try{
 
@@ -96,10 +92,6 @@ public class PayController {
             if(user_id != userIdxByJwt){
                 return new BaseResponse<>(INVALID_USER_JWT);
             }
-
-            PostPayHistoryRes postPayHistoryRes = payService.createPaymentDetail(postPayHistoryReq);
-
-            return new BaseResponse<>(postPayHistoryRes);
 
 
 
@@ -111,6 +103,7 @@ public class PayController {
         }
 
     }
+
 
 
 }
