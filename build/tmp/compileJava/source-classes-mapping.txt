@@ -1,78 +1,78 @@
-com/example/demo/src/oauth/AuthDao.java
- com.example.demo.src.oauth.AuthDao
-com/example/demo/src/user/model/PatchWithdrawReq.java
- com.example.demo.src.user.model.PatchWithdrawReq
 com/example/demo/src/user/model/PostJoinReq.java
  com.example.demo.src.user.model.PostJoinReq
+com/example/demo/src/user/model/PatchWithdrawReq.java
+ com.example.demo.src.user.model.PatchWithdrawReq
+com/example/demo/src/oauth/AuthController.java
+ com.example.demo.src.oauth.AuthController
+com/example/demo/src/bungaeTalk/model/PostTalkMessageReq.java
+ com.example.demo.src.bungaeTalk.model.PostTalkMessageReq
 com/example/demo/utils/SHA256.java
  com.example.demo.utils.SHA256
 com/example/demo/src/user/model/PatchReviseReq.java
  com.example.demo.src.user.model.PatchReviseReq
 com/example/demo/config/Constant.java
  com.example.demo.config.Constant
-com/example/demo/src/oauth/model/PostKakaoLoginRes.java
- com.example.demo.src.oauth.model.PostKakaoLoginRes
+com/example/demo/src/oauth/AuthProvider.java
+ com.example.demo.src.oauth.AuthProvider
+com/example/demo/src/bungaeTalk/TalkController.java
+ com.example.demo.src.bungaeTalk.TalkController
 com/example/demo/utils/ValidationRegex.java
  com.example.demo.utils.ValidationRegex
 com/example/demo/src/user/model/PostLoginRes.java
  com.example.demo.src.user.model.PostLoginRes
-com/example/demo/src/user/model/PostJoinRes.java
- com.example.demo.src.user.model.PostJoinRes
-com/example/demo/DemoApplication.java
- com.example.demo.DemoApplication
-com/example/demo/src/WebSecurityConfig.java
- com.example.demo.src.WebSecurityConfig
 com/example/demo/src/user/UserDao.java
  com.example.demo.src.user.UserDao
-com/example/demo/src/oauth/model/userid_registration.java
- com.example.demo.src.oauth.model.userid_registration
+com/example/demo/config/BaseResponseStatus.java
+ com.example.demo.config.BaseResponseStatus
+com/example/demo/src/bungaeTalk/TalkDao.java
+ com.example.demo.src.bungaeTalk.TalkDao
+com/example/demo/src/bungaeTalk/model/PostTalkMessageRes.java
+ com.example.demo.src.bungaeTalk.model.PostTalkMessageRes
+com/example/demo/src/WebSecurityConfig.java
+ com.example.demo.src.WebSecurityConfig
+com/example/demo/src/bungaeTalk/model/GetMessageRes.java
+ com.example.demo.src.bungaeTalk.model.GetMessageRes
 com/example/demo/src/user/model/PatchWithdrawRes.java
  com.example.demo.src.user.model.PatchWithdrawRes
+com/example/demo/src/oauth/AuthService.java
+ com.example.demo.src.oauth.AuthService
+com/example/demo/src/oauth/model/userid_registration.java
+ com.example.demo.src.oauth.model.userid_registration
 com/example/demo/src/test/TestController.java
  com.example.demo.src.test.TestController
+com/example/demo/src/bungaeTalk/model/PostTalkRoomReq.java
+ com.example.demo.src.bungaeTalk.model.PostTalkRoomReq
 com/example/demo/src/user/model/PostLoginReq.java
  com.example.demo.src.user.model.PostLoginReq
 com/example/demo/src/oauth/model/PostKakaoLoginReq.java
  com.example.demo.src.oauth.model.PostKakaoLoginReq
 com/example/demo/config/secret/Secret.java
  com.example.demo.config.secret.Secret
-com/example/demo/src/bungaeTalk/model/PostTalkMessageReq.java
- com.example.demo.src.bungaeTalk.model.PostTalkMessageReq
-com/example/demo/src/bungaeTalk/model/PostTalkRoomRes.java
- com.example.demo.src.bungaeTalk.model.PostTalkRoomRes
-com/example/demo/src/bungaeTalk/model/PostTalkMessageRes.java
- com.example.demo.src.bungaeTalk.model.PostTalkMessageRes
-com/example/demo/src/bungaeTalk/model/PostTalkRoomReq.java
- com.example.demo.src.bungaeTalk.model.PostTalkRoomReq
-com/example/demo/src/oauth/AuthController.java
- com.example.demo.src.oauth.AuthController
-com/example/demo/src/oauth/AuthProvider.java
- com.example.demo.src.oauth.AuthProvider
-com/example/demo/src/user/UserProvider.java
- com.example.demo.src.user.UserProvider
+com/example/demo/src/user/model/PostJoinRes.java
+ com.example.demo.src.user.model.PostJoinRes
 com/example/demo/src/user/UserController.java
  com.example.demo.src.user.UserController
-com/example/demo/src/oauth/AuthService.java
- com.example.demo.src.oauth.AuthService
-com/example/demo/config/BaseResponse.java
- com.example.demo.config.BaseResponse
-com/example/demo/src/user/UserService.java
- com.example.demo.src.user.UserService
-com/example/demo/config/BaseResponseStatus.java
- com.example.demo.config.BaseResponseStatus
-com/example/demo/utils/JwtService.java
- com.example.demo.utils.JwtService
-com/example/demo/config/BaseException.java
- com.example.demo.config.BaseException
-com/example/demo/src/bungaeTalk/model/GetMessageRes.java
- com.example.demo.src.bungaeTalk.model.GetMessageRes
 com/example/demo/src/bungaeTalk/TalkService.java
  com.example.demo.src.bungaeTalk.TalkService
-com/example/demo/src/bungaeTalk/TalkProvider.java
- com.example.demo.src.bungaeTalk.TalkProvider
-com/example/demo/src/bungaeTalk/TalkController.java
- com.example.demo.src.bungaeTalk.TalkController
+com/example/demo/config/BaseResponse.java
+ com.example.demo.config.BaseResponse
+com/example/demo/src/bungaeTalk/model/PostTalkRoomRes.java
+ com.example.demo.src.bungaeTalk.model.PostTalkRoomRes
 com/example/demo/src/bungaeTalk/model/GetRoomListRes.java
  com.example.demo.src.bungaeTalk.model.GetRoomListRes
-com/example/demo/src/bungaeTalk/TalkDao.java
- com.example.demo.src.bungaeTalk.TalkDao
+com/example/demo/src/user/UserService.java
+ com.example.demo.src.user.UserService
+com/example/demo/config/BaseException.java
+ com.example.demo.config.BaseException
+com/example/demo/DemoApplication.java
+ com.example.demo.DemoApplication
+com/example/demo/utils/JwtService.java
+ com.example.demo.utils.JwtService
+com/example/demo/src/oauth/AuthDao.java
+ com.example.demo.src.oauth.AuthDao
+com/example/demo/src/oauth/model/PostKakaoLoginRes.java
+ com.example.demo.src.oauth.model.PostKakaoLoginRes
+com/example/demo/src/user/UserProvider.java
+ com.example.demo.src.user.UserProvider
+com/example/demo/src/bungaeTalk/TalkProvider.java
+ com.example.demo.src.bungaeTalk.TalkProvider
