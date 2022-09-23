@@ -1,71 +1,39 @@
-<<<<<<< HEAD
 com/example/demo/src/post/PostController.java
  com.example.demo.src.post.PostController
 com/example/demo/src/oauth/AuthController.java
  com.example.demo.src.oauth.AuthController
 com/example/demo/src/bungaeTalk/model/PostTalkMessageReq.java
  com.example.demo.src.bungaeTalk.model.PostTalkMessageReq
-=======
-com/example/demo/src/bungaeTalk/model/PostTalkMessageReq.java
- com.example.demo.src.bungaeTalk.model.PostTalkMessageReq
-com/example/demo/src/follow/FollowProvider.java
- com.example.demo.src.follow.FollowProvider
->>>>>>> 0d6c4927fd5b87e36681e6c25af18f6aef78327f
 com/example/demo/src/user/model/PatchReviseReq.java
  com.example.demo.src.user.model.PatchReviseReq
 com/example/demo/config/Constant.java
  com.example.demo.config.Constant
-<<<<<<< HEAD
 com/example/demo/src/post/model/GetPostDetailRes.java
  com.example.demo.src.post.model.GetPostDetailRes
-com/example/demo/src/bungaeTalk/TalkController.java
- com.example.demo.src.bungaeTalk.TalkController
-com/example/demo/utils/ValidationRegex.java
- com.example.demo.utils.ValidationRegex
-com/example/demo/src/post/model/PostPostReq.java
- com.example.demo.src.post.model.PostPostReq
-com/example/demo/src/post/model/GetPostRes.java
- com.example.demo.src.post.model.GetPostRes
-com/example/demo/src/post/model/PostPostAssemble.java
- com.example.demo.src.post.model.PostPostAssemble
-=======
 com/example/demo/src/bungaeTalk/TalkController.java
  com.example.demo.src.bungaeTalk.TalkController
 com/example/demo/src/pay/PayProvider.java
  com.example.demo.src.pay.PayProvider
 com/example/demo/utils/ValidationRegex.java
  com.example.demo.utils.ValidationRegex
+com/example/demo/src/post/model/PostPostReq.java
+ com.example.demo.src.post.model.PostPostReq
+com/example/demo/src/post/model/GetPostRes.java
+ com.example.demo.src.post.model.GetPostRes
 com/example/demo/src/follow/model/PostFollowReq.java
  com.example.demo.src.follow.model.PostFollowReq
+com/example/demo/src/post/model/PostPostAssemble.java
+ com.example.demo.src.post.model.PostPostAssemble
 com/example/demo/src/follow/FollowService.java
  com.example.demo.src.follow.FollowService
->>>>>>> 0d6c4927fd5b87e36681e6c25af18f6aef78327f
 com/example/demo/config/BaseResponseStatus.java
  com.example.demo.config.BaseResponseStatus
 com/example/demo/src/bungaeTalk/model/GetMessageRes.java
  com.example.demo.src.bungaeTalk.model.GetMessageRes
-<<<<<<< HEAD
 com/example/demo/src/user/model/PatchWithdrawRes.java
  com.example.demo.src.user.model.PatchWithdrawRes
 com/example/demo/src/oauth/model/userid_registration.java
  com.example.demo.src.oauth.model.userid_registration
-com/example/demo/src/bungaeTalk/model/PostTalkRoomReq.java
- com.example.demo.src.bungaeTalk.model.PostTalkRoomReq
-com/example/demo/src/post/PostService.java
- com.example.demo.src.post.PostService
-com/example/demo/src/oauth/model/PostKakaoLoginReq.java
- com.example.demo.src.oauth.model.PostKakaoLoginReq
-com/example/demo/config/secret/Secret.java
- com.example.demo.config.secret.Secret
-com/example/demo/src/post/model/GetSCategoryRes.java
- com.example.demo.src.post.model.GetSCategoryRes
-com/example/demo/src/post/PostDao.java
- com.example.demo.src.post.PostDao
-=======
-com/example/demo/src/oauth/model/userid_registration.java
- com.example.demo.src.oauth.model.userid_registration
-com/example/demo/src/user/model/PatchWithdrawRes.java
- com.example.demo.src.user.model.PatchWithdrawRes
 com/example/demo/src/pay/model/PostPayHistoryRes.java
  com.example.demo.src.pay.model.PostPayHistoryRes
 com/example/demo/src/pay/PayController.java
@@ -74,43 +42,52 @@ com/example/demo/src/bungaeTalk/model/PostTalkRoomReq.java
  com.example.demo.src.bungaeTalk.model.PostTalkRoomReq
 com/example/demo/src/point/PointController.java
  com.example.demo.src.point.PointController
+com/example/demo/src/post/PostService.java
+ com.example.demo.src.post.PostService
 com/example/demo/src/oauth/model/PostKakaoLoginReq.java
  com.example.demo.src.oauth.model.PostKakaoLoginReq
 com/example/demo/src/point/PointDao.java
  com.example.demo.src.point.PointDao
 com/example/demo/config/secret/Secret.java
  com.example.demo.config.secret.Secret
+com/example/demo/src/post/model/GetSCategoryRes.java
+ com.example.demo.src.post.model.GetSCategoryRes
 com/example/demo/src/pay/model/PostPayHistoryReq.java
  com.example.demo.src.pay.model.PostPayHistoryReq
->>>>>>> 0d6c4927fd5b87e36681e6c25af18f6aef78327f
+com/example/demo/src/post/PostDao.java
+ com.example.demo.src.post.PostDao
 com/example/demo/src/bungaeTalk/TalkService.java
  com.example.demo.src.bungaeTalk.TalkService
 com/example/demo/config/BaseResponse.java
  com.example.demo.config.BaseResponse
-<<<<<<< HEAD
 com/example/demo/src/post/model/GetMCategoryRes.java
  com.example.demo.src.post.model.GetMCategoryRes
-=======
->>>>>>> 0d6c4927fd5b87e36681e6c25af18f6aef78327f
 com/example/demo/src/bungaeTalk/model/GetRoomListRes.java
  com.example.demo.src.bungaeTalk.model.GetRoomListRes
 com/example/demo/src/user/UserService.java
  com.example.demo.src.user.UserService
-<<<<<<< HEAD
 com/example/demo/src/post/model/PostTagRes.java
  com.example.demo.src.post.model.PostTagRes
 com/example/demo/src/post/model/PostPostRes.java
  com.example.demo.src.post.model.PostPostRes
 com/example/demo/config/BaseException.java
  com.example.demo.config.BaseException
+com/example/demo/src/point/model/PostPointHistoryReq.java
+ com.example.demo.src.point.model.PostPointHistoryReq
 com/example/demo/src/user/model/PostJoinReq.java
  com.example.demo.src.user.model.PostJoinReq
 com/example/demo/src/user/model/PatchWithdrawReq.java
  com.example.demo.src.user.model.PatchWithdrawReq
 com/example/demo/utils/SHA256.java
  com.example.demo.utils.SHA256
+com/example/demo/src/follow/FollowController.java
+ com.example.demo.src.follow.FollowController
 com/example/demo/src/oauth/AuthProvider.java
  com.example.demo.src.oauth.AuthProvider
+com/example/demo/src/point/PointProvider.java
+ com.example.demo.src.point.PointProvider
+com/example/demo/src/pay/PayDao.java
+ com.example.demo.src.pay.PayDao
 com/example/demo/src/user/model/PostLoginRes.java
  com.example.demo.src.user.model.PostLoginRes
 com/example/demo/src/post/PostProvider.java
@@ -119,6 +96,10 @@ com/example/demo/src/user/UserDao.java
  com.example.demo.src.user.UserDao
 com/example/demo/src/post/model/PostPhotoReq.java
  com.example.demo.src.post.model.PostPhotoReq
+com/example/demo/src/point/model/PostPointHistoryRes.java
+ com.example.demo.src.point.model.PostPointHistoryRes
+com/example/demo/src/follow/FollowDao.java
+ com.example.demo.src.follow.FollowDao
 com/example/demo/src/bungaeTalk/TalkDao.java
  com.example.demo.src.bungaeTalk.TalkDao
 com/example/demo/src/bungaeTalk/model/PostTalkMessageRes.java
@@ -135,64 +116,20 @@ com/example/demo/src/post/model/PostTagReq.java
  com.example.demo.src.post.model.PostTagReq
 com/example/demo/src/user/model/PostLoginReq.java
  com.example.demo.src.user.model.PostLoginReq
-=======
-com/example/demo/config/BaseException.java
- com.example.demo.config.BaseException
-com/example/demo/src/point/model/PostPointHistoryReq.java
- com.example.demo.src.point.model.PostPointHistoryReq
-com/example/demo/src/user/model/PatchWithdrawReq.java
- com.example.demo.src.user.model.PatchWithdrawReq
-com/example/demo/src/user/model/PostJoinReq.java
- com.example.demo.src.user.model.PostJoinReq
-com/example/demo/utils/SHA256.java
- com.example.demo.utils.SHA256
-com/example/demo/src/follow/FollowController.java
- com.example.demo.src.follow.FollowController
-com/example/demo/src/bungaeTalk/TalkProvider.java
- com.example.demo.src.bungaeTalk.TalkProvider
-com/example/demo/src/point/PointProvider.java
- com.example.demo.src.point.PointProvider
-com/example/demo/src/pay/PayDao.java
- com.example.demo.src.pay.PayDao
-com/example/demo/src/user/model/PostLoginRes.java
- com.example.demo.src.user.model.PostLoginRes
-com/example/demo/src/user/UserDao.java
- com.example.demo.src.user.UserDao
-com/example/demo/src/follow/FollowDao.java
- com.example.demo.src.follow.FollowDao
-com/example/demo/src/point/model/PostPointHistoryRes.java
- com.example.demo.src.point.model.PostPointHistoryRes
-com/example/demo/src/bungaeTalk/model/PostTalkMessageRes.java
- com.example.demo.src.bungaeTalk.model.PostTalkMessageRes
-com/example/demo/src/bungaeTalk/TalkDao.java
- com.example.demo.src.bungaeTalk.TalkDao
-com/example/demo/src/WebSecurityConfig.java
- com.example.demo.src.WebSecurityConfig
-com/example/demo/src/user/UserProvider.java
- com.example.demo.src.user.UserProvider
-com/example/demo/src/test/TestController.java
- com.example.demo.src.test.TestController
-com/example/demo/src/user/model/PostLoginReq.java
- com.example.demo.src.user.model.PostLoginReq
 com/example/demo/src/point/PointService.java
  com.example.demo.src.point.PointService
->>>>>>> 0d6c4927fd5b87e36681e6c25af18f6aef78327f
 com/example/demo/src/user/model/PostJoinRes.java
  com.example.demo.src.user.model.PostJoinRes
 com/example/demo/src/user/UserController.java
  com.example.demo.src.user.UserController
-<<<<<<< HEAD
-=======
 com/example/demo/src/pay/PayService.java
  com.example.demo.src.pay.PayService
->>>>>>> 0d6c4927fd5b87e36681e6c25af18f6aef78327f
 com/example/demo/src/bungaeTalk/model/PostTalkRoomRes.java
  com.example.demo.src.bungaeTalk.model.PostTalkRoomRes
 com/example/demo/DemoApplication.java
  com.example.demo.DemoApplication
 com/example/demo/utils/JwtService.java
  com.example.demo.utils.JwtService
-<<<<<<< HEAD
 com/example/demo/src/post/model/PostPhotoRes.java
  com.example.demo.src.post.model.PostPhotoRes
 com/example/demo/src/oauth/AuthDao.java
@@ -203,15 +140,5 @@ com/example/demo/src/user/UserProvider.java
  com.example.demo.src.user.UserProvider
 com/example/demo/src/bungaeTalk/TalkProvider.java
  com.example.demo.src.bungaeTalk.TalkProvider
-=======
-com/example/demo/src/oauth/model/PostKakaoLoginRes.java
- com.example.demo.src.oauth.model.PostKakaoLoginRes
-com/example/demo/src/oauth/AuthController.java
- com.example.demo.src.oauth.AuthController
-com/example/demo/src/oauth/AuthProvider.java
- com.example.demo.src.oauth.AuthProvider
-com/example/demo/src/oauth/AuthService.java
- com.example.demo.src.oauth.AuthService
-com/example/demo/src/oauth/AuthDao.java
- com.example.demo.src.oauth.AuthDao
->>>>>>> 0d6c4927fd5b87e36681e6c25af18f6aef78327f
+com/example/demo/src/follow/FollowProvider.java
+ com.example.demo.src.follow.FollowProvider

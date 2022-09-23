@@ -4365,3 +4365,434 @@ java.lang.NullPointerException: null
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:829)
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.2)
+
+18:50:56.141 INFO  [File:TomcatWebServer.java] [Func:initialize] [Line:108] [Message:Tomcat initialized with port(s): 9001 (http)]- Tomcat initialized with port(s): 9001 (http)
+18:50:56.176 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Initializing ProtocolHandler ["http-nio-9001"]]- Initializing ProtocolHandler ["http-nio-9001"]
+18:50:56.177 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Starting service [Tomcat]]- Starting service [Tomcat]
+18:50:56.178 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Starting Servlet engine: [Apache Tomcat/9.0.41]]- Starting Servlet engine: [Apache Tomcat/9.0.41]
+18:50:56.319 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Initializing Spring embedded WebApplicationContext]- Initializing Spring embedded WebApplicationContext
+18:50:56.328 INFO  [File:ServletWebServerApplicationContext.java] [Func:prepareWebApplicationContext] [Line:289] [Message:Root WebApplicationContext: initialization completed in 3463 ms]- Root WebApplicationContext: initialization completed in 3463 ms
+18:50:57.868 INFO  [File:UserDetailsServiceAutoConfiguration.java] [Func:getOrDeducePassword] [Line:86] [Message:
+
+Using generated security password: aeb9eb7d-81f6-4931-8b91-8b7da3623feb
+]- 
+
+Using generated security password: aeb9eb7d-81f6-4931-8b91-8b7da3623feb
+
+18:50:58.089 INFO  [File:DefaultSecurityFilterChain.java] [Func:<init>] [Line:51] [Message:Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6ebd78d1, org.springframework.security.web.context.SecurityContextPersistenceFilter@2d8f2f3a, org.springframework.security.web.header.HeaderWriterFilter@1c807b1d, org.springframework.security.web.authentication.logout.LogoutFilter@2c444798, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7048f722, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6e0ff644, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@436390f4, org.springframework.security.web.session.SessionManagementFilter@c8b96ec, org.springframework.security.web.access.ExceptionTranslationFilter@3a80515c]]- Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6ebd78d1, org.springframework.security.web.context.SecurityContextPersistenceFilter@2d8f2f3a, org.springframework.security.web.header.HeaderWriterFilter@1c807b1d, org.springframework.security.web.authentication.logout.LogoutFilter@2c444798, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7048f722, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6e0ff644, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@436390f4, org.springframework.security.web.session.SessionManagementFilter@c8b96ec, org.springframework.security.web.access.ExceptionTranslationFilter@3a80515c]
+18:50:58.389 INFO  [File:ExecutorConfigurationSupport.java] [Func:initialize] [Line:181] [Message:Initializing ExecutorService 'applicationTaskExecutor']- Initializing ExecutorService 'applicationTaskExecutor'
+18:50:59.031 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Starting ProtocolHandler ["http-nio-9001"]]- Starting ProtocolHandler ["http-nio-9001"]
+18:50:59.050 WARN  [File:AbstractApplicationContext.java] [Func:refresh] [Line:596] [Message:Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 9001 is already in use]- Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 9001 is already in use
+18:50:59.056 INFO  [File:ExecutorConfigurationSupport.java] [Func:shutdown] [Line:218] [Message:Shutting down ExecutorService 'applicationTaskExecutor']- Shutting down ExecutorService 'applicationTaskExecutor'
+18:50:59.132 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Pausing ProtocolHandler ["http-nio-9001"]]- Pausing ProtocolHandler ["http-nio-9001"]
+18:50:59.133 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Stopping service [Tomcat]]- Stopping service [Tomcat]
+18:50:59.142 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Stopping ProtocolHandler ["http-nio-9001"]]- Stopping ProtocolHandler ["http-nio-9001"]
+18:50:59.142 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Destroying ProtocolHandler ["http-nio-9001"]]- Destroying ProtocolHandler ["http-nio-9001"]
+18:50:59.162 INFO  [File:ConditionEvaluationReportLoggingListener.java] [Func:logMessage] [Line:136] [Message:
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.]- 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+18:50:59.211 ERROR [File:LoggingFailureAnalysisReporter.java] [Func:report] [Line:40] [Message:
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 9001 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 9001 or configure this application to listen on another port.
+]- 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 9001 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 9001 or configure this application to listen on another port.
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.2)
+
+18:53:06.142 INFO  [File:TomcatWebServer.java] [Func:initialize] [Line:108] [Message:Tomcat initialized with port(s): 9001 (http)]- Tomcat initialized with port(s): 9001 (http)
+18:53:06.173 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Initializing ProtocolHandler ["http-nio-9001"]]- Initializing ProtocolHandler ["http-nio-9001"]
+18:53:06.177 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Starting service [Tomcat]]- Starting service [Tomcat]
+18:53:06.179 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Starting Servlet engine: [Apache Tomcat/9.0.41]]- Starting Servlet engine: [Apache Tomcat/9.0.41]
+18:53:06.320 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Initializing Spring embedded WebApplicationContext]- Initializing Spring embedded WebApplicationContext
+18:53:06.320 INFO  [File:ServletWebServerApplicationContext.java] [Func:prepareWebApplicationContext] [Line:289] [Message:Root WebApplicationContext: initialization completed in 3217 ms]- Root WebApplicationContext: initialization completed in 3217 ms
+18:53:08.460 INFO  [File:UserDetailsServiceAutoConfiguration.java] [Func:getOrDeducePassword] [Line:86] [Message:
+
+Using generated security password: 426b6c7a-4da9-4277-bee8-c45f5c972863
+]- 
+
+Using generated security password: 426b6c7a-4da9-4277-bee8-c45f5c972863
+
+18:53:08.797 INFO  [File:DefaultSecurityFilterChain.java] [Func:<init>] [Line:51] [Message:Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6ebd78d1, org.springframework.security.web.context.SecurityContextPersistenceFilter@2d8f2f3a, org.springframework.security.web.header.HeaderWriterFilter@1c807b1d, org.springframework.security.web.authentication.logout.LogoutFilter@2c444798, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7048f722, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6e0ff644, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@436390f4, org.springframework.security.web.session.SessionManagementFilter@c8b96ec, org.springframework.security.web.access.ExceptionTranslationFilter@3a80515c]]- Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6ebd78d1, org.springframework.security.web.context.SecurityContextPersistenceFilter@2d8f2f3a, org.springframework.security.web.header.HeaderWriterFilter@1c807b1d, org.springframework.security.web.authentication.logout.LogoutFilter@2c444798, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7048f722, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6e0ff644, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@436390f4, org.springframework.security.web.session.SessionManagementFilter@c8b96ec, org.springframework.security.web.access.ExceptionTranslationFilter@3a80515c]
+18:53:09.126 INFO  [File:ExecutorConfigurationSupport.java] [Func:initialize] [Line:181] [Message:Initializing ExecutorService 'applicationTaskExecutor']- Initializing ExecutorService 'applicationTaskExecutor'
+18:53:09.745 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Starting ProtocolHandler ["http-nio-9001"]]- Starting ProtocolHandler ["http-nio-9001"]
+18:53:09.864 INFO  [File:TomcatWebServer.java] [Func:start] [Line:220] [Message:Tomcat started on port(s): 9001 (http) with context path '']- Tomcat started on port(s): 9001 (http) with context path ''
+HEAP Size(M) : 35 MB
+18:53:13.531 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Initializing Spring DispatcherServlet 'dispatcherServlet']- Initializing Spring DispatcherServlet 'dispatcherServlet'
+18:53:13.531 INFO  [File:FrameworkServlet.java] [Func:initServletBean] [Line:525] [Message:Initializing Servlet 'dispatcherServlet']- Initializing Servlet 'dispatcherServlet'
+18:53:13.536 INFO  [File:FrameworkServlet.java] [Func:initServletBean] [Line:547] [Message:Completed initialization in 5 ms]- Completed initialization in 5 ms
+18:53:13.791 INFO  [File:HikariDataSource.java] [Func:getConnection] [Line:110] [Message:HikariPool-1 - Starting...]- HikariPool-1 - Starting...
+18:53:14.660 INFO  [File:HikariDataSource.java] [Func:getConnection] [Line:123] [Message:HikariPool-1 - Start completed.]- HikariPool-1 - Start completed.
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+18:56:27.741 INFO  [File:DirectJDKLog.java] [Func:log] [Line:175] [Message:Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.]- Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x000xf40x010x000x000xf00x030x03g0x000x890x9b0xf30xe60xcbJh0xd2a0x97n0x8a0x040xa6|@0xef0xca0x9aID0x8d0xeb0x8c0xaa0xa70xf3f5T0x000x00r0xc000xc0,0xc0(0xc0$0xc00x140xc00x0a0xc00x190xc020xc0.0xc0*0xc0&0xc00x0f0xc00x050x000x9d0x00=0x0050x000x840xc0/0xc0+0xc0'0xc0#0xc00x130xc00x090xc00x180xc010xc0-0xc0)0xc0%0xc00x0e0xc00x040x000x9c0x00<0x00/0x000x960x00A0xc00x110xc00x070xc00x160xc00x0c0xc00x020x000x050x000x040xc00x120xc00x080xc00x170xc00x0d0xc00x030x000x0a0xc00x100xc00x060xc00x150xc00x0b0xc00x010x00;0x000x020x000x010x000xff0x010x000x00U0x000x0b0x000x040x030x000x010x020x000x0a0x000x1c0x000x1a0x000x170x000x190x000x1c0x000x1b0x000x180x000x1a0x000x160x000x0e0x000x0d0x000x0b0x000x0c0x000x090x000x0a0x00#0x000x000x000x0d0x00]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:417)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:261)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2420126821,"connected_at":"2022-09-07T06:43:25Z","properties":{"nickname":"길재현"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile":{"nickname":"길재현"},"has_email":true,"email_needs_agreement":false,"is_email_valid":true,"is_email_verified":true,"email":"kil4048@naver.com","has_birthday":true,"birthday_needs_agreement":false,"birthday":"0527","birthday_type":"SOLAR"}}
+id : 2420126821
+name = 길재현
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+20:29:45.671 WARN  [File:AbstractHandlerExceptionResolver.java] [Func:logException] [Line:207] [Message:Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token
+ at [Source: (PushbackInputStream); line: 1, column: 210] (through reference chain: com.example.demo.src.post.model.PostPostReq["imgUrls"])]]- Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token
+ at [Source: (PushbackInputStream); line: 1, column: 210] (through reference chain: com.example.demo.src.post.model.PostPostReq["imgUrls"])]
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+20:31:15.193 WARN  [File:AbstractHandlerExceptionResolver.java] [Func:logException] [Line:207] [Message:Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token
+ at [Source: (PushbackInputStream); line: 1, column: 31] (through reference chain: com.example.demo.src.post.model.PostPostReq["imgUrls"])]]- Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token
+ at [Source: (PushbackInputStream); line: 1, column: 31] (through reference chain: com.example.demo.src.post.model.PostPostReq["imgUrls"])]
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+20:32:34.866 WARN  [File:AbstractHandlerExceptionResolver.java] [Func:logException] [Line:207] [Message:Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token
+ at [Source: (PushbackInputStream); line: 1, column: 199] (through reference chain: com.example.demo.src.post.model.PostPostReq["imgUrls"])]]- Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token
+ at [Source: (PushbackInputStream); line: 1, column: 199] (through reference chain: com.example.demo.src.post.model.PostPostReq["imgUrls"])]
+20:32:38.837 WARN  [File:AbstractHandlerExceptionResolver.java] [Func:logException] [Line:207] [Message:Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token
+ at [Source: (PushbackInputStream); line: 1, column: 32] (through reference chain: com.example.demo.src.post.model.PostPostReq["imgUrls"])]]- Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token
+ at [Source: (PushbackInputStream); line: 1, column: 32] (through reference chain: com.example.demo.src.post.model.PostPostReq["imgUrls"])]
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+20:33:31.894 WARN  [File:AbstractHandlerExceptionResolver.java] [Func:logException] [Line:207] [Message:Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token
+ at [Source: (PushbackInputStream); line: 1, column: 136] (through reference chain: com.example.demo.src.post.model.PostPostReq["imgUrls"])]]- Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token
+ at [Source: (PushbackInputStream); line: 1, column: 136] (through reference chain: com.example.demo.src.post.model.PostPostReq["imgUrls"])]
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+20:34:36.040 WARN  [File:AbstractHandlerExceptionResolver.java] [Func:logException] [Line:207] [Message:Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token
+ at [Source: (PushbackInputStream); line: 1, column: 31] (through reference chain: com.example.demo.src.post.model.PostPostReq["imgUrls"])]]- Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token
+ at [Source: (PushbackInputStream); line: 1, column: 31] (through reference chain: com.example.demo.src.post.model.PostPostReq["imgUrls"])]
+20:34:39.389 WARN  [File:AbstractHandlerExceptionResolver.java] [Func:logException] [Line:207] [Message:Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token
+ at [Source: (PushbackInputStream); line: 1, column: 12] (through reference chain: com.example.demo.src.post.model.PostPostReq["imgUrls"])]]- Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token
+ at [Source: (PushbackInputStream); line: 1, column: 12] (through reference chain: com.example.demo.src.post.model.PostPostReq["imgUrls"])]
+20:34:41.316 WARN  [File:AbstractHandlerExceptionResolver.java] [Func:logException] [Line:207] [Message:Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token
+ at [Source: (PushbackInputStream); line: 1, column: 175] (through reference chain: com.example.demo.src.post.model.PostPostReq["imgUrls"])]]- Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<java.lang.Object>` out of VALUE_STRING token
+ at [Source: (PushbackInputStream); line: 1, column: 175] (through reference chain: com.example.demo.src.post.model.PostPostReq["imgUrls"])]
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+21:55:26.173 WARN  [File:AbstractHandlerExceptionResolver.java] [Func:logException] [Line:207] [Message:Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: ""]]- Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: ""]
+21:58:35.493 ERROR [File:DirectJDKLog.java] [Func:log] [Line:175] [Message:Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception]- Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+org.springframework.security.web.firewall.RequestRejectedException: The request was rejected because the URL contained a potentially malicious String "//"
+	at org.springframework.security.web.firewall.StrictHttpFirewall.rejectedBlocklistedUrls(StrictHttpFirewall.java:456)
+	at org.springframework.security.web.firewall.StrictHttpFirewall.getFirewalledRequest(StrictHttpFirewall.java:429)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:196)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+21:58:45.375 ERROR [File:DirectJDKLog.java] [Func:log] [Line:175] [Message:Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception]- Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+org.springframework.security.web.firewall.RequestRejectedException: The request was rejected because the URL contained a potentially malicious String "//"
+	at org.springframework.security.web.firewall.StrictHttpFirewall.rejectedBlocklistedUrls(StrictHttpFirewall.java:456)
+	at org.springframework.security.web.firewall.StrictHttpFirewall.getFirewalledRequest(StrictHttpFirewall.java:429)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:196)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+22:00:49.728 WARN  [File:AbstractHandlerExceptionResolver.java] [Func:logException] [Line:207] [Message:Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: ""]]- Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: ""]
+22:10:47.461 ERROR [File:DirectJDKLog.java] [Func:log] [Line:175] [Message:Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception]- Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+org.springframework.security.web.firewall.RequestRejectedException: The request was rejected because the URL contained a potentially malicious String ";"
+	at org.springframework.security.web.firewall.StrictHttpFirewall.rejectedBlocklistedUrls(StrictHttpFirewall.java:456)
+	at org.springframework.security.web.firewall.StrictHttpFirewall.getFirewalledRequest(StrictHttpFirewall.java:429)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:196)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+22:23:43.083 INFO  [File:DirectJDKLog.java] [Func:log] [Line:175] [Message:Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.]- Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+java.lang.IllegalArgumentException: Invalid character found in method name [0x100x1a0x000x04MQTT0x040x020x00<0x000x0emqttx_ee63c4e...]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:417)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:261)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
+responseCode : 200
+response body : {"id":2440942987,"connected_at":"2022-09-23T05:57:56Z","properties":{"nickname":"청준","profile_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","thumbnail_image":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg"},"kakao_account":{"profile_nickname_needs_agreement":false,"profile_image_needs_agreement":false,"profile":{"nickname":"청준","thumbnail_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_110x110.jpg","profile_image_url":"http://k.kakaocdn.net/dn/VU8uS/btrALt6yb3D/yyLRg6fiKVOssqX0ryRdkk/img_640x640.jpg","is_default_image":false},"has_email":true,"email_needs_agreement":true,"has_birthday":true,"birthday_needs_agreement":true}}
+id : 2440942987
+name = 청준
+email : 
+birthday = 
