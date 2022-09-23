@@ -4,6 +4,9 @@ import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
 import com.example.demo.src.post.model.*;
 import com.example.demo.utils.JwtService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jdk.nashorn.internal.ir.ObjectNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +41,10 @@ public class PostController {
     @ResponseBody
     @PostMapping("")
     public BaseResponse<PostPostRes> createPost(@RequestBody PostPostReq postPostReq) {
+//    public BaseResponse<PostPostRes> createPost(@RequestBody PostPostAssemble postPostAssemble) {
+//    public BaseResponse<PostPostRes> createPost(@RequestBody ObjectNode saveObj) throws JsonProcessingException {
+//        ObjectMapper mapper = new ObjectMapper();
+//        PostPostReq postPostReq = mapper.treeToValue(saveObj., PostPostReq.class);
 
         //FIXME
         // - 카테고리 입력 받는거로 수정해야함
@@ -107,26 +114,26 @@ public class PostController {
      * [Post] /post/:post_id/photo
      * @return BaseResponse<PostPhotoRes>
      * */
-    @ResponseBody
-    @PostMapping("/{post_id}/photo")
-    public BaseResponse<PostPhotoRes> addPhoto(@PathVariable("post_id") int post_id , @RequestBody PostPhotoReq postPhotoReq) {
-
-        //TODO
-        // - validation
-        // - 사진 1개만 등록 가능.... 한번에 여러개 추가 가능하도록 수정
-
-        try {
-            postPhotoReq.setPost_id(post_id);
-
-            PostPhotoRes postPhotoRes = postService.addPhoto(postPhotoReq);
-            return new BaseResponse<>(postPhotoRes);
-        }
-        catch (BaseException exception){
-            exception.printStackTrace();
-            return new BaseResponse<>(exception.getStatus());
-        }
-
-    }
+//    @ResponseBody
+//    @PostMapping("/{post_id}/photo")
+//    public BaseResponse<PostPhotoRes> addPhoto(@PathVariable("post_id") int post_id , @RequestBody PostPhotoReq postPhotoReq) {
+//
+//        //TODO
+//        // - validation
+//        // - 사진 1개만 등록 가능.... 한번에 여러개 추가 가능하도록 수정
+//
+//        try {
+//            postPhotoReq.setPost_id(post_id);
+//
+//            PostPhotoRes postPhotoRes = postService.addPhoto(postPhotoReq);
+//            return new BaseResponse<>(postPhotoRes);
+//        }
+//        catch (BaseException exception){
+//            exception.printStackTrace();
+//            return new BaseResponse<>(exception.getStatus());
+//        }
+//
+//    }
 
 
     /*
@@ -134,25 +141,25 @@ public class PostController {
      * [Post] /post/:post_id/tag
      * @return BaseResponse<PostTagRes>
      * */
-    @ResponseBody
-    @PostMapping("/{post_id}/tag")
-    public BaseResponse<PostTagRes> addTag(@PathVariable("post_id") int post_id, @RequestBody PostTagReq postTagReq) {
-
-        //TODO
-        // - validation
-        // - 태그 1개만 등록 가능.... 한번에 여러개 추가 가능하도록 수정
-
-        try{
-            postTagReq.setPost_id(post_id);
-
-            PostTagRes postTagRes = postService.addTag(postTagReq);
-            return new BaseResponse<>(postTagRes);
-        }
-        catch (BaseException exception){
-            exception.printStackTrace();
-            return new BaseResponse<>(exception.getStatus());
-        }
-    }
+//    @ResponseBody
+//    @PostMapping("/{post_id}/tag")
+//    public BaseResponse<PostTagRes> addTag(@PathVariable("post_id") int post_id, @RequestBody PostTagReq postTagReq) {
+//
+//        //TODO
+//        // - validation
+//        // - 태그 1개만 등록 가능.... 한번에 여러개 추가 가능하도록 수정
+//
+//        try{
+//            postTagReq.setPost_id(post_id);
+//
+//            PostTagRes postTagRes = postService.addTag(postTagReq);
+//            return new BaseResponse<>(postTagRes);
+//        }
+//        catch (BaseException exception){
+//            exception.printStackTrace();
+//            return new BaseResponse<>(exception.getStatus());
+//        }
+//    }
 
     /*
      * 판매글 카테고리 대분류 선택 API

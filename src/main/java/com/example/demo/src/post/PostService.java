@@ -34,23 +34,37 @@ public class PostService {
 
 //        try {
             int userId = user_id;
+
+//            PostPostReq postPostReq = postPostAssemble.getPostPostReq();
+//            PostPhotoReq postPhotoReq = postPostAssemble.getPostPhotoReq();
+//            PostTagReq postTagReq = postPostAssemble.getPostTagReq();
+
             int post_id = postDao.createPost(postPostReq, userId);
-            return new PostPostRes(post_id);
+
+            GetPostDetailRes postDetail = postDao.getPostDetailRes(post_id);
+
+            List<String> photos = postDao.addPhoto(postPostReq, post_id);
+
+            List<String> tags = postDao.addTag(postPostReq, post_id);
+
+            PostPostRes postPostRes = new PostPostRes(postDetail.getPost_id(),photos,postDetail.getTitle(),postDetail.getRegion(), postDetail.getCreated_at(),postDetail.getCategory_large(),postDetail.getCategory_middle(),postDetail.getCategory_small(),tags,postDetail.getPrice(),postDetail.getContent(),postDetail.getCount(),postDetail.getIs_exchangable(),postDetail.getSafepay(),postDetail.getDelivery_fee(),postDetail.getPcondition());
+
+            return postPostRes;
 //        } catch (Exception exception) {
 //            throw new BaseException(DATABAS_ERROR);
 //        }
     }
 
-    public PostPhotoRes addPhoto(PostPhotoReq postPhotoReq) throws BaseException{
+//    public PostPhotoRes addPhoto(PostPhotoReq postPhotoReq) throws BaseException{
+//
+//        int post_photo_id = postDao.addPhoto(postPhotoReq);
+//        return new PostPhotoRes(post_photo_id);
+//    }
 
-        int post_photo_id = postDao.addPhoto(postPhotoReq);
-        return new PostPhotoRes(post_photo_id);
-    }
-
-    public PostTagRes addTag(PostTagReq postTagReq) throws BaseException{
-
-        int post_tag_id = postDao.addTag(postTagReq);
-        return new PostTagRes(post_tag_id);
-    }
+//    public PostTagRes addTag(PostTagReq postTagReq) throws BaseException{
+//
+//        int post_tag_id = postDao.addTag(postTagReq);
+//        return new PostTagRes(post_tag_id);
+//    }
 
 }

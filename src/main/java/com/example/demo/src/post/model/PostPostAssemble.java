@@ -7,8 +7,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class PostTagReq {
+public class PostPostAssemble {
 
-//    private int post_id;
-    private String name;
+    private PostPostReq postPostReq;
+    private PostPhotoReq postPhotoReq;
+    private PostTagReq postTagReq;
+
 }

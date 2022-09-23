@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -18,34 +19,83 @@ public class PostDao {
     }
 
     public int createPost(PostPostReq postPostReq, int user_id) {
-        String creatPostQuery = "Insert into post (user_id, title, price, content, count, is_exchangable, safepay, delivery_fee, pcondition) values (?,?,?,?,?,?,?,?,?)";
+        String creatPostQuery = "Insert into post (user_id, title, region, large_category_id, middle_category_id, small_category_id, price, content, count, is_exchangable, safepay, delivery_fee, pcondition) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         int userIdParam = user_id;
-        Object[] createPostParams = new Object[]{userIdParam, postPostReq.getTitle(), postPostReq.getPrice(), postPostReq.getContent(), postPostReq.getCount(), postPostReq.getIs_exchangable(), postPostReq.getSafepay(), postPostReq.getDelivery_fee(), postPostReq.getPcondition()};
+        Object[] createPostParams = new Object[]{userIdParam, postPostReq.getTitle(), postPostReq.getRegion(),postPostReq.getCategory_large(), postPostReq.getCategory_middle(), postPostReq.getCategory_small(), postPostReq.getPrice(), postPostReq.getContent(), postPostReq.getCount(), postPostReq.getIs_exchangable(), postPostReq.getSafepay(), postPostReq.getDelivery_fee(), postPostReq.getPcondition()};
         this.jdbcTemplate.update(creatPostQuery, createPostParams);
 
         String lastInsertIdQuery = "select last_insert_id()";
         return this.jdbcTemplate.queryForObject(lastInsertIdQuery, int.class);
     }
 
-    public int addPhoto(PostPhotoReq postPhotoReq) {
-        String addPhotoQuery = "Insert into post_photos (post_id, image_path) values (?,?)";
-        Object[] addPhotoParams = new Object[]{postPhotoReq.getPost_id(), postPhotoReq.getImage_path()};
-        this.jdbcTemplate.update(addPhotoQuery, addPhotoParams);
-
-        String postPhotosQuery = "select last_insert_id()";
-        return this.jdbcTemplate.queryForObject(postPhotosQuery, int.class);
-
+    public List<String> addPhoto(PostPostReq postPostReq, int post_id) {
+        List<String> photo = postPostReq.getImgUrls();
+        List PhotoList = new ArrayList<String>();
+        for (String s : photo) {
+            String addPhotoQuery = "Insert into post_photos (post_id, image_path) values (?,?)";
+            Object[] addPhotoParams = new Object[]{post_id, s};
+            this.jdbcTemplate.update(addPhotoQuery, addPhotoParams);
+            PhotoList.add(s);
+        }
+        return PhotoList;
     }
 
+//    public int addTag(PostTagReq postTagReq, int post_id) {
+    public List<String> addTag(PostPostReq postPostReq, int post_id) {
+        List<String> tag = postPostReq.getTags();
+        List TagList = new ArrayList<String>();
+        for (String s : tag) {
+            String addTagQuery = "Insert into post_tags (post_id, name) values (?,?)";
+            Object[] addTagParams = new Object[]{post_id, s};
+            this.jdbcTemplate.update(addTagQuery, addTagParams);
+            TagList.add(s);
+        }
+        return TagList;
+    }
 
-    public int addTag(PostTagReq postTagReq) {
-        String addTagQuery = "Insert into post_tags (post_id, name) values (?,?)";
-        Object[] addTagParams = new Object[]{postTagReq.getPost_id(), postTagReq.getName()};
-        this.jdbcTemplate.update(addTagQuery, addTagParams);
+    public GetPostDetailRes getPostDetailRes(int post_id) {
+        String getPostDetailQuery = "select post_id, post_id, user_id, title, price, content, count,\n" +
+                "       large_category_id, middle_category_id, small_category_id,\n" +
+                "       is_exchangable, safepay, delivery_fee, pcondition, region,\n" +
+                "       case when 24 >= timestampdiff(HOUR, created_at, current_time)\n" +
+                "        then concat(timestampdiff(HOUR, created_at, current_time),'시간 전')\n" +
+                "        else concat(timestampdiff(DAY, created_at, current_time),'일 전') end created_at\n" +
+                "from post where post_id=?;";
+        int getPostDetailParam = post_id;
+        return this.jdbcTemplate.queryForObject(getPostDetailQuery,
+                (rs, rowNum) -> new GetPostDetailRes(
+                        rs.getInt("post_id"),
+                        rs.getInt("user_id"),
+                        rs.getString("title"),
+                        rs.getString("region"),
+                        rs.getString("created_at"),
+                        rs.getInt("large_category_id"),
+                        rs.getInt("middle_category_id"),
+                        rs.getInt("small_category_id"),
+                        rs.getInt("price"),
+                        rs.getString("content"),
+                        rs.getInt("count"),
+                        rs.getInt("is_exchangable"),
+                        rs.getInt("safepay"),
+                        rs.getInt("delivery_fee"),
+                        rs.getInt("pcondition")
 
-        String postTagsQuery = "select last_insert_id()";
-        return this.jdbcTemplate.queryForObject(postTagsQuery, int.class);
+                ), getPostDetailParam);
+    }
 
+    public List<GetPostRes> getPosts() {
+        String getPostsQuery = "select p.post_id, price, title, safepay, image_path\n" +
+                "from post p\n" +
+                "    left join post_photos pp on p.post_id = pp.post_id\n" +
+                "group by p.post_id";
+        return this.jdbcTemplate.query(getPostsQuery,
+                (rs, rowNum) -> new GetPostRes(
+                        rs.getInt("post_id"),
+                        rs.getInt("price"),
+                        rs.getString("title"),
+                        rs.getInt("safepay"),
+                        rs.getString("image_path")
+                ));
     }
 
     public List<GetLCategoryRes> getLCategory() {
@@ -94,21 +144,6 @@ public class PostDao {
 
     }
 
-
-    public List<GetPostRes> getPosts() {
-        String getPostsQuery = "select p.post_id, price, title, safepay, image_path\n" +
-                "from post p\n" +
-                "    left join post_photos pp on p.post_id = pp.post_id\n" +
-                "group by p.post_id";
-        return this.jdbcTemplate.query(getPostsQuery,
-                (rs, rowNum) -> new GetPostRes(
-                        rs.getInt("post_id"),
-                        rs.getInt("price"),
-                        rs.getString("title"),
-                        rs.getInt("safepay"),
-                        rs.getString("image_path")
-                ));
-    }
 
     public List<GetPostRes> getPostsByLC(Integer LCId) {
         String getPostsByLCQuery = "select p.post_id, price, title, safepay, pp.image_path, p.large_category_id\n" +
