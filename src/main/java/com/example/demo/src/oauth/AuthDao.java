@@ -61,6 +61,8 @@ public class AuthDao {
 //                }
 //
 //            }
+
+            //ddd
             //이름만이용해서 원래회원인지 체크하는부분입니다.
             String check = "select exists(select user_id from user where name = ?)";
             int check_result = this.jdbcTemplate.queryForObject(check,int.class,name);
@@ -74,7 +76,6 @@ public class AuthDao {
                 this.jdbcTemplate.update(addKakaoQuery,addKakaoParams);
                 return 1;
             }
-            //ddd
 
             return 0;
         }
