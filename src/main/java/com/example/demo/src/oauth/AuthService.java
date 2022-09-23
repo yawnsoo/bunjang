@@ -128,16 +128,16 @@ public class AuthService {
             JsonElement element = parser.parse(result);
 
             id = element.getAsJsonObject().get("id").getAsString();
-            boolean hasEmail = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("has_email").getAsBoolean();
-            boolean hasBirthday = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("has_birthday").getAsBoolean();
+//            boolean hasEmail = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("has_email").getAsBoolean();
+//            boolean hasBirthday = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("has_birthday").getAsBoolean();
 
             name = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("profile").getAsJsonObject().get("nickname").getAsString();
-            if(hasEmail){
-                email = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("email").getAsString();
-            }
-            if(hasBirthday){
-                birthday = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("birthday").getAsString();
-            }
+//            if(hasEmail){
+//                email = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("email").getAsString();
+//            }
+//            if(hasBirthday){
+//                birthday = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("birthday").getAsString();
+//            }
 
 
 

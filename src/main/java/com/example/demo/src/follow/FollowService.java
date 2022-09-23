@@ -44,17 +44,17 @@ public class FollowService {
     }
 
 
-    @Transactional
-    public int createFollow(PostFollowReq postFollowReq) throws BaseException
-    {
-        try{
-            followDao
-
-        }catch (Exception exception)
-        {
-            exception.printStackTrace();
-            throw new BaseException(DATABASE_ERROR);
-        }
-    }
+//    @Transactional
+//    public int createFollow(PostFollowReq postFollowReq) throws BaseException
+//    {
+//        try{
+//            followDao
+//
+//        }catch (Exception exception)
+//        {
+//            exception.printStackTrace();
+//            throw new BaseException(DATABASE_ERROR);
+//        }
+//    }
 
 }

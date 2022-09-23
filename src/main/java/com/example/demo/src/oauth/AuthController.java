@@ -42,7 +42,7 @@ public class AuthController {
         System.out.println("token = " + token);
 //        try{
 //            authService.loginKakao(token); //카카오연동회원찾아서 로그인시켜주거나 일반회원을 카카오 연동시켜서 로그인시켜주기
-////            authProvider.checkScope(token);
+//            authProvider.checkScope(token);
 //
 //        }
 //        catch (BaseException exception)
@@ -61,6 +61,16 @@ public class AuthController {
             //또는 카카오 연동해주고 로그인.
     {
         String token = postKakaoLoginReq.getAccess_token();
+//          동의항목 체크하는부분.
+//            try{
+//            authProvider.checkScope(token);
+//
+//        }
+//        catch (BaseException exception)
+//        {
+//            exception.printStackTrace();
+//            return new BaseResponse<>(exception.getStatus());
+//        }
 
         try{
             PostKakaoLoginRes postKakaoLoginRes = authService.loginKakao(token);
