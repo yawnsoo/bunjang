@@ -37,28 +37,44 @@ public class AuthDao {
         else
         {//0이라면 , 일반회원은 가입되어있지만, 카카오연동이 안된 회원이라면 카카오고유아이디를 추가해준다.
             // 일반회원가입까지 되어있지않아서 연동실패했으면 0을 리턴해줌(일반회원가입조차안된회원)
-            String checkQuery = "select user_id,registration_number from user where name =?";
-            String checkParam = name;
+//            String checkQuery = "select user_id,registration_number from user where name =?";
+//            String checkParam = name;
 
-            List<userid_registration> result_list = this.jdbcTemplate.query(checkQuery, (rs, rowNum) -> new userid_registration(
-                    rs.getInt("user_id"),
-                    rs.getString("registration_number")
-            ),checkParam);
-            for(userid_registration temp : result_list) //해당이름을 가진사람의 유저아이디와 주민등록번호 리스트를 가져온다.
+//            List<userid_registration> result_list = this.jdbcTemplate.query(checkQuery, (rs, rowNum) -> new userid_registration(
+//                    rs.getInt("user_id"),
+//                    rs.getString("registration_number")
+//            ),checkParam);
+//            for(userid_registration temp : result_list) //해당이름을 가진사람의 유저아이디와 주민등록번호 리스트를 가져온다.
+//            {
+//                int user_id = temp.getUser_id();
+//                String reg_num = temp.getRegistration_number();
+//                //카카오서버에서 받아온 이름과 user데이터의 이름이 같은 사람에 대해 생년월일까지 비교한다.
+//                //이름, 생년월일까지 같으면 일반회원가입으로 가입한 사람이므로 카카오 고유번호를 추가해준다.
+//                System.out.println("reg_num = " + reg_num);
+//                System.out.println("user_id = " + user_id);
+//                if(reg_num.substring(2,6).equals(birthday)) //같다면 일반회원가입은 했지만 카카오 연동은 하지않은사람.
+//                { // 카카오연동( = 카카오고유번호를 데이터에 추가) 해준다.
+//                    String addKakaoQuery ="update user set kakao_id = ? where user_id =?";
+//                    Object[] addKakaoParams = new Object[]{kakao_id,user_id};
+//                    this.jdbcTemplate.update(addKakaoQuery,addKakaoParams);
+//                    return 1; //연동시켰으니 1을 리턴.
+//                }
+//
+//            }
+
+            //ddd
+            //이름만이용해서 원래회원인지 체크하는부분입니다.
+            String check = "select exists(select user_id from user where name = ?)";
+            int check_result = this.jdbcTemplate.queryForObject(check,int.class,name);
+            if(check_result == 1)
             {
-                int user_id = temp.getUser_id();
-                String reg_num = temp.getRegistration_number();
-                //카카오서버에서 받아온 이름과 user데이터의 이름이 같은 사람에 대해 생년월일까지 비교한다.
-                //이름, 생년월일까지 같으면 일반회원가입으로 가입한 사람이므로 카카오 고유번호를 추가해준다.
-                System.out.println("reg_num = " + reg_num);
-                System.out.println("user_id = " + user_id);
-                if(reg_num.substring(2,6).equals(birthday)) //같다면 일반회원가입은 했지만 카카오 연동은 하지않은사람.
-                { // 카카오연동( = 카카오고유번호를 데이터에 추가) 해준다.
-                    String addKakaoQuery ="update user set kakao_id = ? where user_id =?";
-                    Object[] addKakaoParams = new Object[]{kakao_id,user_id};
-                    this.jdbcTemplate.update(addKakaoQuery,addKakaoParams);
-                    return 1; //연동시켰으니 1을 리턴.
-                }
+                String checkQuery = "select user_id from user where name =?";
+                String checkParam = name;
+                int result_id = this.jdbcTemplate.queryForObject(checkQuery,int.class,checkParam);
+                String addKakaoQuery ="update user set kakao_id = ? where user_id =?";
+                Object[] addKakaoParams = new Object[]{kakao_id,result_id};
+                this.jdbcTemplate.update(addKakaoQuery,addKakaoParams);
+                return 1;
             }
 
             return 0;

@@ -82,6 +82,7 @@ public class AuthService {
         return access_Token;
     }
 
+
     @Transactional
     public PostKakaoLoginRes loginKakao(String token) throws BaseException { //받은 토큰을 이용하여 카카오서버에서 회원정보를 받아온다.
         //받아온 회원정보(카카오 고유아이디,닉네임(이름),생일) 를 내 DB서버 이용자 정보와 비교하여
@@ -127,16 +128,16 @@ public class AuthService {
             JsonElement element = parser.parse(result);
 
             id = element.getAsJsonObject().get("id").getAsString();
-            boolean hasEmail = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("has_email").getAsBoolean();
-            boolean hasBirthday = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("has_birthday").getAsBoolean();
+//            boolean hasEmail = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("has_email").getAsBoolean();
+//            boolean hasBirthday = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("has_birthday").getAsBoolean();
 
             name = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("profile").getAsJsonObject().get("nickname").getAsString();
-            if(hasEmail){
-                email = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("email").getAsString();
-            }
-            if(hasBirthday){
-                birthday = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("birthday").getAsString();
-            }
+//            if(hasEmail){
+//                email = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("email").getAsString();
+//            }
+//            if(hasBirthday){
+//                birthday = element.getAsJsonObject().get("kakao_account").getAsJsonObject().get("birthday").getAsString();
+//            }
 
 
 

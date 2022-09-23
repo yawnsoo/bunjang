@@ -30,6 +30,11 @@ public enum BaseResponseStatus {
     EXIST_CHAT_ROOM(false, 2010, "이미 채팅방이 존재합니다."),
     NOT_EXIST_CHAT_ROOM(false, 2011, "존재하지않는 방아이디입니다."),
 
+    CANT_START_MINUS(false, 2012, "포인트 기록이없습니다. 포인트 변화량을 마이너스로 시작할수없습니다."),
+    OVER_POINT(false, 2013, "가지고 있는 포인트보다 더많이 사용할수없습니다."),
+
+    STATUS_ZERO_POST(false, 2014, "판매완료된 글(status ==0)입니다."),
+
     // POST user info EMPTY 2010~
     USERS_EMPTY_USER_NAME(false, 2010, "이름을 입력해주세요."),
     USERS_EMPTY_USER_PHONE_NUMBER(false, 2011, "전화번호를 입력해주세요."),
