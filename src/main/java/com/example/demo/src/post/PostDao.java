@@ -19,9 +19,9 @@ public class PostDao {
     }
 
     public int createPost(PostPostReq postPostReq, int user_id) {
-        String creatPostQuery = "Insert into post (user_id, title, large_category_id, middle_category_id, small_category_id, price, content, count, is_exchangable, safepay, delivery_fee, pcondition) values (?,?,?,?,?,?,?,?,?,?,?,?)";
+        String creatPostQuery = "Insert into post (user_id, title, region, large_category_id, middle_category_id, small_category_id, price, content, count, is_exchangable, safepay, delivery_fee, pcondition) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         int userIdParam = user_id;
-        Object[] createPostParams = new Object[]{userIdParam, postPostReq.getTitle(), postPostReq.getCategory_large(), postPostReq.getCategory_middle(), postPostReq.getCategory_small(), postPostReq.getPrice(), postPostReq.getContent(), postPostReq.getCount(), postPostReq.getIs_exchangable(), postPostReq.getSafepay(), postPostReq.getDelivery_fee(), postPostReq.getPcondition()};
+        Object[] createPostParams = new Object[]{userIdParam, postPostReq.getTitle(), postPostReq.getRegion(),postPostReq.getCategory_large(), postPostReq.getCategory_middle(), postPostReq.getCategory_small(), postPostReq.getPrice(), postPostReq.getContent(), postPostReq.getCount(), postPostReq.getIs_exchangable(), postPostReq.getSafepay(), postPostReq.getDelivery_fee(), postPostReq.getPcondition()};
         this.jdbcTemplate.update(creatPostQuery, createPostParams);
 
         String lastInsertIdQuery = "select last_insert_id()";
@@ -54,13 +54,21 @@ public class PostDao {
     }
 
     public GetPostDetailRes getPostDetailRes(int post_id) {
-        String getPostDetailQuery = "select * from post where post_id = ?";
+        String getPostDetailQuery = "select post_id, post_id, user_id, title, price, content, count,\n" +
+                "       large_category_id, middle_category_id, small_category_id,\n" +
+                "       is_exchangable, safepay, delivery_fee, pcondition, region,\n" +
+                "       case when 24 >= timestampdiff(HOUR, created_at, current_time)\n" +
+                "        then concat(timestampdiff(HOUR, created_at, current_time),'시간 전')\n" +
+                "        else concat(timestampdiff(DAY, created_at, current_time),'일 전') end created_at\n" +
+                "from post where post_id=?;";
         int getPostDetailParam = post_id;
         return this.jdbcTemplate.queryForObject(getPostDetailQuery,
                 (rs, rowNum) -> new GetPostDetailRes(
                         rs.getInt("post_id"),
                         rs.getInt("user_id"),
                         rs.getString("title"),
+                        rs.getString("region"),
+                        rs.getString("created_at"),
                         rs.getInt("large_category_id"),
                         rs.getInt("middle_category_id"),
                         rs.getInt("small_category_id"),

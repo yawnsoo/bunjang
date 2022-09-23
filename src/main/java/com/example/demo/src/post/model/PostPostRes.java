@@ -14,6 +14,8 @@ public class PostPostRes {
     private int post_id;
     private List<String> imgUrls;
     private String title;
+    private String region;
+    private String created_at;
     private int category_large;
     private int category_middle;
     private int category_small;

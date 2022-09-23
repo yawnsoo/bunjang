@@ -47,7 +47,7 @@ public class PostService {
 
             List<String> tags = postDao.addTag(postPostReq, post_id);
 
-            PostPostRes postPostRes = new PostPostRes(postDetail.getPost_id(),photos,postDetail.getTitle(),postDetail.getCategory_large(),postDetail.getCategory_middle(),postDetail.getCategory_small(),tags,postDetail.getPrice(),postDetail.getContent(),postDetail.getCount(),postDetail.getIs_exchangable(),postDetail.getSafepay(),postDetail.getDelivery_fee(),postDetail.getPcondition());
+            PostPostRes postPostRes = new PostPostRes(postDetail.getPost_id(),photos,postDetail.getTitle(),postDetail.getRegion(), postDetail.getCreated_at(),postDetail.getCategory_large(),postDetail.getCategory_middle(),postDetail.getCategory_small(),tags,postDetail.getPrice(),postDetail.getContent(),postDetail.getCount(),postDetail.getIs_exchangable(),postDetail.getSafepay(),postDetail.getDelivery_fee(),postDetail.getPcondition());
 
             return postPostRes;
 //        } catch (Exception exception) {

@@ -13,6 +13,7 @@ public class PostPostReq {
 
     private List<String> imgUrls;
     private String title;
+    private String region;
     private int category_large;
     private int category_middle;
     private int category_small;
@@ -38,6 +39,7 @@ public class PostPostReq {
     {
     "imgUrls" : ["d", "d", "d"],
     "title" : "testCreatePost",
+    "region" : "서울 관악구",
     "category_large" : 1,
     "category_middle" : 6,
     "category_small" : 1,
