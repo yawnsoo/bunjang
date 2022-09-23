@@ -102,11 +102,11 @@ com/example/demo/utils/JwtService.java
  com.example.demo.utils.JwtService
 com/example/demo/src/oauth/model/PostKakaoLoginRes.java
  com.example.demo.src.oauth.model.PostKakaoLoginRes
-com/example/demo/src/oauth/AuthDao.java
- com.example.demo.src.oauth.AuthDao
+com/example/demo/src/oauth/AuthController.java
+ com.example.demo.src.oauth.AuthController
 com/example/demo/src/oauth/AuthProvider.java
  com.example.demo.src.oauth.AuthProvider
 com/example/demo/src/oauth/AuthService.java
  com.example.demo.src.oauth.AuthService
-com/example/demo/src/oauth/AuthController.java
- com.example.demo.src.oauth.AuthController
+com/example/demo/src/oauth/AuthDao.java
+ com.example.demo.src.oauth.AuthDao
