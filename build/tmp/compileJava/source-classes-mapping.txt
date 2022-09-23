@@ -8,30 +8,18 @@ com/example/demo/src/user/model/PatchReviseReq.java
  com.example.demo.src.user.model.PatchReviseReq
 com/example/demo/config/Constant.java
  com.example.demo.config.Constant
-<<<<<<< HEAD
-com/example/demo/src/bungaeTalk/TalkController.java
- com.example.demo.src.bungaeTalk.TalkController
-=======
 com/example/demo/src/post/model/GetPostDetailRes.java
  com.example.demo.src.post.model.GetPostDetailRes
->>>>>>> bb55c4df11c5b85380a884cdc535d429c2490f6c
+com/example/demo/src/bungaeTalk/TalkController.java
+ com.example.demo.src.bungaeTalk.TalkController
 com/example/demo/utils/ValidationRegex.java
  com.example.demo.utils.ValidationRegex
 com/example/demo/src/post/model/PostPostReq.java
  com.example.demo.src.post.model.PostPostReq
 com/example/demo/src/post/model/GetPostRes.java
  com.example.demo.src.post.model.GetPostRes
-<<<<<<< HEAD
-=======
-com/example/demo/src/user/model/PostLoginRes.java
- com.example.demo.src.user.model.PostLoginRes
 com/example/demo/src/post/model/PostPostAssemble.java
  com.example.demo.src.post.model.PostPostAssemble
-com/example/demo/src/post/model/PostPhotoReq.java
- com.example.demo.src.post.model.PostPhotoReq
-com/example/demo/src/user/UserDao.java
- com.example.demo.src.user.UserDao
->>>>>>> bb55c4df11c5b85380a884cdc535d429c2490f6c
 com/example/demo/config/BaseResponseStatus.java
  com.example.demo.config.BaseResponseStatus
 com/example/demo/src/bungaeTalk/model/GetMessageRes.java
