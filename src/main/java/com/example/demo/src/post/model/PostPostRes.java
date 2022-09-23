@@ -3,6 +3,7 @@ package com.example.demo.src.post.model;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 

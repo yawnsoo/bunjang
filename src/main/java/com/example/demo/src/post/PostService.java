@@ -2,16 +2,11 @@ package com.example.demo.src.post;
 
 import com.example.demo.config.BaseException;
 import com.example.demo.src.post.model.*;
-import com.example.demo.src.user.UserDao;
-import com.example.demo.src.user.UserProvider;
-import com.example.demo.src.user.UserService;
 import com.example.demo.utils.JwtService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -29,7 +24,7 @@ public class PostService {
         this.jwtService = jwtService;
     }
 
-    public PostPostRes createPost(PostPostReq postPostReq, int user_id) throws BaseException {
+    public PostPostRes createPost(PostPostReq postPostReq, int user_id, List<String> img) throws BaseException {
         //validation
 
 //        try {
@@ -43,11 +38,11 @@ public class PostService {
 
             GetPostDetailRes postDetail = postDao.getPostDetailRes(post_id);
 
-            List<String> photos = postDao.addPhoto(postPostReq, post_id);
+            List<String> photos = postDao.addPhoto(img, post_id);
 
             List<String> tags = postDao.addTag(postPostReq, post_id);
 
-            PostPostRes postPostRes = new PostPostRes(postDetail.getPost_id(),photos,postDetail.getTitle(),postDetail.getRegion(), postDetail.getCreated_at(),postDetail.getCategory_large(),postDetail.getCategory_middle(),postDetail.getCategory_small(),tags,postDetail.getPrice(),postDetail.getContent(),postDetail.getCount(),postDetail.getIs_exchangable(),postDetail.getSafepay(),postDetail.getDelivery_fee(),postDetail.getPcondition());
+            PostPostRes postPostRes = new PostPostRes(postDetail.getPost_id(),img,postDetail.getTitle(),postDetail.getRegion(), postDetail.getCreated_at(),postDetail.getCategory_large(),postDetail.getCategory_middle(),postDetail.getCategory_small(),tags,postDetail.getPrice(),postDetail.getContent(),postDetail.getCount(),postDetail.getIs_exchangable(),postDetail.getSafepay(),postDetail.getDelivery_fee(),postDetail.getPcondition());
 
             return postPostRes;
 //        } catch (Exception exception) {

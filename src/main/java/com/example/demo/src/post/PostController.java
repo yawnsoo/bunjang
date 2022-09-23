@@ -3,6 +3,7 @@ package com.example.demo.src.post;
 import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
 import com.example.demo.src.post.model.*;
+import com.example.demo.src.s3.S3UploadController;
 import com.example.demo.utils.JwtService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,7 +11,9 @@ import jdk.nashorn.internal.ir.ObjectNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -25,11 +28,14 @@ public class PostController {
     private final PostService postService;
     @Autowired
     private final JwtService jwtService;
+    @Autowired
+    private final S3UploadController s3UploadController;
 
-    public PostController(PostProvider postProvider, PostService postService, JwtService jwtService) {
+    public PostController(PostProvider postProvider, PostService postService, JwtService jwtService, S3UploadController s3UploadController) {
         this.postProvider = postProvider;
         this.postService = postService;
         this.jwtService = jwtService;
+        this.s3UploadController = s3UploadController;
     }
 
 
@@ -40,11 +46,8 @@ public class PostController {
    * */
     @ResponseBody
     @PostMapping("")
-    public BaseResponse<PostPostRes> createPost(@RequestBody PostPostReq postPostReq) {
-//    public BaseResponse<PostPostRes> createPost(@RequestBody PostPostAssemble postPostAssemble) {
-//    public BaseResponse<PostPostRes> createPost(@RequestBody ObjectNode saveObj) throws JsonProcessingException {
-//        ObjectMapper mapper = new ObjectMapper();
-//        PostPostReq postPostReq = mapper.treeToValue(saveObj., PostPostReq.class);
+    public BaseResponse<PostPostRes> createPost(@RequestPart(value = "json") PostPostReq postPostReq,
+                                                @RequestPart(value = "img") MultipartFile[] img) throws Exception {
 
         //FIXME
         // - 카테고리 입력 받는거로 수정해야함
@@ -63,9 +66,13 @@ public class PostController {
         //  3. 카테고리(category)
         //  테이블 분리 되어 있음 >>> 각 입력 api 만들고 transaction 사용?
 
+//        ResponseEntity<Object> imgUrl = s3UploadController.upload(img);
+        List<String> imgUrl = s3UploadController.upload(img);
+
+
         try {
             int userId = jwtService.getUserIdx();
-            PostPostRes postPostRes = postService.createPost(postPostReq, userId);
+            PostPostRes postPostRes = postService.createPost(postPostReq, userId, imgUrl);
             return new BaseResponse<>(postPostRes);
         } catch (BaseException exception) {
             exception.printStackTrace();
