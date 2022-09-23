@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 public class PostPostReq {
 
-    private List<String> imgUrls;
+//    private List<String> imgUrls;
     private String title;
     private String region;
     private int category_large;
@@ -36,8 +36,8 @@ public class PostPostReq {
 *
 *
 *
-    {
     "imgUrls" : ["d", "d", "d"],
+    {
     "title" : "testCreatePost",
     "region" : "서울 관악구",
     "category_large" : 1,

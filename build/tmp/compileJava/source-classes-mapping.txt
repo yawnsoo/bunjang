@@ -18,6 +18,8 @@ com/example/demo/utils/ValidationRegex.java
  com.example.demo.utils.ValidationRegex
 com/example/demo/src/post/model/PostPostReq.java
  com.example.demo.src.post.model.PostPostReq
+com/example/demo/src/s3/S3UploadController.java
+ com.example.demo.src.s3.S3UploadController
 com/example/demo/src/post/model/GetPostRes.java
  com.example.demo.src.post.model.GetPostRes
 com/example/demo/src/follow/model/PostFollowReq.java
@@ -62,6 +64,8 @@ com/example/demo/config/BaseResponse.java
  com.example.demo.config.BaseResponse
 com/example/demo/src/post/model/GetMCategoryRes.java
  com.example.demo.src.post.model.GetMCategoryRes
+com/example/demo/src/AwsS3Config.java
+ com.example.demo.src.AwsS3Config
 com/example/demo/src/bungaeTalk/model/GetRoomListRes.java
  com.example.demo.src.bungaeTalk.model.GetRoomListRes
 com/example/demo/src/user/UserService.java

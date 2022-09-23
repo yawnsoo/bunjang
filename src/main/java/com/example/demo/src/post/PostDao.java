@@ -28,10 +28,9 @@ public class PostDao {
         return this.jdbcTemplate.queryForObject(lastInsertIdQuery, int.class);
     }
 
-    public List<String> addPhoto(PostPostReq postPostReq, int post_id) {
-        List<String> photo = postPostReq.getImgUrls();
+    public List<String> addPhoto(List<String> img, int post_id) {
         List PhotoList = new ArrayList<String>();
-        for (String s : photo) {
+        for (String s : img) {
             String addPhotoQuery = "Insert into post_photos (post_id, image_path) values (?,?)";
             Object[] addPhotoParams = new Object[]{post_id, s};
             this.jdbcTemplate.update(addPhotoQuery, addPhotoParams);

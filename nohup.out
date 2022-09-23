@@ -4796,3 +4796,177 @@ id : 2440942987
 name = 청준
 email : 
 birthday = 
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.2)
+
+05:08:01.571 INFO  [File:PostProcessorRegistrationDelegate.java] [Func:postProcessAfterInitialization] [Line:350] [Message:Bean '(inner bean)#1cdc4c27' of type [com.amazonaws.auth.EC2ContainerCredentialsProviderWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]- Bean '(inner bean)#1cdc4c27' of type [com.amazonaws.auth.EC2ContainerCredentialsProviderWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05:08:01.615 INFO  [File:PostProcessorRegistrationDelegate.java] [Func:postProcessAfterInitialization] [Line:350] [Message:Bean '(inner bean)#1477089c' of type [com.amazonaws.auth.profile.ProfileCredentialsProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]- Bean '(inner bean)#1477089c' of type [com.amazonaws.auth.profile.ProfileCredentialsProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05:08:01.618 INFO  [File:PostProcessorRegistrationDelegate.java] [Func:postProcessAfterInitialization] [Line:350] [Message:Bean 'credentialsProvider' of type [org.springframework.cloud.aws.core.credentials.CredentialsProviderFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]- Bean 'credentialsProvider' of type [org.springframework.cloud.aws.core.credentials.CredentialsProviderFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05:08:01.619 INFO  [File:PostProcessorRegistrationDelegate.java] [Func:postProcessAfterInitialization] [Line:350] [Message:Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]- Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05:08:01.633 WARN  [File:EC2MetadataUtils.java] [Func:getItems] [Line:414] [Message:Unable to retrieve the requested metadata (/latest/user-data/). The requested metadata is not found at http://169.254.169.254/latest/user-data/]- Unable to retrieve the requested metadata (/latest/user-data/). The requested metadata is not found at http://169.254.169.254/latest/user-data/
+com.amazonaws.SdkClientException: The requested metadata is not found at http://169.254.169.254/latest/user-data/
+	at com.amazonaws.internal.EC2ResourceFetcher.doReadResource(EC2ResourceFetcher.java:89)
+	at com.amazonaws.internal.EC2ResourceFetcher.doReadResource(EC2ResourceFetcher.java:70)
+	at com.amazonaws.internal.InstanceMetadataServiceResourceFetcher.readResource(InstanceMetadataServiceResourceFetcher.java:75)
+	at com.amazonaws.internal.EC2ResourceFetcher.readResource(EC2ResourceFetcher.java:66)
+	at com.amazonaws.util.EC2MetadataUtils.getItems(EC2MetadataUtils.java:407)
+	at com.amazonaws.util.EC2MetadataUtils.getData(EC2MetadataUtils.java:376)
+	at com.amazonaws.util.EC2MetadataUtils.getData(EC2MetadataUtils.java:372)
+	at com.amazonaws.util.EC2MetadataUtils.getUserData(EC2MetadataUtils.java:368)
+	at org.springframework.cloud.aws.core.env.ec2.AmazonEc2InstanceDataPropertySource.getUserData(AmazonEc2InstanceDataPropertySource.java:123)
+	at org.springframework.cloud.aws.core.env.ec2.AmazonEc2InstanceDataPropertySource.getProperty(AmazonEc2InstanceDataPropertySource.java:95)
+	at org.springframework.boot.context.properties.source.SpringConfigurationPropertySource.getConfigurationProperty(SpringConfigurationPropertySource.java:84)
+	at org.springframework.boot.context.properties.source.SpringIterableConfigurationPropertySource.getConfigurationProperty(SpringIterableConfigurationPropertySource.java:100)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource.findConfigurationProperty(ConfigurationPropertySourcesPropertySource.java:65)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource.findConfigurationProperty(ConfigurationPropertySourcesPropertySource.java:53)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource.getProperty(ConfigurationPropertySourcesPropertySource.java:42)
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:85)
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:68)
+	at org.springframework.core.env.AbstractPropertyResolver.getProperty(AbstractPropertyResolver.java:175)
+	at org.springframework.core.env.AbstractEnvironment.getProperty(AbstractEnvironment.java:551)
+	at org.springframework.boot.autoconfigure.dao.PersistenceExceptionTranslationAutoConfiguration.persistenceExceptionTranslationPostProcessor(PersistenceExceptionTranslationAutoConfiguration.java:47)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:638)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1336)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1179)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:571)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:531)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:213)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.registerBeanPostProcessors(PostProcessorRegistrationDelegate.java:232)
+	at org.springframework.context.support.AbstractApplicationContext.registerBeanPostProcessors(AbstractApplicationContext.java:767)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:572)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:767)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:426)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:326)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1311)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+	at com.example.demo.DemoApplication.main(DemoApplication.java:11)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:49)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:107)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:58)
+	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:88)
+05:08:02.521 INFO  [File:TomcatWebServer.java] [Func:initialize] [Line:108] [Message:Tomcat initialized with port(s): 9001 (http)]- Tomcat initialized with port(s): 9001 (http)
+05:08:02.553 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Initializing ProtocolHandler ["http-nio-9001"]]- Initializing ProtocolHandler ["http-nio-9001"]
+05:08:02.554 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Starting service [Tomcat]]- Starting service [Tomcat]
+05:08:02.554 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Starting Servlet engine: [Apache Tomcat/9.0.41]]- Starting Servlet engine: [Apache Tomcat/9.0.41]
+05:08:02.690 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Initializing Spring embedded WebApplicationContext]- Initializing Spring embedded WebApplicationContext
+05:08:02.690 INFO  [File:ServletWebServerApplicationContext.java] [Func:prepareWebApplicationContext] [Line:289] [Message:Root WebApplicationContext: initialization completed in 4499 ms]- Root WebApplicationContext: initialization completed in 4499 ms
+05:08:05.614 INFO  [File:UserDetailsServiceAutoConfiguration.java] [Func:getOrDeducePassword] [Line:86] [Message:
+
+Using generated security password: 4a5ab59b-855f-4629-a747-b84cb815dede
+]- 
+
+Using generated security password: 4a5ab59b-855f-4629-a747-b84cb815dede
+
+05:08:05.890 INFO  [File:DefaultSecurityFilterChain.java] [Func:<init>] [Line:51] [Message:Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@37b72ea, org.springframework.security.web.context.SecurityContextPersistenceFilter@834831b, org.springframework.security.web.header.HeaderWriterFilter@1237e0be, org.springframework.security.web.authentication.logout.LogoutFilter@25b5c5e3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5b4d25e7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@58d63b16, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@cc239ba, org.springframework.security.web.session.SessionManagementFilter@5c748168, org.springframework.security.web.access.ExceptionTranslationFilter@dca2615]]- Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@37b72ea, org.springframework.security.web.context.SecurityContextPersistenceFilter@834831b, org.springframework.security.web.header.HeaderWriterFilter@1237e0be, org.springframework.security.web.authentication.logout.LogoutFilter@25b5c5e3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5b4d25e7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@58d63b16, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@cc239ba, org.springframework.security.web.session.SessionManagementFilter@5c748168, org.springframework.security.web.access.ExceptionTranslationFilter@dca2615]
+05:08:06.264 INFO  [File:ExecutorConfigurationSupport.java] [Func:initialize] [Line:181] [Message:Initializing ExecutorService 'applicationTaskExecutor']- Initializing ExecutorService 'applicationTaskExecutor'
+05:08:07.177 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Starting ProtocolHandler ["http-nio-9001"]]- Starting ProtocolHandler ["http-nio-9001"]
+05:08:07.242 INFO  [File:TomcatWebServer.java] [Func:start] [Line:220] [Message:Tomcat started on port(s): 9001 (http) with context path '']- Tomcat started on port(s): 9001 (http) with context path ''
+HEAP Size(M) : 33 MB
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.2)
+
+05:30:42.433 INFO  [File:PostProcessorRegistrationDelegate.java] [Func:postProcessAfterInitialization] [Line:350] [Message:Bean '(inner bean)#1cdc4c27' of type [com.amazonaws.auth.EC2ContainerCredentialsProviderWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]- Bean '(inner bean)#1cdc4c27' of type [com.amazonaws.auth.EC2ContainerCredentialsProviderWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05:30:42.472 INFO  [File:PostProcessorRegistrationDelegate.java] [Func:postProcessAfterInitialization] [Line:350] [Message:Bean '(inner bean)#1477089c' of type [com.amazonaws.auth.profile.ProfileCredentialsProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]- Bean '(inner bean)#1477089c' of type [com.amazonaws.auth.profile.ProfileCredentialsProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05:30:42.478 INFO  [File:PostProcessorRegistrationDelegate.java] [Func:postProcessAfterInitialization] [Line:350] [Message:Bean 'credentialsProvider' of type [org.springframework.cloud.aws.core.credentials.CredentialsProviderFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]- Bean 'credentialsProvider' of type [org.springframework.cloud.aws.core.credentials.CredentialsProviderFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05:30:42.479 INFO  [File:PostProcessorRegistrationDelegate.java] [Func:postProcessAfterInitialization] [Line:350] [Message:Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]- Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+05:30:42.498 WARN  [File:EC2MetadataUtils.java] [Func:getItems] [Line:414] [Message:Unable to retrieve the requested metadata (/latest/user-data/). The requested metadata is not found at http://169.254.169.254/latest/user-data/]- Unable to retrieve the requested metadata (/latest/user-data/). The requested metadata is not found at http://169.254.169.254/latest/user-data/
+com.amazonaws.SdkClientException: The requested metadata is not found at http://169.254.169.254/latest/user-data/
+	at com.amazonaws.internal.EC2ResourceFetcher.doReadResource(EC2ResourceFetcher.java:89)
+	at com.amazonaws.internal.EC2ResourceFetcher.doReadResource(EC2ResourceFetcher.java:70)
+	at com.amazonaws.internal.InstanceMetadataServiceResourceFetcher.readResource(InstanceMetadataServiceResourceFetcher.java:75)
+	at com.amazonaws.internal.EC2ResourceFetcher.readResource(EC2ResourceFetcher.java:66)
+	at com.amazonaws.util.EC2MetadataUtils.getItems(EC2MetadataUtils.java:407)
+	at com.amazonaws.util.EC2MetadataUtils.getData(EC2MetadataUtils.java:376)
+	at com.amazonaws.util.EC2MetadataUtils.getData(EC2MetadataUtils.java:372)
+	at com.amazonaws.util.EC2MetadataUtils.getUserData(EC2MetadataUtils.java:368)
+	at org.springframework.cloud.aws.core.env.ec2.AmazonEc2InstanceDataPropertySource.getUserData(AmazonEc2InstanceDataPropertySource.java:123)
+	at org.springframework.cloud.aws.core.env.ec2.AmazonEc2InstanceDataPropertySource.getProperty(AmazonEc2InstanceDataPropertySource.java:95)
+	at org.springframework.boot.context.properties.source.SpringConfigurationPropertySource.getConfigurationProperty(SpringConfigurationPropertySource.java:84)
+	at org.springframework.boot.context.properties.source.SpringIterableConfigurationPropertySource.getConfigurationProperty(SpringIterableConfigurationPropertySource.java:100)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource.findConfigurationProperty(ConfigurationPropertySourcesPropertySource.java:65)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource.findConfigurationProperty(ConfigurationPropertySourcesPropertySource.java:53)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource.getProperty(ConfigurationPropertySourcesPropertySource.java:42)
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:85)
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:68)
+	at org.springframework.core.env.AbstractPropertyResolver.getProperty(AbstractPropertyResolver.java:175)
+	at org.springframework.core.env.AbstractEnvironment.getProperty(AbstractEnvironment.java:551)
+	at org.springframework.boot.autoconfigure.dao.PersistenceExceptionTranslationAutoConfiguration.persistenceExceptionTranslationPostProcessor(PersistenceExceptionTranslationAutoConfiguration.java:47)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:638)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1336)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1179)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:571)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:531)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:213)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.registerBeanPostProcessors(PostProcessorRegistrationDelegate.java:232)
+	at org.springframework.context.support.AbstractApplicationContext.registerBeanPostProcessors(AbstractApplicationContext.java:767)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:572)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:767)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:426)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:326)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1311)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+	at com.example.demo.DemoApplication.main(DemoApplication.java:11)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:49)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:107)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:58)
+	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:88)
+05:30:43.286 INFO  [File:TomcatWebServer.java] [Func:initialize] [Line:108] [Message:Tomcat initialized with port(s): 9001 (http)]- Tomcat initialized with port(s): 9001 (http)
+05:30:43.313 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Initializing ProtocolHandler ["http-nio-9001"]]- Initializing ProtocolHandler ["http-nio-9001"]
+05:30:43.318 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Starting service [Tomcat]]- Starting service [Tomcat]
+05:30:43.318 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Starting Servlet engine: [Apache Tomcat/9.0.41]]- Starting Servlet engine: [Apache Tomcat/9.0.41]
+05:30:43.441 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Initializing Spring embedded WebApplicationContext]- Initializing Spring embedded WebApplicationContext
+05:30:43.442 INFO  [File:ServletWebServerApplicationContext.java] [Func:prepareWebApplicationContext] [Line:289] [Message:Root WebApplicationContext: initialization completed in 4384 ms]- Root WebApplicationContext: initialization completed in 4384 ms
+05:30:46.037 INFO  [File:UserDetailsServiceAutoConfiguration.java] [Func:getOrDeducePassword] [Line:86] [Message:
+
+Using generated security password: e204bd43-a5fb-4dfb-9b71-6f06e77e8065
+]- 
+
+Using generated security password: e204bd43-a5fb-4dfb-9b71-6f06e77e8065
+
+05:30:46.265 INFO  [File:DefaultSecurityFilterChain.java] [Func:<init>] [Line:51] [Message:Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2f61f937, org.springframework.security.web.context.SecurityContextPersistenceFilter@dca2615, org.springframework.security.web.header.HeaderWriterFilter@54aca26f, org.springframework.security.web.authentication.logout.LogoutFilter@7c4fc2bf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1237e0be, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@33cbfa57, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@46866946, org.springframework.security.web.session.SessionManagementFilter@4f63e3c7, org.springframework.security.web.access.ExceptionTranslationFilter@9d1a267]]- Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2f61f937, org.springframework.security.web.context.SecurityContextPersistenceFilter@dca2615, org.springframework.security.web.header.HeaderWriterFilter@54aca26f, org.springframework.security.web.authentication.logout.LogoutFilter@7c4fc2bf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1237e0be, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@33cbfa57, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@46866946, org.springframework.security.web.session.SessionManagementFilter@4f63e3c7, org.springframework.security.web.access.ExceptionTranslationFilter@9d1a267]
+05:30:46.581 INFO  [File:ExecutorConfigurationSupport.java] [Func:initialize] [Line:181] [Message:Initializing ExecutorService 'applicationTaskExecutor']- Initializing ExecutorService 'applicationTaskExecutor'
+05:30:47.392 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Starting ProtocolHandler ["http-nio-9001"]]- Starting ProtocolHandler ["http-nio-9001"]
+05:30:47.448 INFO  [File:TomcatWebServer.java] [Func:start] [Line:220] [Message:Tomcat started on port(s): 9001 (http) with context path '']- Tomcat started on port(s): 9001 (http) with context path ''
+HEAP Size(M) : 33 MB
