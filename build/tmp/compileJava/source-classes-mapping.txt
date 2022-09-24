@@ -1,7 +1,7 @@
 com/example/demo/src/bungaeTalk/model/PostTalkMessageReq.java
  com.example.demo.src.bungaeTalk.model.PostTalkMessageReq
-com/example/demo/src/follow/FollowProvider.java
- com.example.demo.src.follow.FollowProvider
+com/example/demo/src/oauth/AuthController.java
+ com.example.demo.src.oauth.AuthController
 com/example/demo/src/user/model/PatchReviseReq.java
  com.example.demo.src.user.model.PatchReviseReq
 com/example/demo/config/Constant.java
@@ -18,6 +18,8 @@ com/example/demo/src/follow/FollowService.java
  com.example.demo.src.follow.FollowService
 com/example/demo/config/BaseResponseStatus.java
  com.example.demo.config.BaseResponseStatus
+com/example/demo/src/search/model/GetPostListRes.java
+ com.example.demo.src.search.model.GetPostListRes
 com/example/demo/src/bungaeTalk/model/GetMessageRes.java
  com.example.demo.src.bungaeTalk.model.GetMessageRes
 com/example/demo/src/oauth/model/userid_registration.java
@@ -58,14 +60,18 @@ com/example/demo/src/user/model/PostJoinReq.java
  com.example.demo.src.user.model.PostJoinReq
 com/example/demo/utils/SHA256.java
  com.example.demo.utils.SHA256
+com/example/demo/src/user/UserProvider.java
+ com.example.demo.src.user.UserProvider
 com/example/demo/src/follow/FollowController.java
  com.example.demo.src.follow.FollowController
-com/example/demo/src/bungaeTalk/TalkProvider.java
- com.example.demo.src.bungaeTalk.TalkProvider
+com/example/demo/src/oauth/AuthProvider.java
+ com.example.demo.src.oauth.AuthProvider
 com/example/demo/src/point/PointProvider.java
  com.example.demo.src.point.PointProvider
 com/example/demo/src/pay/PayDao.java
  com.example.demo.src.pay.PayDao
+com/example/demo/src/oauth/AuthDao.java
+ com.example.demo.src.oauth.AuthDao
 com/example/demo/src/user/model/PostLoginRes.java
  com.example.demo.src.user.model.PostLoginRes
 com/example/demo/src/user/UserDao.java
@@ -80,14 +86,16 @@ com/example/demo/src/bungaeTalk/TalkDao.java
  com.example.demo.src.bungaeTalk.TalkDao
 com/example/demo/src/WebSecurityConfig.java
  com.example.demo.src.WebSecurityConfig
-com/example/demo/src/user/UserProvider.java
- com.example.demo.src.user.UserProvider
+com/example/demo/src/oauth/AuthService.java
+ com.example.demo.src.oauth.AuthService
 com/example/demo/src/test/TestController.java
  com.example.demo.src.test.TestController
 com/example/demo/src/user/model/PostLoginReq.java
  com.example.demo.src.user.model.PostLoginReq
 com/example/demo/src/point/PointService.java
  com.example.demo.src.point.PointService
+com/example/demo/src/bungaeTalk/TalkProvider.java
+ com.example.demo.src.bungaeTalk.TalkProvider
 com/example/demo/src/user/model/PostJoinRes.java
  com.example.demo.src.user.model.PostJoinRes
 com/example/demo/src/user/UserController.java
@@ -96,17 +104,19 @@ com/example/demo/src/pay/PayService.java
  com.example.demo.src.pay.PayService
 com/example/demo/src/bungaeTalk/model/PostTalkRoomRes.java
  com.example.demo.src.bungaeTalk.model.PostTalkRoomRes
+com/example/demo/src/follow/FollowProvider.java
+ com.example.demo.src.follow.FollowProvider
 com/example/demo/DemoApplication.java
  com.example.demo.DemoApplication
 com/example/demo/utils/JwtService.java
  com.example.demo.utils.JwtService
 com/example/demo/src/oauth/model/PostKakaoLoginRes.java
  com.example.demo.src.oauth.model.PostKakaoLoginRes
-com/example/demo/src/oauth/AuthController.java
- com.example.demo.src.oauth.AuthController
-com/example/demo/src/oauth/AuthProvider.java
- com.example.demo.src.oauth.AuthProvider
-com/example/demo/src/oauth/AuthService.java
- com.example.demo.src.oauth.AuthService
-com/example/demo/src/oauth/AuthDao.java
- com.example.demo.src.oauth.AuthDao
+com/example/demo/src/search/SearchController.java
+ com.example.demo.src.search.SearchController
+com/example/demo/src/search/SearchService.java
+ com.example.demo.src.search.SearchService
+com/example/demo/src/search/SearchDao.java
+ com.example.demo.src.search.SearchDao
+com/example/demo/src/search/SearchProvider.java
+ com.example.demo.src.search.SearchProvider

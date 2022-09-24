@@ -51,34 +51,56 @@ public class PointController {
     @PostMapping("{user_id}")
     public BaseResponse<PostPointHistoryRes> createPointHistory (@PathVariable("user_id") int user_id , @RequestBody PostPointHistoryReq pointHistoryReq)
     {
-        //1. 포인트내역이 없는데 음수는 불가능.
-        //맨처음 포인트 변화량은 음수가 될수없음(포인트의 총량은 0또는 양수여야함)
-        try
-        {
-            if(pointProvider.checkPointIDExist(user_id) != 1)
-            {
-                return new BaseResponse<>(CANT_START_MINUS);
-            }
+//        //1. 포인트내역이 없는데 음수는 불가능.
+//        //맨처음 포인트 변화량은 음수가 될수없음(포인트의 총량은 0또는 양수여야함)
+//        try
+//        {
+//            if(pointProvider.checkPointIDExist(user_id) != 1)
+//            {
+//                return new BaseResponse<>(CANT_START_MINUS);
+//            }
+//
+//        }catch (BaseException exception)
+//        {
+//            exception.printStackTrace();
+//            return new BaseResponse<>(exception.getStatus());
+//        }
+//
+//        //2. 포인트의 총량보다 큰 음수는 불가능. (포인트의 총량이 마이너스이면 안되니까 ++ 가지고있는 포인트보다 더쓸수없음)
+//
+//        try
+//        {
+//            int point = pointProvider.checkUserPoint(user_id);
+//            int amount = pointHistoryReq.getAmount();
+//            int result = point + amount;
+//            System.out.println("point = " + point);
+//            System.out.println("amount = " + amount);
+//            System.out.println("result = " + result);
+//            if(result < 0) //현재 포인트양보다 큰 양을 사용하려고한다면 안됨.
+//            {
+//                return new BaseResponse<>(OVER_POINT);
+//            }
+//
+//        }catch (BaseException exception)
+//        {
+//            exception.printStackTrace();
+//            return new BaseResponse<>(exception.getStatus());
+//        }
 
-        }catch (BaseException exception)
+        if(pointHistoryReq.getAmount() == 0)
         {
-            exception.printStackTrace();
-            return new BaseResponse<>(exception.getStatus());
+            return new BaseResponse<>(CANT_ZERO_POINT_USE);
         }
 
-        //2. 포인트의 총량보다 큰 음수는 불가능. (포인트의 총량이 마이너스이면 안되니까 ++ 가지고있는 포인트보다 더쓸수없음)
-
+        //현재 해당 유저의 총포인트를 조회해서, 그값보다 큰값을 사용하려하는지 CHECK VALIDATION
         try
         {
-            int point = pointProvider.checkUserPoint(user_id);
+            int current_point = pointProvider.checkUserPoint2(user_id);
             int amount = pointHistoryReq.getAmount();
-            int result = point + amount;
-            System.out.println("point = " + point);
-            System.out.println("amount = " + amount);
-            System.out.println("result = " + result);
-            if(result < 0) //현재 포인트양보다 큰 양을 사용하려고한다면 안됨.
+
+            if(current_point + amount <0) // 가지고있는양보다 더 사용하려고하는것
             {
-                return new BaseResponse<>(OVER_POINT);
+                return  new BaseResponse<>(OVER_POINT);
             }
 
         }catch (BaseException exception)
@@ -86,6 +108,7 @@ public class PointController {
             exception.printStackTrace();
             return new BaseResponse<>(exception.getStatus());
         }
+
 
 
 
@@ -169,7 +192,7 @@ public class PointController {
                 return new BaseResponse<>(INVALID_USER_JWT);
             }
 
-            int result = pointProvider.checkUserPoint(user_id);
+            int result = pointProvider.checkUserPoint2(user_id);
 
             return new BaseResponse<>(result);
 

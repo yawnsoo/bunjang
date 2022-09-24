@@ -70,6 +70,17 @@ public class PointProvider {
         }
 
     }
+    public int checkUserPoint2(int user_id) throws BaseException
+    {
+        try{
+            return pointDao.checkUserPoint2(user_id);
+
+        }catch (Exception exception)
+        {
+            exception.printStackTrace();
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
 
 
 

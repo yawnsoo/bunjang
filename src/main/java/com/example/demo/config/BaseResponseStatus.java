@@ -32,8 +32,10 @@ public enum BaseResponseStatus {
 
     CANT_START_MINUS(false, 2012, "포인트 기록이없습니다. 포인트 변화량을 마이너스로 시작할수없습니다."),
     OVER_POINT(false, 2013, "가지고 있는 포인트보다 더많이 사용할수없습니다."),
-
     STATUS_ZERO_POST(false, 2014, "판매완료된 글(status ==0)입니다."),
+    CANT_ZERO_POINT_USE(false, 2015, "0포인트는 추가,사용 될수없습니다."),
+    CANT_FOLLOW_MYSELF(false, 2016, "자기자신을 팔로우할 수 없습니다."),
+    EMPTY_SEARCH_WORDS(false, 2017, "검색어를 입력해주세요"),
 
     // POST user info EMPTY 2010~
     USERS_EMPTY_USER_NAME(false, 2010, "이름을 입력해주세요."),

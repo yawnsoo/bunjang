@@ -55,23 +55,61 @@ public class FollowDao {
     }
 
 
-//    @Transactional
-//    public int createFollow(PostFollowReq postFollowReq)
-//    {
-//        //팔로우 했던 기록이 있다면(다시 언팔을 했던간에) 새로 만들필요없이 status값만 바꿔주면됨
-//        String checkExistFollowId = "select exists(select follow_id from follw where follwer_id =? and followee_id = ?)";
-//        Object[] checkExistFollowIdParams = new Object[]{postFollowReq.getFollwer_id(),postFollowReq.getFollowee_id()};
-//
-//        int result = this.jdbcTemplate.queryForObject(checkExistFollowId,int.class,checkExistFollowIdParams);
-//        if(result ==1) // 이미 존재하는거니까 status만 바꿔줌 ( 0이였으면 1로 , 1이였으면 0으로)
-//        {
-//
-//        }
-//
-//        //팔로우했던 기록이없다면 새로만들어 주면됨.
-//
-//        String createFollowQuery = "";
-//    }
+    @Transactional
+    public int createFollow(PostFollowReq postFollowReq)
+    {
+        //팔로우 했던 기록이 있다면(다시 언팔을 했던간에) 새로 만들필요없이 status값만 바꿔주면됨
+        String checkExistFollowId = "select exists(select follow_id from follow where follwer_id =? and followee_id = ?)";
+        Object[] checkExistFollowIdParams = new Object[]{postFollowReq.getFollwer_id(),postFollowReq.getFollowee_id()};
+
+        int result = this.jdbcTemplate.queryForObject(checkExistFollowId,int.class,checkExistFollowIdParams);
+        if(result ==1) // 이미 존재하는거니까 status만 바꿔줌 ( 0이였으면 1로 , 1이였으면 0으로)
+        {
+            String check_status = "select status from follow where follwer_id =? and followee_id = ?";
+            int status = this.jdbcTemplate.queryForObject(check_status,int.class,checkExistFollowIdParams);
+
+            if( status == 0 )
+            {
+                String chage_status = "update follow set status = 1 where follwer_id =? and followee_id = ?";
+                this.jdbcTemplate.update(chage_status,checkExistFollowIdParams);
+            }
+            if( status == 1)
+            {
+                String chage_status = "update follow set status = 0 where follwer_id =? and followee_id = ?";
+                this.jdbcTemplate.update(chage_status,checkExistFollowIdParams);
+            }
+
+        }
+        else{
+            //팔로우했던 기록이없다면 새로만들어 주면됨.
+            String createFollowQuery = "insert into follow(follwer_id,followee_id) VALUES (?,?)";
+            this.jdbcTemplate.update(createFollowQuery,checkExistFollowIdParams);
+        }
+
+
+
+        String check_status = "select status from follow where follwer_id =? and followee_id = ?";
+        int status = this.jdbcTemplate.queryForObject(check_status,int.class,checkExistFollowIdParams);
+
+        return status; // status를 리턴.
+    }
+
+    //팔로워 숫자체크
+    public int followerNumber (int user_id)
+    {
+        String checkNumber = "select count(*) from follow where followee_id = ? and status = 1";
+        int number = this.jdbcTemplate.queryForObject(checkNumber,int.class,user_id);
+
+        return number;
+    }
+    //팔로잉 숫자체크
+    public int followingNumber (int user_id)
+    {
+        String checkNumber = "select count(*) from follow where follwer_id = ? and status = 1";
+        int number = this.jdbcTemplate.queryForObject(checkNumber,int.class,user_id);
+
+        return number;
+    }
 
 
 }

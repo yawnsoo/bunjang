@@ -10,7 +10,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PostFollowReq {
-    private int follwer_id; //팔로우한사람
     private int followee_id; // 팔로우 된 사람.
+    private int follwer_id; //팔로우한사람
+
 
 }

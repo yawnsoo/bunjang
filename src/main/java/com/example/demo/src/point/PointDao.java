@@ -26,14 +26,20 @@ public class PointDao {
 
 
 
-    //포인트 내역 생성 api
+    //포인트 내역 생성 api , 바로 user테이블의 total_point를 수정해줘서 최신화한다.
     @Transactional
     public PostPointHistoryRes createPointHistory(PostPointHistoryReq pointHistoryReq)
     {
         String createPointHistoryQuery = "insert into point_history(user_id,amount) VALUES(?,?)";
         Object[] createPointHistoryParams = new Object[]{pointHistoryReq.getUser_id(),pointHistoryReq.getAmount()};
-
         this.jdbcTemplate.update(createPointHistoryQuery,createPointHistoryParams);
+
+        //유저 포인트 최신화부분
+        int current_point = checkUserPoint2(pointHistoryReq.getUser_id());
+        int result_point = current_point + pointHistoryReq.getAmount();
+        String update_point_query = "update user set total_point = ?";
+        this.jdbcTemplate.update(update_point_query,result_point);
+
         String findPoint_id = "select last_insert_id()";
         int point_history_id = this.jdbcTemplate.queryForObject(findPoint_id,int.class);
         PostPointHistoryRes postPointHistoryRes = new PostPointHistoryRes(point_history_id, pointHistoryReq.getUser_id(),pointHistoryReq.getAmount());
@@ -73,6 +79,14 @@ public class PointDao {
     public int checkUserPoint(int user_id)
     {
         String checkUserPointQuery = "select sum(amount) from point_history where user_id =?;";
+
+        int result = this.jdbcTemplate.queryForObject(checkUserPointQuery,int.class,user_id);
+        return result;
+    }
+
+    public int checkUserPoint2(int user_id)
+    {
+        String checkUserPointQuery = "select total_point from user where user_id = ?";
 
         int result = this.jdbcTemplate.queryForObject(checkUserPointQuery,int.class,user_id);
         return result;
