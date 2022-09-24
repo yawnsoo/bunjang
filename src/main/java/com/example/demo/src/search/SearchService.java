@@ -1,4 +1,4 @@
-package com.example.demo.src.follow;
+package com.example.demo.src.search;
 
 import com.example.demo.config.BaseException;
 import com.example.demo.src.bungaeTalk.TalkDao;
@@ -7,6 +7,8 @@ import com.example.demo.src.bungaeTalk.model.PostTalkMessageReq;
 import com.example.demo.src.bungaeTalk.model.PostTalkMessageRes;
 import com.example.demo.src.bungaeTalk.model.PostTalkRoomReq;
 import com.example.demo.src.bungaeTalk.model.PostTalkRoomRes;
+import com.example.demo.src.follow.FollowDao;
+import com.example.demo.src.follow.FollowProvider;
 import com.example.demo.src.follow.model.PostFollowReq;
 import com.example.demo.src.oauth.model.PostKakaoLoginReq;
 import com.example.demo.src.oauth.model.PostKakaoLoginRes;
@@ -29,32 +31,18 @@ import org.springframework.transaction.annotation.Transactional;
 import static com.example.demo.config.BaseResponseStatus.*;
 
 @Service
-public class FollowService {
-    private final FollowDao followDao;
-    private final FollowProvider followProvider;
+public class SearchService {
+
+    private final SearchDao searchDao;
+    private final SearchProvider searchProvider;
     private final JwtService jwtService;
 
 
     @Autowired
-    public FollowService(FollowDao followDao, FollowProvider followProvider, JwtService jwtService) {
-        this.followDao = followDao;
-        this.followProvider = followProvider;
+    public SearchService(SearchDao searchDao, SearchProvider searchProvider, JwtService jwtService) {
+        this.searchDao = searchDao;
+        this.searchProvider = searchProvider;
         this.jwtService = jwtService;
 
     }
-
-
-    @Transactional
-    public int createFollow(PostFollowReq postFollowReq) throws BaseException
-    {
-        try{
-            return followDao.createFollow(postFollowReq);
-
-        }catch (Exception exception)
-        {
-            exception.printStackTrace();
-            throw new BaseException(DATABASE_ERROR);
-        }
-    }
-
 }

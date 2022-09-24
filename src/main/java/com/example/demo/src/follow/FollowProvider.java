@@ -49,6 +49,37 @@ public class FollowProvider {
     }
 
 
+    //팔로워 숫자 체크
+    public int checkFolloerNumber (int user_id ) throws  BaseException
+    {
+        try{
+            return followDao.followerNumber(user_id);
+
+
+        }catch (Exception exception)
+        {
+            exception.printStackTrace();
+            throw new BaseException(DATABASE_ERROR);
+        }
+
+    }
+    //팔로잉 숫자 체크
+    public int checkFollowingNumber (int user_id ) throws  BaseException
+    {
+        try{
+            return followDao.followingNumber(user_id);
+
+
+        }catch (Exception exception)
+        {
+            exception.printStackTrace();
+            throw new BaseException(DATABASE_ERROR);
+        }
+
+    }
+
+
+
 
 
 
