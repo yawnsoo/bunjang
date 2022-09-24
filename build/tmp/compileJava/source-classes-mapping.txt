@@ -26,6 +26,8 @@ com/example/demo/src/post/model/PostPhotoReq.java
  com.example.demo.src.post.model.PostPhotoReq
 com/example/demo/src/user/UserDao.java
  com.example.demo.src.user.UserDao
+com/example/demo/src/post/model/PostDetailRes.java
+ com.example.demo.src.post.model.PostDetailRes
 com/example/demo/config/BaseResponseStatus.java
  com.example.demo.config.BaseResponseStatus
 com/example/demo/src/user/model/PatchUserReq.java
