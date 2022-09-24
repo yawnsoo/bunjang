@@ -36,22 +36,21 @@ public class PostPostReq {
 *
 *
 *
-    "imgUrls" : ["d", "d", "d"],
-    {
-    "title" : "testCreatePost",
-    "region" : "서울 관악구",
-    "category_large" : 1,
-    "category_middle" : 6,
-    "category_small" : 1,
-    "tags" : ["d", "d", "d"],
-    "price" : 111,
-    "content" : "상품설명 10자 이상이어야함",
-    "count" : 1,
-    "is_exchangable" : 0,
-    "safepay" : 1,
-    "delivery_fee" : 0,
-    "pcondition" : 0
-    }
+{
+  "title" : "testCreatePost",
+  "region" : "서울 관악구",
+  "category_large" : 1,
+  "category_middle" : 6,
+  "category_small" : 1,
+  "tags" : ["d", "d", "d"],
+  "price" : 111,
+  "content" : "상품설명 10자 이상이어야함",
+  "count" : 1,
+  "is_exchangable" : 0,
+  "safepay" : 1,
+  "delivery_fee" : 0,
+  "pcondition" : 0
+}
 *
 *
 *
