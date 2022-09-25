@@ -51,7 +51,7 @@ public class MyPagePostController {
             }
 
             if (status != null && safepay != null) {
-                return new BaseResponse<>(REQUEST_ERROR);
+                return new BaseResponse<>(QUERY_STRING_ERROR);
             }
 
             if (status != null && (-1 < status && status < 4)) { // 판매완, 판매중, 예약중, 광고중
