@@ -16,8 +16,8 @@ com/example/demo/src/pay/PayProvider.java
  com.example.demo.src.pay.PayProvider
 com/example/demo/src/mypage_post/MyPagePostProvider.java
  com.example.demo.src.mypage_post.MyPagePostProvider
-com/example/demo/src/mypage_post/MyPagePostController.java
- com.example.demo.src.mypage_post.MyPagePostController
+com/example/demo/src/follow/FollowProvider.java
+ com.example.demo.src.follow.FollowProvider
 com/example/demo/utils/ValidationRegex.java
  com.example.demo.utils.ValidationRegex
 com/example/demo/src/post/model/PostPostReq.java
@@ -162,5 +162,13 @@ com/example/demo/src/user/UserProvider.java
  com.example.demo.src.user.UserProvider
 com/example/demo/src/bungaeTalk/TalkProvider.java
  com.example.demo.src.bungaeTalk.TalkProvider
-com/example/demo/src/follow/FollowProvider.java
- com.example.demo.src.follow.FollowProvider
+com/example/demo/src/home/HomeController.java
+ com.example.demo.src.home.HomeController
+com/example/demo/src/home/HomeProvider.java
+ com.example.demo.src.home.HomeProvider
+com/example/demo/src/home/model/GetHomePostsRes.java
+ com.example.demo.src.home.model.GetHomePostsRes
+com/example/demo/src/mypage_post/MyPagePostController.java
+ com.example.demo.src.mypage_post.MyPagePostController
+com/example/demo/src/home/HomeDao.java
+ com.example.demo.src.home.HomeDao
