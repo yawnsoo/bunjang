@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.support.MissingServletRequestPartException;
 
 import java.util.regex.Pattern;
 import java.util.List;
@@ -227,9 +228,19 @@ public class UserController {
             if(user_id != userIdxByJwt){
                 return new BaseResponse<>(INVALID_USER_JWT);
             }
+            String img_result = "";
 
-            List<String> img_url = s3UploadController.upload(img);
-            String img_result = img_url.get(0);
+            try{
+                List<String> img_url = s3UploadController.upload(img);
+                img_result = img_url.get(0);
+
+            }catch (Exception exception)
+            {
+
+            }
+
+
+
             patchReviseReq.setImage_path(img_result);
 
             String result = userService.reviseUserInfo(user_id,patchReviseReq);

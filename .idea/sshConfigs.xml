@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="54.180.215.103" id="b141eb3b-3281-4407-8fd9-802b90c03ad7" keyPath="C:\Users\길재현\Desktop\라이징프로그래머\my_web_server_keypair .pem" port="22" nameFormat="DESCRIPTIVE" username="ubuntu" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>
