@@ -29,13 +29,16 @@ public enum BaseResponseStatus {
     WITHDRAW_OPPOSITE_USER(false,2009,"상대방은 탈퇴한 유저입니다."),
     EXIST_CHAT_ROOM(false, 2010, "이미 채팅방이 존재합니다."),
     NOT_EXIST_CHAT_ROOM(false, 2011, "존재하지않는 방아이디입니다."),
-
     CANT_START_MINUS(false, 2012, "포인트 기록이없습니다. 포인트 변화량을 마이너스로 시작할수없습니다."),
     OVER_POINT(false, 2013, "가지고 있는 포인트보다 더많이 사용할수없습니다."),
     STATUS_ZERO_POST(false, 2014, "판매완료된 글(status ==0)입니다."),
     CANT_ZERO_POINT_USE(false, 2015, "0포인트는 추가,사용 될수없습니다."),
     CANT_FOLLOW_MYSELF(false, 2016, "자기자신을 팔로우할 수 없습니다."),
     EMPTY_SEARCH_WORDS(false, 2017, "검색어를 입력해주세요"),
+
+
+
+    QUERY_STRING_ERROR(false,2030,"Parameter값을 확인해 주세요."),
 
     // POST user info EMPTY 2010~
     USERS_EMPTY_USER_NAME(false, 2010, "이름을 입력해주세요."),
@@ -44,6 +47,8 @@ public enum BaseResponseStatus {
     USERS_EMPTY_USER_MOBILE_CARRIER_ID(false, 2013, "통신사를 선택해주세요."),
     USERS_EMPTY_USER_MARKET_NAME(false, 2014, "상점이름을 입력해주세요."),
 
+    //Status
+    Check_Status(false,2050,"Status 값을 다시 한번 확인해주세요(0:판매완료 1:판매중 2:예약중 3:광고중)."),
 
 
     // Post user info 잘못된 입력 2100 ~
@@ -56,6 +61,8 @@ public enum BaseResponseStatus {
     USERS_EXIST_MARKET_NAME(false, 2200, "존재하는 상점이름입니다."),
 
 
+    //Safepay
+    Check_Safepay(false,2060,"Safepay 값을 다시 한번 확인해주세요(1:페이 가능)."),
 
     /**
      * 3000 : Response 오류

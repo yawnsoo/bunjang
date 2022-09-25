@@ -237,6 +237,8 @@ public class PostController {
 
 
 
+
+
     /*
     * 옵션 선택 API
     * 지금은 createPost에서 한번에 입력하는데,

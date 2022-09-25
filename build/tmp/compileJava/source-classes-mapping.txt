@@ -14,6 +14,10 @@ com/example/demo/src/bungaeTalk/TalkController.java
  com.example.demo.src.bungaeTalk.TalkController
 com/example/demo/src/pay/PayProvider.java
  com.example.demo.src.pay.PayProvider
+com/example/demo/src/mypage_post/MyPagePostProvider.java
+ com.example.demo.src.mypage_post.MyPagePostProvider
+com/example/demo/src/mypage_post/MyPagePostController.java
+ com.example.demo.src.mypage_post.MyPagePostController
 com/example/demo/utils/ValidationRegex.java
  com.example.demo.utils.ValidationRegex
 com/example/demo/src/post/model/PostPostReq.java
@@ -24,8 +28,6 @@ com/example/demo/src/post/model/GetPostRes.java
  com.example.demo.src.post.model.GetPostRes
 com/example/demo/src/follow/model/PostFollowReq.java
  com.example.demo.src.follow.model.PostFollowReq
-com/example/demo/src/post/model/PostPostAssemble.java
- com.example.demo.src.post.model.PostPostAssemble
 com/example/demo/src/follow/FollowService.java
  com.example.demo.src.follow.FollowService
 com/example/demo/src/post/model/PostDetailRes.java
@@ -50,6 +52,8 @@ com/example/demo/src/point/PointController.java
  com.example.demo.src.point.PointController
 com/example/demo/src/post/PostService.java
  com.example.demo.src.post.PostService
+com/example/demo/src/mypage_post/MyPagePostDao.java
+ com.example.demo.src.mypage_post.MyPagePostDao
 com/example/demo/src/oauth/model/PostKakaoLoginReq.java
  com.example.demo.src.oauth.model.PostKakaoLoginReq
 com/example/demo/src/point/PointDao.java
@@ -132,6 +136,8 @@ com/example/demo/src/point/PointService.java
  com.example.demo.src.point.PointService
 com/example/demo/src/search/SearchDao.java
  com.example.demo.src.search.SearchDao
+com/example/demo/src/mypage_post/model/GetMyPostsRes.java
+ com.example.demo.src.mypage_post.model.GetMyPostsRes
 com/example/demo/src/user/model/PostJoinRes.java
  com.example.demo.src.user.model.PostJoinRes
 com/example/demo/src/user/UserController.java
