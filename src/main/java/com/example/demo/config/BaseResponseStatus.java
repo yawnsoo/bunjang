@@ -40,9 +40,11 @@ public enum BaseResponseStatus {
 
     post_MARKETS_invalid_category_name(false,2032,"유효하지않은 카테고리이름입니다."),
 
+    //Status
+    Check_Status(false,2050,"Status 값을 다시 한번 확인해주세요(0:판매완료 1:판매중 2:예약중 3:광고중)."),
 
-
-
+    //Safepay
+    Check_Safepay(false,2060,"Safepay 값을 다시 한번 확인해주세요(1:페이 가능)."),
 
     /**
      * 3000 : Response 오류

@@ -34,6 +34,21 @@ public class MyPagePostProvider {
 
     }
 
+    public List<GetMyPostsRes> getMyPostsWStatus(int userId, Integer status) throws BaseException {
+
+        List<GetMyPostsRes> getMyPostsRes = myPagePostDao.getMyPostsWStatus(userId,status);
+
+        return getMyPostsRes;
+
+    }
+
+    public List<GetMyPostsRes> getMyPostsWSafepay(int userId, Integer safepay) throws BaseException {
+
+        List<GetMyPostsRes> getMyPostsRes = myPagePostDao.getMyPostsWSafepay(userId,safepay);
+
+        return getMyPostsRes;
+
+    }
 
 
 }

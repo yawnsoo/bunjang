@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.example.demo.config.BaseResponseStatus.INVALID_USER_JWT;
+import static com.example.demo.config.BaseResponseStatus.*;
 
 @RestController
 @RequestMapping("/app/mypage")
@@ -34,10 +34,14 @@ public class MyPagePostController {
         this.jwtService = jwtService;
     }
 
-
+    /*
+     * 마이페이지 판매글 조회 API
+     * [GET] /:user_id?status=&safepay=
+     * @return BaseResponse<GetPostDetailRes>
+     * */
     @ResponseBody
     @GetMapping("/{user_id}")
-    public BaseResponse<List<GetMyPostsRes>> getMyPosts(@PathVariable("user_id") int userId) {
+    public BaseResponse<List<GetMyPostsRes>> getMyPosts(@PathVariable("user_id") int userId, @RequestParam(required = false) Integer status, @RequestParam(required = false) Integer safepay) {
 
         try {
             int userIdxByJwt = jwtService.getUserIdx();
@@ -46,8 +50,31 @@ public class MyPagePostController {
                 return new BaseResponse<>(INVALID_USER_JWT);
             }
 
+            if (status != null && safepay != null) {
+                return new BaseResponse<>(REQUEST_ERROR);
+            }
+
+            if (status != null && (-1 < status && status < 4)) { // 판매완, 판매중, 예약중, 광고중
+                List<GetMyPostsRes> getMyPostsRes = myPagePostProvider.getMyPostsWStatus(userId,status);
+                return new BaseResponse<>(getMyPostsRes);
+            } else if(status != null && (0 > status || status > 3)) {
+                return new BaseResponse<>(Check_Status);
+            }
+
+            if (safepay != null && safepay == 1){ //페이결제 가능
+                List<GetMyPostsRes> getMyPostsRes = myPagePostProvider.getMyPostsWSafepay(userId,safepay);
+                return new BaseResponse<>(getMyPostsRes);
+            } else if (safepay != null && safepay != 1) {
+                return new BaseResponse<>(Check_Safepay);
+            }
+
+
+
+            //전체
             List<GetMyPostsRes> getMyPostsRes = myPagePostProvider.getMyPosts(userId);
             return new BaseResponse<>(getMyPostsRes);
+
+
 
         }catch (BaseException exception){
             exception.printStackTrace();
