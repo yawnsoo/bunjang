@@ -43,6 +43,16 @@ public class UserProvider {
 
         }
     }
+    public int checkMarketName2(String market_name,int user_id) throws BaseException{
+        try{
+            return userDao.checkMarketName2(market_name,user_id);
+        }catch (Exception exception)
+        {
+            exception.printStackTrace();
+            throw new BaseException(DATABASE_ERROR);
+
+        }
+    }
 
 
     //일반 로그인

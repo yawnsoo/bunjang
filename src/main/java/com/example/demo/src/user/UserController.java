@@ -1,5 +1,6 @@
 package com.example.demo.src.user;
 
+import com.example.demo.src.s3.S3UploadController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.example.demo.config.BaseException;
@@ -9,6 +10,8 @@ import com.example.demo.utils.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.regex.Pattern;
 import java.util.List;
 
@@ -28,13 +31,17 @@ public class UserController {
     @Autowired
     private final JwtService jwtService;
 
+    @Autowired
+    private final S3UploadController s3UploadController;
 
 
 
-    public UserController(UserProvider userProvider, UserService userService, JwtService jwtService){
+
+    public UserController(UserProvider userProvider, UserService userService, JwtService jwtService ,S3UploadController s3UploadController){
         this.userProvider = userProvider;
         this.userService = userService;
         this.jwtService = jwtService;
+        this.s3UploadController = s3UploadController;
     }
 
     /**일반회원가입 POST */
@@ -177,7 +184,8 @@ public class UserController {
     @Transactional
     @ResponseBody
     @PatchMapping("/revise/{user_id}")
-    public BaseResponse<String> reviseUserInfo(@PathVariable("user_id")int user_id,@RequestBody PatchReviseReq patchReviseReq)
+    public BaseResponse<String> reviseUserInfo(@PathVariable("user_id")int user_id, @RequestPart(value ="json")PatchReviseReq patchReviseReq,
+                                               @RequestPart(value = "img")MultipartFile[] img) throws Exception
     {
         // 상점이름 빈칸체크 validation
         if(patchReviseReq.getMarket_name() == null){
@@ -192,11 +200,17 @@ public class UserController {
             return new BaseResponse<>(USERS_WRONG_MARKET_NAME);
         }
 
+
         //상점이름 중복 관련 validation
         try{
-            if(userProvider.checkMarketName(patchReviseReq.getMarket_name()) == 1){
-                return new BaseResponse<>(USERS_EXIST_MARKET_NAME);
+            if(userProvider.checkMarketName2(market_name,user_id) == 1)
+            {//원래상점이름을 전달했는지 체크 하고 아니라면 중복체크
+
+                if(userProvider.checkMarketName(patchReviseReq.getMarket_name()) == 1){
+                    return new BaseResponse<>(USERS_EXIST_MARKET_NAME);
+                }
             }
+
         }
         catch (BaseException exception)
         {
@@ -214,6 +228,9 @@ public class UserController {
                 return new BaseResponse<>(INVALID_USER_JWT);
             }
 
+            List<String> img_url = s3UploadController.upload(img);
+            String img_result = img_url.get(0);
+            patchReviseReq.setImage_path(img_result);
 
             String result = userService.reviseUserInfo(user_id,patchReviseReq);
             return new BaseResponse<>(result);
