@@ -63,6 +63,21 @@ public class UserDao {
         return this.jdbcTemplate.queryForObject(checkMarketNameQuery,int.class,checkMarketNameParam);
 
     }
+    public int checkMarketName2(String market_name,int user_id)
+    {
+        String checkMarketNameQuery ="select market_name from user where user_id = ?";
+        int checkMarketNameParam =user_id;
+        String result = this.jdbcTemplate.queryForObject(checkMarketNameQuery,String.class,checkMarketNameParam);
+        if(result.equals(market_name))
+        {//같다면 바꿀필요없음.
+            return 0;
+        }
+        else{//다르니까 중복체크.
+            return 1;
+        }
+
+
+    }
 
     //로그인
     public int login(PostLoginReq postLoginReq)
