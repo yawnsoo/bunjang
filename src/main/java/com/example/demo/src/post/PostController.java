@@ -5,13 +5,9 @@ import com.example.demo.config.BaseResponse;
 import com.example.demo.src.post.model.*;
 import com.example.demo.src.s3.S3UploadController;
 import com.example.demo.utils.JwtService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import jdk.nashorn.internal.ir.ObjectNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -78,6 +74,20 @@ public class PostController {
             exception.printStackTrace();
             return new BaseResponse<>((exception.getStatus()));
         }
+    }
+
+    /*
+     * 판매글 상세 조회 API
+     * [GET] /post/:post_id
+     * @return BaseResponse<GetPostDetailRes>
+     * */
+    @ResponseBody
+    @GetMapping("/{post_id}")
+    public BaseResponse<GetPostDetailRes> getPostDetail(@PathVariable("post_id") int postId) {
+
+        GetPostDetailRes getPostDetailRes = postProvider.getPostDetail(postId);
+        return new BaseResponse<>(getPostDetailRes);
+
     }
 
 

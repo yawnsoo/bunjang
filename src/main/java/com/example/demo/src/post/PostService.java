@@ -36,11 +36,11 @@ public class PostService {
 
             int post_id = postDao.createPost(postPostReq, userId);
 
-            GetPostDetailRes postDetail = postDao.getPostDetailRes(post_id);
+            PostDetailRes postDetail = postDao.PostDetailRes(post_id);
 
-            List<String> photos = postDao.addPhoto(img, post_id);
+            postDao.addPhotos(img, post_id);
 
-            List<String> tags = postDao.addTag(postPostReq, post_id);
+            List<String> tags = postDao.addTags(postPostReq, post_id);
 
             PostPostRes postPostRes = new PostPostRes(postDetail.getPost_id(),img,postDetail.getTitle(),postDetail.getRegion(), postDetail.getCreated_at(),postDetail.getCategory_large(),postDetail.getCategory_middle(),postDetail.getCategory_small(),tags,postDetail.getPrice(),postDetail.getContent(),postDetail.getCount(),postDetail.getIs_exchangable(),postDetail.getSafepay(),postDetail.getDelivery_fee(),postDetail.getPcondition());
 

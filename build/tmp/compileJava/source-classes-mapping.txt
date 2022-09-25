@@ -28,6 +28,8 @@ com/example/demo/src/post/model/PostPostAssemble.java
  com.example.demo.src.post.model.PostPostAssemble
 com/example/demo/src/follow/FollowService.java
  com.example.demo.src.follow.FollowService
+com/example/demo/src/post/model/PostDetailRes.java
+ com.example.demo.src.post.model.PostDetailRes
 com/example/demo/config/BaseResponseStatus.java
  com.example.demo.config.BaseResponseStatus
 com/example/demo/src/search/model/GetPostListRes.java

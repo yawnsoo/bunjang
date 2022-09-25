@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Repository
@@ -21,14 +22,14 @@ public class PostDao {
     public int createPost(PostPostReq postPostReq, int user_id) {
         String creatPostQuery = "Insert into post (user_id, title, region, large_category_id, middle_category_id, small_category_id, price, content, count, is_exchangable, safepay, delivery_fee, pcondition) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         int userIdParam = user_id;
-        Object[] createPostParams = new Object[]{userIdParam, postPostReq.getTitle(), postPostReq.getRegion(),postPostReq.getCategory_large(), postPostReq.getCategory_middle(), postPostReq.getCategory_small(), postPostReq.getPrice(), postPostReq.getContent(), postPostReq.getCount(), postPostReq.getIs_exchangable(), postPostReq.getSafepay(), postPostReq.getDelivery_fee(), postPostReq.getPcondition()};
+        Object[] createPostParams = new Object[]{userIdParam, postPostReq.getTitle(), postPostReq.getRegion(), postPostReq.getCategory_large(), postPostReq.getCategory_middle(), postPostReq.getCategory_small(), postPostReq.getPrice(), postPostReq.getContent(), postPostReq.getCount(), postPostReq.getIs_exchangable(), postPostReq.getSafepay(), postPostReq.getDelivery_fee(), postPostReq.getPcondition()};
         this.jdbcTemplate.update(creatPostQuery, createPostParams);
 
         String lastInsertIdQuery = "select last_insert_id()";
         return this.jdbcTemplate.queryForObject(lastInsertIdQuery, int.class);
     }
 
-    public List<String> addPhoto(List<String> img, int post_id) {
+    public List<String> addPhotos(List<String> img, int post_id) {
         List PhotoList = new ArrayList<String>();
         for (String s : img) {
             String addPhotoQuery = "Insert into post_photos (post_id, image_path) values (?,?)";
@@ -39,8 +40,8 @@ public class PostDao {
         return PhotoList;
     }
 
-//    public int addTag(PostTagReq postTagReq, int post_id) {
-    public List<String> addTag(PostPostReq postPostReq, int post_id) {
+    //    public int addTag(PostTagReq postTagReq, int post_id) {
+    public List<String> addTags(PostPostReq postPostReq, int post_id) {
         List<String> tag = postPostReq.getTags();
         List TagList = new ArrayList<String>();
         for (String s : tag) {
@@ -52,17 +53,17 @@ public class PostDao {
         return TagList;
     }
 
-    public GetPostDetailRes getPostDetailRes(int post_id) {
+    public PostDetailRes PostDetailRes(int post_id) {
         String getPostDetailQuery = "select post_id, post_id, user_id, title, price, content, count,\n" +
                 "       large_category_id, middle_category_id, small_category_id,\n" +
                 "       is_exchangable, safepay, delivery_fee, pcondition, region,\n" +
                 "       case when 24 >= timestampdiff(HOUR, created_at, current_time)\n" +
                 "        then concat(timestampdiff(HOUR, created_at, current_time),'시간 전')\n" +
                 "        else concat(timestampdiff(DAY, created_at, current_time),'일 전') end created_at\n" +
-                "from post where post_id=?;";
+                "from post where post_id=?";
         int getPostDetailParam = post_id;
         return this.jdbcTemplate.queryForObject(getPostDetailQuery,
-                (rs, rowNum) -> new GetPostDetailRes(
+                (rs, rowNum) -> new PostDetailRes(
                         rs.getInt("post_id"),
                         rs.getInt("user_id"),
                         rs.getString("title"),
@@ -197,4 +198,26 @@ public class PostDao {
                         rs.getString("image_path")
                 ), getPostsBySCParam);
     }
+
+
+    public List<String> getPhotos(int post_id) {
+        String getPhotosQuery = "select image_path from post_photos where post_id = ?";
+        int getPhotosParam = post_id;
+        return this.jdbcTemplate.query(getPhotosQuery,
+                (rs, rowNum) -> (
+                        rs.getString("image_path")
+                ), getPhotosParam);
+    }
+
+    public List<String> getTags(int post_id) {
+        String getTagsQuery = "select name from post_tags where post_id = ?";
+        int getTagsParam = post_id;
+        return this.jdbcTemplate.query(getTagsQuery,
+                (rs, rowNum) -> (
+                        rs.getString("name")
+                ), getTagsParam);
+    }
+
+
+
 }

@@ -1,10 +1,7 @@
 package com.example.demo.src.post;
 
 import com.example.demo.config.BaseException;
-import com.example.demo.src.post.model.GetLCategoryRes;
-import com.example.demo.src.post.model.GetMCategoryRes;
-import com.example.demo.src.post.model.GetPostRes;
-import com.example.demo.src.post.model.GetSCategoryRes;
+import com.example.demo.src.post.model.*;
 import com.example.demo.utils.JwtService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,5 +57,16 @@ public class PostProvider {
     public List<GetPostRes> getPostsBySC(Integer SCId) throws BaseException {
         List<GetPostRes> getPostsRes = postDao.getPostsBySC(SCId);
         return getPostsRes;
+    }
+
+
+    public GetPostDetailRes getPostDetail(int postId) {
+        PostDetailRes postDetailRes = postDao.PostDetailRes(postId);
+        List<String> photos = postDao.getPhotos(postId);
+        List<String> tags = postDao.getTags(postId);
+
+        GetPostDetailRes getPostDetailRes = new GetPostDetailRes(postDetailRes.getPost_id(), photos, postDetailRes.getUser_id(), postDetailRes.getTitle(), postDetailRes.getRegion(), postDetailRes.getCreated_at(), postDetailRes.getCategory_large(), postDetailRes.getCategory_middle(), postDetailRes.getCategory_small(), tags, postDetailRes.getPrice(), postDetailRes.getContent(), postDetailRes.getCount(), postDetailRes.getIs_exchangable(), postDetailRes.getSafepay(), postDetailRes.getDelivery_fee(), postDetailRes.getPcondition());
+
+        return getPostDetailRes;
     }
 }
