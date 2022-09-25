@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="ef149c03-aa0e-45f2-9503-9966c82f2d4a" name="dev_rising" url="http://dev.wogus4048.shop">
+        <fileTransfer rootFolder="/var/www/dev_springboot/api-server-spring-boot-final/" accessType="SFTP" host="54.180.215.103" port="22" sshConfigId="b141eb3b-3281-4407-8fd9-802b90c03ad7" sshConfig="ubuntu@54.180.215.103:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
