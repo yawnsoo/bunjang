@@ -113,4 +113,14 @@ public class JjimDao {
         return this.jdbcTemplate.update(deleteJjimPostQuery,deleteJjimPostParam);
     }
 
+    public int createJjimCollection(int userId, PostJjimCollectionReq postJjimCollectionReq) {
+        String createJjimCollectionQuery = "insert into jjim_collection (user_id, name) VALUES (?,?)";
+        Object[] createJjimCollectionParams = new Object[]{userId, postJjimCollectionReq.getName()};
+
+        this.jdbcTemplate.update(createJjimCollectionQuery, createJjimCollectionParams);
+
+        String lastInserIdQuery = "select last_insert_id()";
+        return this.jdbcTemplate.queryForObject(lastInserIdQuery,int.class);
+    }
+
 }

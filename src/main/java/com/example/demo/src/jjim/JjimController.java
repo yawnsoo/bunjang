@@ -89,8 +89,34 @@ public class JjimController {
     }
 
 
+    /*
+     * 찜한 판매글 조회 API
+     * [Post] /:user_id
+     * @return BaseResponse<PostJjimCollectionRes>
+     * */
+    @ResponseBody
+    @PostMapping("/{user_id}")
+    public BaseResponse<PostJjimCollectionRes> createJjimCollection(@PathVariable("user_id") int userId, @RequestBody PostJjimCollectionReq postJjimCollectionReq) {
 
+        //TODO
+        // - name : 10글자 이하인지
 
+        try{
+            int userIdxByJwt = jwtService.getUserIdx();
+            //userIdx와 접근한 유저가 같은지 확인
+            if (userId != userIdxByJwt) {
+                return new BaseResponse<>(INVALID_USER_JWT);
+            }
+
+            PostJjimCollectionRes postJjimCollectionRes = jjimService.createJjimCollection(userId,postJjimCollectionReq);
+            return new BaseResponse<>(postJjimCollectionRes);
+
+        }catch (BaseException exception){
+            exception.printStackTrace();
+            return new BaseResponse<>(exception.getStatus());
+        }
+
+    }
 
 
     /*
@@ -164,6 +190,9 @@ public class JjimController {
             return new BaseResponse<>(exception.getStatus());
         }
     }
+
+
+
 
 
 
