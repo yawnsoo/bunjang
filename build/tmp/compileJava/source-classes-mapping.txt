@@ -34,6 +34,8 @@ com/example/demo/src/post/model/PostDetailRes.java
  com.example.demo.src.post.model.PostDetailRes
 com/example/demo/src/s3/BASE64DecodedMultipartFile.java
  com.example.demo.src.s3.BASE64DecodedMultipartFile
+com/example/demo/src/account/model/GetAccountRes.java
+ com.example.demo.src.account.model.GetAccountRes
 com/example/demo/config/BaseResponseStatus.java
  com.example.demo.config.BaseResponseStatus
 com/example/demo/src/search/model/GetPostListRes.java
@@ -116,6 +118,8 @@ com/example/demo/src/post/PostProvider.java
  com.example.demo.src.post.PostProvider
 com/example/demo/src/search/SearchProvider.java
  com.example.demo.src.search.SearchProvider
+com/example/demo/src/account/AccountDao.java
+ com.example.demo.src.account.AccountDao
 com/example/demo/src/user/UserDao.java
  com.example.demo.src.user.UserDao
 com/example/demo/src/post/model/PostPhotoReq.java
@@ -136,14 +140,20 @@ com/example/demo/src/post/model/GetLCategoryRes.java
  com.example.demo.src.post.model.GetLCategoryRes
 com/example/demo/src/oauth/AuthService.java
  com.example.demo.src.oauth.AuthService
+com/example/demo/src/account/model/PostAccountReq.java
+ com.example.demo.src.account.model.PostAccountReq
 com/example/demo/src/test/TestController.java
  com.example.demo.src.test.TestController
 com/example/demo/src/post/model/PostTagReq.java
  com.example.demo.src.post.model.PostTagReq
+com/example/demo/src/account/AccountProvider.java
+ com.example.demo.src.account.AccountProvider
 com/example/demo/src/home/HomeController.java
  com.example.demo.src.home.HomeController
 com/example/demo/src/user/model/PostLoginReq.java
  com.example.demo.src.user.model.PostLoginReq
+com/example/demo/src/account/AccountService.java
+ com.example.demo.src.account.AccountService
 com/example/demo/src/point/PointService.java
  com.example.demo.src.point.PointService
 com/example/demo/src/search/SearchDao.java
@@ -156,6 +166,8 @@ com/example/demo/src/user/UserController.java
  com.example.demo.src.user.UserController
 com/example/demo/src/pay/PayService.java
  com.example.demo.src.pay.PayService
+com/example/demo/src/account/AccountController.java
+ com.example.demo.src.account.AccountController
 com/example/demo/src/search/SearchController.java
  com.example.demo.src.search.SearchController
 com/example/demo/src/bungaeTalk/model/PostTalkRoomRes.java

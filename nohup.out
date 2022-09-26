@@ -11758,3 +11758,95 @@ birthday =
 13:27:05.623 WARN  [File:AbstractHandlerExceptionResolver.java] [Func:logException] [Line:207] [Message:Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'text/plain' not supported]]- Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'text/plain' not supported]
 13:27:33.199 WARN  [File:AbstractHandlerExceptionResolver.java] [Func:logException] [Line:207] [Message:Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'text/plain' not supported]]- Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'text/plain' not supported]
 13:27:39.813 WARN  [File:AbstractHandlerExceptionResolver.java] [Func:logException] [Line:207] [Message:Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'text/plain' not supported]]- Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'text/plain' not supported]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.2)
+
+22:15:22.439 INFO  [File:PostProcessorRegistrationDelegate.java] [Func:postProcessAfterInitialization] [Line:350] [Message:Bean '(inner bean)#447a020' of type [com.amazonaws.auth.EC2ContainerCredentialsProviderWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]- Bean '(inner bean)#447a020' of type [com.amazonaws.auth.EC2ContainerCredentialsProviderWrapper] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+22:15:22.490 INFO  [File:PostProcessorRegistrationDelegate.java] [Func:postProcessAfterInitialization] [Line:350] [Message:Bean '(inner bean)#373ebf74' of type [com.amazonaws.auth.profile.ProfileCredentialsProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]- Bean '(inner bean)#373ebf74' of type [com.amazonaws.auth.profile.ProfileCredentialsProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+22:15:22.497 INFO  [File:PostProcessorRegistrationDelegate.java] [Func:postProcessAfterInitialization] [Line:350] [Message:Bean 'credentialsProvider' of type [org.springframework.cloud.aws.core.credentials.CredentialsProviderFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]- Bean 'credentialsProvider' of type [org.springframework.cloud.aws.core.credentials.CredentialsProviderFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+22:15:22.498 INFO  [File:PostProcessorRegistrationDelegate.java] [Func:postProcessAfterInitialization] [Line:350] [Message:Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)]- Bean 'credentialsProvider' of type [com.amazonaws.auth.AWSCredentialsProviderChain] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+22:15:22.515 WARN  [File:EC2MetadataUtils.java] [Func:getItems] [Line:414] [Message:Unable to retrieve the requested metadata (/latest/user-data/). The requested metadata is not found at http://169.254.169.254/latest/user-data/]- Unable to retrieve the requested metadata (/latest/user-data/). The requested metadata is not found at http://169.254.169.254/latest/user-data/
+com.amazonaws.SdkClientException: The requested metadata is not found at http://169.254.169.254/latest/user-data/
+	at com.amazonaws.internal.EC2ResourceFetcher.doReadResource(EC2ResourceFetcher.java:89)
+	at com.amazonaws.internal.EC2ResourceFetcher.doReadResource(EC2ResourceFetcher.java:70)
+	at com.amazonaws.internal.InstanceMetadataServiceResourceFetcher.readResource(InstanceMetadataServiceResourceFetcher.java:75)
+	at com.amazonaws.internal.EC2ResourceFetcher.readResource(EC2ResourceFetcher.java:66)
+	at com.amazonaws.util.EC2MetadataUtils.getItems(EC2MetadataUtils.java:407)
+	at com.amazonaws.util.EC2MetadataUtils.getData(EC2MetadataUtils.java:376)
+	at com.amazonaws.util.EC2MetadataUtils.getData(EC2MetadataUtils.java:372)
+	at com.amazonaws.util.EC2MetadataUtils.getUserData(EC2MetadataUtils.java:368)
+	at org.springframework.cloud.aws.core.env.ec2.AmazonEc2InstanceDataPropertySource.getUserData(AmazonEc2InstanceDataPropertySource.java:123)
+	at org.springframework.cloud.aws.core.env.ec2.AmazonEc2InstanceDataPropertySource.getProperty(AmazonEc2InstanceDataPropertySource.java:95)
+	at org.springframework.boot.context.properties.source.SpringConfigurationPropertySource.getConfigurationProperty(SpringConfigurationPropertySource.java:84)
+	at org.springframework.boot.context.properties.source.SpringIterableConfigurationPropertySource.getConfigurationProperty(SpringIterableConfigurationPropertySource.java:100)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource.findConfigurationProperty(ConfigurationPropertySourcesPropertySource.java:65)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource.findConfigurationProperty(ConfigurationPropertySourcesPropertySource.java:53)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertySource.getProperty(ConfigurationPropertySourcesPropertySource.java:42)
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:85)
+	at org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:68)
+	at org.springframework.core.env.AbstractPropertyResolver.getProperty(AbstractPropertyResolver.java:175)
+	at org.springframework.core.env.AbstractEnvironment.getProperty(AbstractEnvironment.java:551)
+	at org.springframework.boot.autoconfigure.dao.PersistenceExceptionTranslationAutoConfiguration.persistenceExceptionTranslationPostProcessor(PersistenceExceptionTranslationAutoConfiguration.java:47)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:638)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1336)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1179)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:571)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:531)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:213)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.registerBeanPostProcessors(PostProcessorRegistrationDelegate.java:232)
+	at org.springframework.context.support.AbstractApplicationContext.registerBeanPostProcessors(AbstractApplicationContext.java:767)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:572)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:767)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:426)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:326)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1311)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+	at com.example.demo.DemoApplication.main(DemoApplication.java:12)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:49)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:107)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:58)
+	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:88)
+22:15:23.377 INFO  [File:TomcatWebServer.java] [Func:initialize] [Line:108] [Message:Tomcat initialized with port(s): 9001 (http)]- Tomcat initialized with port(s): 9001 (http)
+22:15:23.406 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Initializing ProtocolHandler ["http-nio-9001"]]- Initializing ProtocolHandler ["http-nio-9001"]
+22:15:23.411 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Starting service [Tomcat]]- Starting service [Tomcat]
+22:15:23.412 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Starting Servlet engine: [Apache Tomcat/9.0.41]]- Starting Servlet engine: [Apache Tomcat/9.0.41]
+22:15:23.554 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Initializing Spring embedded WebApplicationContext]- Initializing Spring embedded WebApplicationContext
+22:15:23.555 INFO  [File:ServletWebServerApplicationContext.java] [Func:prepareWebApplicationContext] [Line:289] [Message:Root WebApplicationContext: initialization completed in 4433 ms]- Root WebApplicationContext: initialization completed in 4433 ms
+22:15:26.355 INFO  [File:UserDetailsServiceAutoConfiguration.java] [Func:getOrDeducePassword] [Line:86] [Message:
+
+Using generated security password: e262c24d-f6e6-4f7e-98e7-ef976f42efbb
+]- 
+
+Using generated security password: e262c24d-f6e6-4f7e-98e7-ef976f42efbb
+
+22:15:26.585 INFO  [File:DefaultSecurityFilterChain.java] [Func:<init>] [Line:51] [Message:Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2b61a019, org.springframework.security.web.context.SecurityContextPersistenceFilter@3bead518, org.springframework.security.web.header.HeaderWriterFilter@a20b94b, org.springframework.security.web.authentication.logout.LogoutFilter@1fde4f40, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@46d9aec8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c504e66, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@11a00961, org.springframework.security.web.session.SessionManagementFilter@1cc9cfb2, org.springframework.security.web.access.ExceptionTranslationFilter@592238c5]]- Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2b61a019, org.springframework.security.web.context.SecurityContextPersistenceFilter@3bead518, org.springframework.security.web.header.HeaderWriterFilter@a20b94b, org.springframework.security.web.authentication.logout.LogoutFilter@1fde4f40, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@46d9aec8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c504e66, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@11a00961, org.springframework.security.web.session.SessionManagementFilter@1cc9cfb2, org.springframework.security.web.access.ExceptionTranslationFilter@592238c5]
+22:15:27.007 INFO  [File:ExecutorConfigurationSupport.java] [Func:initialize] [Line:181] [Message:Initializing ExecutorService 'applicationTaskExecutor']- Initializing ExecutorService 'applicationTaskExecutor'
+22:15:27.875 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Starting ProtocolHandler ["http-nio-9001"]]- Starting ProtocolHandler ["http-nio-9001"]
+22:15:27.941 INFO  [File:TomcatWebServer.java] [Func:start] [Line:220] [Message:Tomcat started on port(s): 9001 (http) with context path '']- Tomcat started on port(s): 9001 (http) with context path ''
+HEAP Size(M) : 33 MB
+22:15:44.095 INFO  [File:DirectJDKLog.java] [Func:log] [Line:173] [Message:Initializing Spring DispatcherServlet 'dispatcherServlet']- Initializing Spring DispatcherServlet 'dispatcherServlet'
+22:15:44.095 INFO  [File:FrameworkServlet.java] [Func:initServletBean] [Line:525] [Message:Initializing Servlet 'dispatcherServlet']- Initializing Servlet 'dispatcherServlet'
+22:15:44.097 INFO  [File:FrameworkServlet.java] [Func:initServletBean] [Line:547] [Message:Completed initialization in 2 ms]- Completed initialization in 2 ms
+22:15:44.276 INFO  [File:HikariDataSource.java] [Func:getConnection] [Line:110] [Message:HikariPool-1 - Starting...]- HikariPool-1 - Starting...
+22:15:45.073 INFO  [File:HikariDataSource.java] [Func:getConnection] [Line:123] [Message:HikariPool-1 - Start completed.]- HikariPool-1 - Start completed.
