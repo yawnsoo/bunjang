@@ -69,4 +69,14 @@ public class HomeProvider {
             throw new BaseException(DATABASE_ERROR);
         }
     }
+
+//    public int checkFollowInfo(int userId, int brandId) throws  BaseException {
+//        try {
+//            return homeDao.checkFollowInfo(userId, brandId);
+//        } catch (Exception exception) {
+//            throw new BaseException(DATABASE_ERROR);
+//        }
+//    }
+
+
 }

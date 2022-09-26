@@ -3,9 +3,7 @@ package com.example.demo.src.home;
 
 import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
-import com.example.demo.src.home.model.GetBrandPostsRes;
-import com.example.demo.src.home.model.GetBrandsRes;
-import com.example.demo.src.home.model.GetHomePostsRes;
+import com.example.demo.src.home.model.*;
 import com.example.demo.utils.JwtService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,10 +24,14 @@ public class HomeController {
     private final HomeProvider homeProvider;
 
     @Autowired
+    private final HomeService homeService;
+
+    @Autowired
     private final JwtService jwtService;
 
-    public HomeController(HomeProvider homeProvider, JwtService jwtService) {
+    public HomeController(HomeProvider homeProvider, HomeService homeService, JwtService jwtService) {
         this.homeProvider = homeProvider;
+        this.homeService = homeService;
         this.jwtService = jwtService;
     }
 
@@ -95,6 +97,28 @@ public class HomeController {
      * [Post] /:user_id/brands
      * @return BaseResponse<List<GetBrandsRes>>
      * */
+//    @ResponseBody
+//    @PostMapping("/{user_id}/brands")
+//    public BaseResponse<PostBrandFollowRes> postBrandFollow(@PathVariable("user_id") int userId ,@RequestBody PostBrandFollowReq postBrandFollowReq) {
+//        try {
+//
+//            int userIdxByJwt = jwtService.getUserIdx();
+//            //userIdx와 접근한 유저가 같은지 확인
+//            if (userId != userIdxByJwt) {
+//                return new BaseResponse<>(INVALID_USER_JWT);
+//            }
+//
+//
+//            PostBrandFollowRes postBrandFollowRes = homeService.postBrandFollow(userId, postBrandFollowReq);
+//
+//            return new BaseResponse<>(postBrandFollowRes);
+//
+//        } catch (BaseException exception){
+//            exception.printStackTrace();
+//            return new BaseResponse<>(exception.getStatus());
+//        }
+//    }
+
 
 
 

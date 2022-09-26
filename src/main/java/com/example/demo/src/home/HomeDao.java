@@ -19,14 +19,6 @@ public class HomeDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    private int post_id;
-    private String imgUrl;
-    private int price;
-    private String title;
-    private int safepay;
-    private String region;
-    private String created_at;
-    private int jjim;
 
     public List<GetHomePostsRes> getHomePosts(int userId) {
         String getHomePostsQuery = "select p.post_id, image_path, price, title, safepay, region,\n" +
@@ -116,6 +108,12 @@ public class HomeDao {
                         rs.getInt("jjim")
                 ), getPostsParam);
     }
+
+//    public int checkFollowInfo(int userId, int brandId) {
+//        String checkFollowInfoQuery = "select exists(select user_id from brand_follow where user_id =? and brand_id =?)";
+//        Object[] checkFollowInfoParam = new Object[]{userId, brandId};
+//        return this.jdbcTemplate.queryForObject(checkFollowInfoQuery, int.class, checkFollowInfoParam);
+//    }
 
 
 }
