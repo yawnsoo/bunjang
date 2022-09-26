@@ -26,8 +26,9 @@ public class MyPagePostDao {
         String getMyPostsQuery = "select p.post_id, price, title, content, safepay, image_path\n" +
                 "from post p\n" +
                 "    left join post_photos pp on p.post_id = pp.post_id\n" +
-                "where user_id = ?\n" +
-                "group by p.post_id";
+                "where user_id = 16\n" +
+                "group by p.post_id\n" +
+                "ORDER BY post_id DESC";
         int getMyPostsParam = userId;
         return this.jdbcTemplate.query(getMyPostsQuery,
                 (rs, rowNum) -> new GetMyPostsRes(
@@ -46,7 +47,8 @@ public class MyPagePostDao {
                 "from post p\n" +
                 "    left join post_photos pp on p.post_id = pp.post_id\n" +
                 "where user_id = ? and p.status = ?\n" +
-                "group by p.post_id";
+                "group by p.post_id\n" +
+                "ORDER BY post_id DESC";
         Object[] getMyPostsParam = new Object[]{userId, status};
         return this.jdbcTemplate.query(getMyPostsQuery,
                 (rs, rowNum) -> new GetMyPostsRes(
@@ -64,7 +66,8 @@ public class MyPagePostDao {
                 "from post p\n" +
                 "    left join post_photos pp on p.post_id = pp.post_id\n" +
                 "where user_id = ? and p.safepay = ?\n" +
-                "group by p.post_id";
+                "group by p.post_id\n" +
+                "ORDER BY post_id DESC";
         Object[] getMyPostsParam = new Object[]{userId, safepay};
         return this.jdbcTemplate.query(getMyPostsQuery,
                 (rs, rowNum) -> new GetMyPostsRes(
