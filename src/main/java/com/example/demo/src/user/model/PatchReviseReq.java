@@ -11,7 +11,8 @@ import lombok.Setter;
 @NoArgsConstructor
 
 public class PatchReviseReq {
-    private String image_path;
+    private String encoded_image;
     private String market_name;
     private String content;
+    private String img_url;
 }

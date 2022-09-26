@@ -147,7 +147,7 @@ public class UserDao {
     public int reviseUserInfo(int user_id,PatchReviseReq patchReviseReq)
     {
         String reviseQuery = "update user set image_path =?,market_name =?,content =? where user_id =?";
-        Object[] reviseParams = new Object[]{patchReviseReq.getImage_path(),patchReviseReq.getMarket_name(),patchReviseReq.getContent(),user_id};
+        Object[] reviseParams = new Object[]{patchReviseReq.getImg_url(),patchReviseReq.getMarket_name(),patchReviseReq.getContent(),user_id};
 
         return this.jdbcTemplate.update(reviseQuery,reviseParams); //성공하면 1 아니면 다른숫자.
     }
@@ -185,14 +185,15 @@ public class UserDao {
     //특정유버정보 조회
     public GetUserInfoRes getUser(int user_id)
     {
-        String getUserQuery = "select user_id,market_name,image_path,content from user where user_id = ?";
+        String getUserQuery = "select user_id,market_name,image_path,content,(select count(*) from follow where followee_id = ? and status = 1) as follower_number from user where user_id = ?";
         int getParam = user_id;
         return this.jdbcTemplate.queryForObject(getUserQuery,(rs, rowNum) -> new GetUserInfoRes(
                 rs.getInt("user_id"),
                 rs.getString("market_name"),
                 rs.getString("image_path"),
-                rs.getString("content")
-        ),getParam );
+                rs.getString("content"),
+                rs.getInt("follower_number")
+        ),getParam,getParam );
 
     }
 

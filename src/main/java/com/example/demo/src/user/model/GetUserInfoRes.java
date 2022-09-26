@@ -14,5 +14,6 @@ public class GetUserInfoRes {
     private String market_name;
     private String image_url;
     private String market_content;
+    private int follower_number;
 
 }
