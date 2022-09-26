@@ -42,8 +42,20 @@ public class PostController {
    * @return BaseResponse<PostPostRes>
    * */
     @ResponseBody
-    @PostMapping(value = "",consumes = MediaType.ALL_VALUE)
-    public BaseResponse<PostPostRes> createPost(@RequestPart(value = "json") PostPostReq postPostReq,
+    @PostMapping("")
+    public BaseResponse<PostPostRes> createPost(@RequestPart(value = "title") String title ,
+                                                @RequestPart(value = "region") String region ,
+                                                @RequestPart(value = "category_large") int category_large ,
+                                                @RequestPart(value = "category_middle") int category_middle ,
+                                                @RequestPart(value = "category_small") int category_small ,
+                                                @RequestPart(value = "tags") List<String> tags ,
+                                                @RequestPart(value = "price") int price ,
+                                                @RequestPart(value = "content") String content ,
+                                                @RequestPart(value = "count") int count ,
+                                                @RequestPart(value = "is_exchangable") int is_exchangable ,
+                                                @RequestPart(value = "safepay") int safepay ,
+                                                @RequestPart(value = "delivery_fee") int delivery_fee ,
+                                                @RequestPart(value = "pcondition") int pcondition ,
                                                 @RequestPart(value = "img") MultipartFile[] img) throws Exception {
 
         //FIXME
@@ -65,7 +77,7 @@ public class PostController {
 
 //        ResponseEntity<Object> imgUrl = s3UploadController.upload(img);
         List<String> imgUrl = s3UploadController.upload(img);
-
+        PostPostReq postPostReq = new PostPostReq(title, region, category_large, category_middle, category_small, tags, price, content, count, is_exchangable, safepay, delivery_fee, pcondition);
 
         try {
             int userId = jwtService.getUserIdx();

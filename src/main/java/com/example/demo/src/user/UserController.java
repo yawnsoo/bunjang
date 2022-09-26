@@ -184,17 +184,21 @@ public class UserController {
 
     @Transactional
     @ResponseBody
-    @PatchMapping("/revise/{user_id}")
-    public BaseResponse<String> reviseUserInfo(@PathVariable("user_id")int user_id, @RequestPart(value ="json")PatchReviseReq patchReviseReq,
+    @PatchMapping(value ="/revise/{user_id}",consumes = {"multipart/form-data"})
+    public BaseResponse<String> reviseUserInfo(@PathVariable("user_id")int user_id, @RequestPart(value ="market_name") String market_name,
+                                               @RequestPart(value = "content")String content,
                                                @RequestPart(value = "img")MultipartFile[] img) throws Exception
     {
+        PatchReviseReq patchReviseReq = new PatchReviseReq();
+        patchReviseReq.setMarket_name(market_name);
+        patchReviseReq.setContent(content);
+
         // 상점이름 빈칸체크 validation
         if(patchReviseReq.getMarket_name() == null){
             return new BaseResponse<>(USERS_EMPTY_USER_MARKET_NAME);
         }
 
         //상점이름 한글,영어,숫자만가능에 관련한 validation
-        String market_name = patchReviseReq.getMarket_name();
         boolean market_name_result = Pattern.matches("^[a-zA-Z가-힣0-9]*$",market_name);
         if(!market_name_result)
         {
@@ -245,6 +249,46 @@ public class UserController {
 
             String result = userService.reviseUserInfo(user_id,patchReviseReq);
             return new BaseResponse<>(result);
+
+        }catch (BaseException exception)
+        {
+            exception.printStackTrace();
+            return new BaseResponse<>(exception.getStatus());
+        }
+
+    }
+
+
+    /**
+     * 특정 유저 정보 조회
+     * **/
+    @ResponseBody
+    @GetMapping({"/{user_id}"})
+    public BaseResponse<GetUserInfoRes> getUser (@PathVariable("user_id")int user_id)
+    {
+        //pathvariable로 입력받는 user_id에 대한 validation처리 (활성화된 아이디인지)
+        try{
+            int user_result = userProvider.checkUser(user_id);
+
+            if(user_result ==0)
+            {
+                return new BaseResponse<>(NOT_EXIST_USER);
+            }else if(user_result ==-1)
+            {
+                return new BaseResponse<>(WITHDRAW_USER);
+            }
+        }catch (BaseException exception)
+        {
+            exception.printStackTrace();
+            return new BaseResponse<>(exception.getStatus());
+        }
+
+        try{
+            GetUserInfoRes getUserInfoRes = userProvider.getUser(user_id);
+
+            return new BaseResponse<>(getUserInfoRes);
+
+
 
         }catch (BaseException exception)
         {

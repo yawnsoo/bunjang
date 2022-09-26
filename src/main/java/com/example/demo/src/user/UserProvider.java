@@ -88,6 +88,30 @@ public class UserProvider {
 
 
     }
+    public GetUserInfoRes getUser(int user_id) throws BaseException
+    {
+        try{
+            return userDao.getUser(user_id);
+
+        }
+        catch (Exception exception)
+        {
+            exception.printStackTrace();
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
+    public int checkUser(int user_id) throws BaseException
+    {
+        try{
+            return userDao.checkUserStatus(user_id);
+
+        }catch (Exception exception)
+        {
+            exception.printStackTrace();
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
 
 
 
