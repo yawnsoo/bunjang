@@ -26,7 +26,7 @@ public class MyPagePostDao {
         String getMyPostsQuery = "select p.post_id, price, title, content, safepay, image_path\n" +
                 "from post p\n" +
                 "    left join post_photos pp on p.post_id = pp.post_id\n" +
-                "where user_id = 16\n" +
+                "where user_id = ?\n" +
                 "group by p.post_id\n" +
                 "ORDER BY post_id DESC";
         int getMyPostsParam = userId;
