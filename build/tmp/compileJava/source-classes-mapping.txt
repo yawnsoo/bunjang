@@ -84,6 +84,8 @@ com/example/demo/src/post/model/PostPostRes.java
  com.example.demo.src.post.model.PostPostRes
 com/example/demo/config/BaseException.java
  com.example.demo.config.BaseException
+com/example/demo/src/user/model/GetUserInfoRes.java
+ com.example.demo.src.user.model.GetUserInfoRes
 com/example/demo/src/point/model/PostPointHistoryReq.java
  com.example.demo.src.point.model.PostPointHistoryReq
 com/example/demo/src/user/model/PostJoinReq.java
