@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.MissingServletRequestPartException;
 
+import java.util.Base64;
 import java.util.regex.Pattern;
 import java.util.List;
 
@@ -184,14 +185,18 @@ public class UserController {
 
     @Transactional
     @ResponseBody
-    @PatchMapping(value ="/revise/{user_id}",consumes = {"multipart/form-data"})
-    public BaseResponse<String> reviseUserInfo(@PathVariable("user_id")int user_id, @RequestPart(value ="market_name") String market_name,
-                                               @RequestPart(value = "content")String content,
-                                               @RequestPart(value = "img")MultipartFile[] img) throws Exception
+    @PatchMapping(value ="/revise/{user_id}")
+    public BaseResponse<String> reviseUserInfo(@PathVariable("user_id")int user_id, @RequestBody PatchReviseReq patchReviseReq) throws Exception
     {
-        PatchReviseReq patchReviseReq = new PatchReviseReq();
-        patchReviseReq.setMarket_name(market_name);
-        patchReviseReq.setContent(content);
+        String market_name = patchReviseReq.getMarket_name();
+        String imgUrl;
+        if(patchReviseReq.getEncoded_image() != null)
+        {
+            String base64EncodedFile = patchReviseReq.getEncoded_image();
+            byte[] decodedFile = Base64.getMimeDecoder().decode(base64EncodedFile);
+            imgUrl = s3UploadController.upload2(decodedFile);
+            patchReviseReq.setImg_url(imgUrl);
+        }
 
         // 상점이름 빈칸체크 validation
         if(patchReviseReq.getMarket_name() == null){
@@ -232,20 +237,6 @@ public class UserController {
             if(user_id != userIdxByJwt){
                 return new BaseResponse<>(INVALID_USER_JWT);
             }
-            String img_result = "";
-
-            try{
-                List<String> img_url = s3UploadController.upload(img);
-                img_result = img_url.get(0);
-
-            }catch (Exception exception)
-            {
-
-            }
-
-
-
-            patchReviseReq.setImage_path(img_result);
 
             String result = userService.reviseUserInfo(user_id,patchReviseReq);
             return new BaseResponse<>(result);

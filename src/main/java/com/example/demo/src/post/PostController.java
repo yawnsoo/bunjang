@@ -48,12 +48,8 @@ public class PostController {
    * */
     @ResponseBody
     @PostMapping("")
-<<<<<<< HEAD
     public BaseResponse<PostPostRes> createPost(@RequestBody PostPostReq postPostReq) throws Exception {
-=======
-    public BaseResponse<PostPostRes> createPost(@RequestPart(value = "json") PostPostReq postPostReq,
-                                                @RequestPart(value = "img") MultipartFile[] img) throws Exception {
->>>>>>> 57bc529935b3de764abcfed7e97f2463025646df
+
 
         //FIXME
         // - 카테고리 입력 받는거로 수정해야함
@@ -73,7 +69,6 @@ public class PostController {
         //  테이블 분리 되어 있음 >>> 각 입력 api 만들고 transaction 사용?
 
 //        ResponseEntity<Object> imgUrl = s3UploadController.upload(img);
-<<<<<<< HEAD
         String base64EncodedFile = postPostReq.getEncoded_image();
         byte[] decodedFile = Base64.getMimeDecoder().decode(base64EncodedFile);
 
@@ -81,9 +76,6 @@ public class PostController {
 
         String imgUrl = s3UploadController.upload2(decodedFile);
 
-=======
-        List<String> imgUrl = s3UploadController.upload(img);
->>>>>>> 57bc529935b3de764abcfed7e97f2463025646df
 
         try {
             int userId = jwtService.getUserIdx();
