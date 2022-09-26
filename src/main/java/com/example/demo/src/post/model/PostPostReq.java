@@ -13,6 +13,7 @@ public class PostPostReq {
 
 //    private List<String> imgUrls;
     private String title;
+    private String encoded_image;
     private String region;
     private int category_large;
     private int category_middle;

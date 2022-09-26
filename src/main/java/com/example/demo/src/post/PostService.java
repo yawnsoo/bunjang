@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.example.demo.config.BaseResponseStatus.DATABASE_ERROR;
+
 @Service
 public class PostService {
     final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -27,12 +29,9 @@ public class PostService {
     public PostPostRes createPost(PostPostReq postPostReq, int user_id, List<String> img) throws BaseException {
         //validation
 
-//        try {
+        try {
             int userId = user_id;
 
-//            PostPostReq postPostReq = postPostAssemble.getPostPostReq();
-//            PostPhotoReq postPhotoReq = postPostAssemble.getPostPhotoReq();
-//            PostTagReq postTagReq = postPostAssemble.getPostTagReq();
 
             int post_id = postDao.createPost(postPostReq, userId);
 
@@ -45,9 +44,9 @@ public class PostService {
             PostPostRes postPostRes = new PostPostRes(postDetail.getPost_id(),img,postDetail.getTitle(),postDetail.getRegion(), postDetail.getCreated_at(),postDetail.getCategory_large(),postDetail.getCategory_middle(),postDetail.getCategory_small(),tags,postDetail.getPrice(),postDetail.getContent(),postDetail.getCount(),postDetail.getIs_exchangable(),postDetail.getSafepay(),postDetail.getDelivery_fee(),postDetail.getPcondition());
 
             return postPostRes;
-//        } catch (Exception exception) {
-//            throw new BaseException(DATABAS_ERROR);
-//        }
+        } catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
     }
 
 //    public PostPhotoRes addPhoto(PostPhotoReq postPhotoReq) throws BaseException{

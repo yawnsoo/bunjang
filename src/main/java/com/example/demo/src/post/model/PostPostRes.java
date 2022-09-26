@@ -13,7 +13,7 @@ import java.util.List;
 public class PostPostRes {
 
     private int post_id;
-    private List<String> imgUrls;
+    private String encoded_image;
     private String title;
     private String region;
     private String created_at;

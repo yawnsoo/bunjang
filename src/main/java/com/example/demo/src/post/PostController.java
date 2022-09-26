@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Base64;
 import java.util.List;
 
 @RestController
@@ -42,8 +43,7 @@ public class PostController {
    * */
     @ResponseBody
     @PostMapping("")
-    public BaseResponse<PostPostRes> createPost(@RequestPart(value = "json") PostPostReq postPostReq,
-                                                @RequestPart(value = "img") MultipartFile[] img) throws Exception {
+    public BaseResponse<PostPostRes> createPost(@RequestBody PostPostReq postPostReq) throws Exception {
 
         //FIXME
         // - 카테고리 입력 받는거로 수정해야함
@@ -63,7 +63,9 @@ public class PostController {
         //  테이블 분리 되어 있음 >>> 각 입력 api 만들고 transaction 사용?
 
 //        ResponseEntity<Object> imgUrl = s3UploadController.upload(img);
-        List<String> imgUrl = s3UploadController.upload(img);
+        String base64EncodedFile = postPostReq.getEncoded_image();
+        byte[] decodedFile = Base64.getMimeDecoder().decode(base64EncodedFile);
+        String imgUrl = s3UploadController.upload2(decodedFile);
 
 
         try {
@@ -89,6 +91,29 @@ public class PostController {
         return new BaseResponse<>(getPostDetailRes);
 
     }
+
+
+
+    /*
+     * 판매글 삭제 API
+     * [Patch] /post/:post_id
+     * @return BaseResponse<GetPostDetailRes>
+     * */
+
+
+
+
+
+
+    /*
+     * 판매글 수정 API
+     * [Patch] /post/:post_id/edit
+     * @return BaseResponse<GetPostDetailRes>
+     * */
+
+
+
+
 
 
     /*
@@ -126,57 +151,6 @@ public class PostController {
     }
 
 
-    /*
-     * 판매글 사진 등록 API
-     * [Post] /post/:post_id/photo
-     * @return BaseResponse<PostPhotoRes>
-     * */
-//    @ResponseBody
-//    @PostMapping("/{post_id}/photo")
-//    public BaseResponse<PostPhotoRes> addPhoto(@PathVariable("post_id") int post_id , @RequestBody PostPhotoReq postPhotoReq) {
-//
-//        //TODO
-//        // - validation
-//        // - 사진 1개만 등록 가능.... 한번에 여러개 추가 가능하도록 수정
-//
-//        try {
-//            postPhotoReq.setPost_id(post_id);
-//
-//            PostPhotoRes postPhotoRes = postService.addPhoto(postPhotoReq);
-//            return new BaseResponse<>(postPhotoRes);
-//        }
-//        catch (BaseException exception){
-//            exception.printStackTrace();
-//            return new BaseResponse<>(exception.getStatus());
-//        }
-//
-//    }
-
-
-    /*
-     * 판매글 태그 등록 API
-     * [Post] /post/:post_id/tag
-     * @return BaseResponse<PostTagRes>
-     * */
-//    @ResponseBody
-//    @PostMapping("/{post_id}/tag")
-//    public BaseResponse<PostTagRes> addTag(@PathVariable("post_id") int post_id, @RequestBody PostTagReq postTagReq) {
-//
-//        //TODO
-//        // - validation
-//        // - 태그 1개만 등록 가능.... 한번에 여러개 추가 가능하도록 수정
-//
-//        try{
-//            postTagReq.setPost_id(post_id);
-//
-//            PostTagRes postTagRes = postService.addTag(postTagReq);
-//            return new BaseResponse<>(postTagRes);
-//        }
-//        catch (BaseException exception){
-//            exception.printStackTrace();
-//            return new BaseResponse<>(exception.getStatus());
-//        }
-//    }
 
     /*
      * 판매글 카테고리 대분류 선택 API
@@ -237,13 +211,6 @@ public class PostController {
 
 
 
-
-
-    /*
-    * 옵션 선택 API
-    * 지금은 createPost에서 한번에 입력하는데,
-    * 수량,상품상태,교환 Post 방식 API를 따로 빼서 만들어야하나??
-    * */
 
 
 
