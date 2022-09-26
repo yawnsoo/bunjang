@@ -182,6 +182,22 @@ public class UserDao {
         }
     }
 
+    //특정유버정보 조회
+    public GetUserInfoRes getUser(int user_id)
+    {
+        String getUserQuery = "select user_id,market_name,image_path,content from user where user_id = ?";
+        int getParam = user_id;
+        return this.jdbcTemplate.queryForObject(getUserQuery,(rs, rowNum) -> new GetUserInfoRes(
+                rs.getInt("user_id"),
+                rs.getString("market_name"),
+                rs.getString("image_path"),
+                rs.getString("content")
+        ),getParam );
+
+    }
+
+
+
 
 
 
