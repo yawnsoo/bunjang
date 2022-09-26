@@ -39,6 +39,13 @@ public class PostDao {
         }
         return PhotoList;
     }
+    public String addPhotos2 (String img, int post_id) {
+        String addPhotoQuery = "Insert into post_photos (post_id, image_path) values (?,?)";
+        Object[] addPhotoParams = new Object[]{post_id, img};
+        this.jdbcTemplate.update(addPhotoQuery, addPhotoParams);
+
+        return img;
+    }
 
     //    public int addTag(PostTagReq postTagReq, int post_id) {
     public List<String> addTags(PostPostReq postPostReq, int post_id) {

@@ -1,5 +1,6 @@
 package com.example.demo.src.post;
 
+import com.amazonaws.services.s3.AmazonS3Client;
 import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
 import com.example.demo.src.post.model.*;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.ByteArrayInputStream;
+import java.util.Base64;
 import java.util.List;
 
 @RestController
@@ -27,6 +30,9 @@ public class PostController {
     @Autowired
     private final S3UploadController s3UploadController;
 
+    @Autowired
+    AmazonS3Client amazonS3Client;
+
     public PostController(PostProvider postProvider, PostService postService, JwtService jwtService, S3UploadController s3UploadController) {
         this.postProvider = postProvider;
         this.postService = postService;
@@ -42,20 +48,7 @@ public class PostController {
    * */
     @ResponseBody
     @PostMapping("")
-    public BaseResponse<PostPostRes> createPost(@RequestPart(value = "title") String title ,
-                                                @RequestPart(value = "region") String region ,
-                                                @RequestPart(value = "category_large") int category_large ,
-                                                @RequestPart(value = "category_middle") int category_middle ,
-                                                @RequestPart(value = "category_small") int category_small ,
-                                                @RequestPart(value = "tags") List<String> tags ,
-                                                @RequestPart(value = "price") int price ,
-                                                @RequestPart(value = "content") String content ,
-                                                @RequestPart(value = "count") int count ,
-                                                @RequestPart(value = "is_exchangable") int is_exchangable ,
-                                                @RequestPart(value = "safepay") int safepay ,
-                                                @RequestPart(value = "delivery_fee") int delivery_fee ,
-                                                @RequestPart(value = "pcondition") int pcondition ,
-                                                @RequestPart(value = "img") MultipartFile[] img) throws Exception {
+    public BaseResponse<PostPostRes> createPost(@RequestBody PostPostReq postPostReq) throws Exception {
 
         //FIXME
         // - 카테고리 입력 받는거로 수정해야함
@@ -75,12 +68,17 @@ public class PostController {
         //  테이블 분리 되어 있음 >>> 각 입력 api 만들고 transaction 사용?
 
 //        ResponseEntity<Object> imgUrl = s3UploadController.upload(img);
-        List<String> imgUrl = s3UploadController.upload(img);
-        PostPostReq postPostReq = new PostPostReq(title, region, category_large, category_middle, category_small, tags, price, content, count, is_exchangable, safepay, delivery_fee, pcondition);
+        String base64EncodedFile = postPostReq.getEncoded_image();
+        byte[] decodedFile = Base64.getMimeDecoder().decode(base64EncodedFile);
+
+
+
+        String imgUrl = s3UploadController.upload2(decodedFile);
+
 
         try {
             int userId = jwtService.getUserIdx();
-            PostPostRes postPostRes = postService.createPost(postPostReq, userId, imgUrl);
+            PostPostRes postPostRes = postService.createPost2(postPostReq, userId,imgUrl);
             return new BaseResponse<>(postPostRes);
         } catch (BaseException exception) {
             exception.printStackTrace();
