@@ -9,8 +9,10 @@ import com.example.demo.utils.JwtService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.*;
 import java.util.List;
 
 import static com.example.demo.config.BaseResponseStatus.*;
@@ -40,7 +42,7 @@ public class MyPagePostController {
      * @return BaseResponse<GetPostDetailRes>
      * */
     @ResponseBody
-    @GetMapping("/{user_id}")
+    @GetMapping(value = "/{user_id}")
     public BaseResponse<List<GetMyPostsRes>> getMyPosts(@PathVariable("user_id") int userId, @RequestParam(required = false) Integer status, @RequestParam(required = false) Integer safepay) {
 
         try {
