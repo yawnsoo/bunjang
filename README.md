@@ -1,18 +1,3 @@
-### git
-/*pull*/
-git pull origin post
-
-/*push*/
-git add .
-git commit -m '[메세지]'
-git push -u origin post
-
-
-### Spring
-sudo ./gradlew clean build
-java -jar build/libs/demo-0.0.1-SNAPSHOT.jar
-
-
 # 2022/09/14
 ERD설계 진행중
 개발일지
@@ -29,7 +14,7 @@ API 명세서 작성 진행
 - "판매글 등록" API
 
 # 2022/09/20 (화)
-- "태그 등록" API ()
+- "태그 등록" API
 - "사진 등록" API
 
 # 2022/09/21 (수)
@@ -63,13 +48,35 @@ API 명세서 작성 진행
 # 2022/09/25(일)
 - 판매중 상품 조회(홈) API
 - 홈 화면 브랜드 목록 조회 API
-- 홈 화면 브랜드 추가 API
 - 홈 화면 브랜드 상품 조회 API
-- 
+- 홈 추천 판매글 조회
 
-- "옵션 선택" API ()
-- "지역 선택" API ()
+# 2022/09/26(월)
+- 판매글 삭제
+- 판매글 수정
+- 찜한 상품 및 컬렉션 조회
+- 찜 삭제
+- 찜컬렉션 생성
+- 찜컬렉션에 저장한 상품 조회
+- 찜한 상품 수정(찜컬렉션 이동)
+- 찜컬렉션 수정
+- 찜컬렉션 삭제
 
 
 
-``
+
+### git 명령어
+/*pull*/
+git pull origin post
+
+/*push*/
+git add .
+git commit -m '[메세지]'
+git push -u origin post
+
+
+### Spring 명령어
+sudo ./gradlew clean build
+java -jar build/libs/demo-0.0.1-SNAPSHOT.jar
+
+

@@ -123,4 +123,24 @@ public class JjimDao {
         return this.jdbcTemplate.queryForObject(lastInserIdQuery,int.class);
     }
 
+    public int checkUserAuth(int userId, int jcId) {
+        String checkUserAuthQuery = "select exists(select * where jc.user_id = ?) myJC from jjim_collection jc where jc.jjim_collection_id = ?";
+        return this.jdbcTemplate.queryForObject(checkUserAuthQuery, int.class, userId, jcId);
+    }
+
+    public int checkCollectionPost(int jcId, int jjimId) {
+        String checkUserAuthQuery = "select exists(select * where jc.jjim_collection_id = ?) myJC from jjim_collection_inside jc where jc.jjim_id = ?";
+        return this.jdbcTemplate.queryForObject(checkUserAuthQuery, int.class, jcId, jjimId);
+    }
+
+    public void editJjimCollectionName (PostJjimCollectionReq postJjimCollectionReq, int jcId) {
+        String editJjimCollectionNameQuery = "update jjim_collection set name = ? where jjim_collection_id = ?";
+        this.jdbcTemplate.update(editJjimCollectionNameQuery, postJjimCollectionReq.getName(), jcId);
+    }
+
+    public void deleteJjimCollection(int jcId) {
+        String deleteJjimCollectionQuery = "delete from jjim_collection where jjim_collection_id = ?";
+        this.jdbcTemplate.update(deleteJjimCollectionQuery, jcId);
+    }
+
 }

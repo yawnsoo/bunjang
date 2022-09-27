@@ -1,6 +1,7 @@
 package com.example.demo.src.post;
 
 import com.example.demo.config.BaseException;
+import com.example.demo.config.BaseResponse;
 import com.example.demo.src.post.model.*;
 import com.example.demo.utils.JwtService;
 import org.slf4j.Logger;
@@ -9,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.example.demo.config.BaseResponseStatus.RELATION_ERROR_LM;
+import static com.example.demo.config.BaseResponseStatus.RELATION_ERROR_MS;
 
 @Service
 public class PostProvider {
@@ -50,11 +54,30 @@ public class PostProvider {
         List<GetPostRes> getPostsRes = postDao.getPostsByLC(LCId);
         return getPostsRes;
     }
-    public List<GetPostRes> getPostsByMC(Integer MCId) throws BaseException {
+    public List<GetPostRes> getPostsByMC(Integer LCId, Integer MCId) throws BaseException {
+        if (LCId != null) {
+            int checkRelationLM = postDao.checkRelationLM(LCId, MCId);
+            if (checkRelationLM == 0) {
+                throw new BaseException(RELATION_ERROR_LM);
+            }
+        }
         List<GetPostRes> getPostsRes = postDao.getPostsByMC(MCId);
         return getPostsRes;
     }
-    public List<GetPostRes> getPostsBySC(Integer SCId) throws BaseException {
+    public List<GetPostRes> getPostsBySC(Integer LCId, Integer MCId, Integer SCId) throws BaseException {
+        if (LCId != null && MCId != null) {
+            int checkRelationLM = postDao.checkRelationLM(LCId, MCId);
+            if (checkRelationLM == 0) {
+                throw new BaseException(RELATION_ERROR_LM);
+            }
+        }
+        if (MCId != null) {
+            int checkRelationMS = postDao.checkRelationMS(MCId, SCId);
+            if (checkRelationMS == 0) {
+                throw new BaseException(RELATION_ERROR_MS);
+            }
+        }
+
         List<GetPostRes> getPostsRes = postDao.getPostsBySC(SCId);
         return getPostsRes;
     }
