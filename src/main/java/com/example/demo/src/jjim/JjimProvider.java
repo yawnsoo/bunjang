@@ -1,6 +1,7 @@
 package com.example.demo.src.jjim;
 
 import com.example.demo.config.BaseException;
+import com.example.demo.config.BaseResponse;
 import com.example.demo.src.home.HomeDao;
 import com.example.demo.src.home.model.GetHomePostsRes;
 import com.example.demo.src.jjim.model.GetJjimCollectionPostRes;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.example.demo.config.BaseResponseStatus.DATABASE_ERROR;
+import static com.example.demo.config.BaseResponseStatus.*;
 
 @Service
 public class JjimProvider {
@@ -61,6 +62,12 @@ public class JjimProvider {
 
     public List<GetJjimCollectionPostRes> getJjimCollectionPosts(int userId, int jcId) throws BaseException{
         try {
+
+            int checkUserAuth = jjimDao.checkUserAuth(userId, jcId);
+            if (checkUserAuth == 0) {
+                throw new BaseException(INVALID_USER_COLLECTION);
+            }
+
             List<GetJjimCollectionPostRes> getJjimCollectionPostRes =jjimDao.getJjimCollectionPosts(userId, jcId);
             return getJjimCollectionPostRes;
         }catch (Exception exception) {

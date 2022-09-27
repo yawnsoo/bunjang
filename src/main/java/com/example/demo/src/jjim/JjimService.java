@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static com.example.demo.config.BaseResponseStatus.DATABASE_ERROR;
+import static com.example.demo.config.BaseResponseStatus.*;
 
 @Service
 public class JjimService {
@@ -33,7 +33,17 @@ public class JjimService {
     }
 
 
-    public void modifyJjimPostCollection(PatchPostCollectionReq patchPostCollectionReq) throws BaseException {
+    public void modifyJjimPostCollection(int userId, int jcId, PatchPostCollectionReq patchPostCollectionReq) throws BaseException {
+
+        int checkUserAuth = jjimDao.checkUserAuth(userId, jcId);
+        if (checkUserAuth == 0) {
+            throw new BaseException(INVALID_USER_COLLECTION);
+        }
+
+        int checkCollectionPost = jjimDao.checkCollectionPost(jcId,patchPostCollectionReq.getJjim_id());
+        if (checkCollectionPost == 0) {
+            throw new BaseException(WRONG_COLLECTION_JJIMID);
+        }
 
         int result = jjimDao.modifyJjimPostCollection(patchPostCollectionReq);
         if (result == 0) {
@@ -60,5 +70,39 @@ public class JjimService {
 
         }
     }
+
+    public int editJjimCollectionName(PostJjimCollectionReq postJjimCollectionReq,int userId,int jcId) throws BaseException {
+        try {
+            int checkUserAuth = jjimDao.checkUserAuth(userId, jcId);
+            if (checkUserAuth == 0) {
+                return 0;
+            } else {
+                jjimDao.editJjimCollectionName(postJjimCollectionReq, jcId);
+                return 1;
+            }
+        }catch (Exception exception) {
+            exception.printStackTrace();
+            throw new BaseException(DATABASE_ERROR);
+
+        }
+    }
+
+
+    public int deleteJjimCollection(int userId, int jcId) throws BaseException {
+        try {
+            int checkUserAuth = jjimDao.checkUserAuth(userId, jcId);
+            if (checkUserAuth == 0) {
+                return 0;
+            } else {
+                jjimDao.deleteJjimCollection(jcId);
+                return 1;
+            }
+        }catch (Exception exception) {
+            exception.printStackTrace();
+            throw new BaseException(DATABASE_ERROR);
+
+        }
+    }
+
 
 }

@@ -94,7 +94,9 @@ public class PostDao {
         String getPostsQuery = "select p.post_id, price, title, safepay, image_path\n" +
                 "from post p\n" +
                 "    left join post_photos pp on p.post_id = pp.post_id\n" +
-                "group by p.post_id";
+                "where p.status not in ('4')\n" +
+                "group by p.post_id\n" +
+                "ORDER BY post_id DESC";
         return this.jdbcTemplate.query(getPostsQuery,
                 (rs, rowNum) -> new GetPostRes(
                         rs.getInt("post_id"),
@@ -157,8 +159,9 @@ public class PostDao {
                 "from post p\n" +
                 "    left join post_photos pp on p.post_id = pp.post_id\n" +
                 "    left join large_category lc on lc.large_category_id = p.large_category_id\n" +
-                "where p.large_category_id = ?\n" +
-                "group by p.post_id";
+                "where p.large_category_id = ? and p.status not in ('4')\n" +
+                "group by p.post_id\n" +
+                "ORDER BY post_id DESC";
         Integer getPostsByLCParam = LCId;
         return this.jdbcTemplate.query(getPostsByLCQuery,
                 (rs, rowNum) -> new GetPostRes(
@@ -175,8 +178,9 @@ public class PostDao {
                 "from post p\n" +
                 "    left join post_photos pp on p.post_id = pp.post_id\n" +
                 "    left join middle_category mc on mc.middle_category_id = p.middle_category_id\n" +
-                "where p.middle_category_id=?\n" +
-                "group by p.post_id";
+                "where p.middle_category_id=? and p.status not in ('4')\n" +
+                "group by p.post_id\n" +
+                "ORDER BY post_id DESC";
         Integer getPostsByMCParam = MCId;
         return this.jdbcTemplate.query(getPostsByMCQuery,
                 (rs, rowNum) -> new GetPostRes(
@@ -193,8 +197,9 @@ public class PostDao {
                 "from post p\n" +
                 "    left join post_photos pp on p.post_id = pp.post_id\n" +
                 "    left join small_category sc on sc.small_category_id = p.small_category_id\n" +
-                "where p.small_category_id=?\n" +
-                "group by p.post_id";
+                "where p.small_category_id=? and p.status not in ('4')\n" +
+                "group by p.post_id\n" +
+                "ORDER BY post_id DESC";
         Integer getPostsBySCParam = SCId;
         return this.jdbcTemplate.query(getPostsBySCQuery,
                 (rs, rowNum) -> new GetPostRes(
@@ -225,6 +230,61 @@ public class PostDao {
                 ), getTagsParam);
     }
 
+    public int checkUserAuth(int userId, int postId) {
+        String checkUserAuthQuery = "select exists(select * where p.user_id = ?) myPost from post p where p.post_id = ?";
+        return this.jdbcTemplate.queryForObject(checkUserAuthQuery, int.class, userId, postId);
+    }
+
+    public void deletePost(int postId) {
+        String deletePostQuery = "update post set status=4 where post_id=?";
+        int deletePostParam = postId;
+        this.jdbcTemplate.update(deletePostQuery, deletePostParam);
+    }
+
+    public void deletePostPhotos(int postId) {
+        String deletePostPhotosQuery = "update post_photos set status=0 where post_id=?";
+        int deletePostPhotosParam = postId;
+        this.jdbcTemplate.update(deletePostPhotosQuery, deletePostPhotosParam);
+    }
+
+    public void deletePostTags(int postId) {
+        String deletePostTagsQuery = "update post_tags set status=0 where post_id=?";
+        int deletePostTagsParam = postId;
+        this.jdbcTemplate.update(deletePostTagsQuery, deletePostTagsParam);
+    }
+
+
+    public void deletePostPhotosReal(int postId) {
+        String deletePostPhotosQuery = "delete from post_photos where post_id=?";
+        int deletePostPhotosParam = postId;
+        this.jdbcTemplate.update(deletePostPhotosQuery, deletePostPhotosParam);
+    }
+
+    public void deletePostTagsReal(int postId) {
+        String deletePostTagsQuery = "delete from post_tags where post_id=?";
+        int deletePostTagsParam = postId;
+        this.jdbcTemplate.update(deletePostTagsQuery, deletePostTagsParam);
+    }
+
+    public void editPost(PostPostReq postPostReq, int postId) {
+        String editPostQuery = "update post set title = ?, region = ?, \n" +
+                "                large_category_id = ?, middle_category_id = ?, small_category_id = ?, \n" +
+                "                price = ?, content = ?, count = ?, is_exchangable = ?, safepay = ?,\n" +
+                "                delivery_fee = ?, pcondition = ?\n" +
+                "where post_id = ?";
+        Object[] editPostParams = new Object[]{postPostReq.getTitle(), postPostReq.getRegion(), postPostReq.getCategory_large(), postPostReq.getCategory_middle(), postPostReq.getCategory_small(), postPostReq.getPrice(), postPostReq.getContent(), postPostReq.getCount(), postPostReq.getIs_exchangable(), postPostReq.getSafepay(), postPostReq.getDelivery_fee(), postPostReq.getPcondition(), postId};
+        this.jdbcTemplate.update(editPostQuery, editPostParams);
+    }
+
+    public int checkRelationLM(int LCId, int MCId) {
+        String checkRelationLMQuery = "select exists(select * where large_category_id= ?) t from middle_category mc where middle_category_id = ?";
+        return this.jdbcTemplate.queryForObject(checkRelationLMQuery, int.class, LCId, MCId);
+    }
+
+    public int checkRelationMS(int MCId, int SCId) {
+        String checkRelationMSQuery = "select exists(select * where middle_category_id= ?) t from small_category sc where small_category_id = ?";
+        return this.jdbcTemplate.queryForObject(checkRelationMSQuery, int.class, MCId, SCId);
+    }
 
 
 }

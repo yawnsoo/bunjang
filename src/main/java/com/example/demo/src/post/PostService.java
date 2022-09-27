@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.example.demo.config.BaseResponseStatus.DATABASE_ERROR;
+
 @Service
 public class PostService {
     final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -28,23 +30,23 @@ public class PostService {
         //validation
 
 //        try {
-            int userId = user_id;
+        int userId = user_id;
 
 //            PostPostReq postPostReq = postPostAssemble.getPostPostReq();
 //            PostPhotoReq postPhotoReq = postPostAssemble.getPostPhotoReq();
 //            PostTagReq postTagReq = postPostAssemble.getPostTagReq();
 
-            int post_id = postDao.createPost(postPostReq, userId);
+        int post_id = postDao.createPost(postPostReq, userId);
 
-            PostDetailRes postDetail = postDao.PostDetailRes(post_id);
+        PostDetailRes postDetail = postDao.PostDetailRes(post_id);
 
-            postDao.addPhotos2(postPostReq.getEncoded_image(), post_id);
+        postDao.addPhotos2(postPostReq.getEncoded_image(), post_id);
 
-            List<String> tags = postDao.addTags(postPostReq, post_id);
+        List<String> tags = postDao.addTags(postPostReq, post_id);
 
-            PostPostRes postPostRes = new PostPostRes(postDetail.getPost_id(),postPostReq.getEncoded_image(),postDetail.getTitle(),postDetail.getRegion(), postDetail.getCreated_at(),postDetail.getCategory_large(),postDetail.getCategory_middle(),postDetail.getCategory_small(),tags,postDetail.getPrice(),postDetail.getContent(),postDetail.getCount(),postDetail.getIs_exchangable(),postDetail.getSafepay(),postDetail.getDelivery_fee(),postDetail.getPcondition());
+        PostPostRes postPostRes = new PostPostRes(postDetail.getPost_id(),postPostReq.getEncoded_image(),postDetail.getTitle(),postDetail.getRegion(), postDetail.getCreated_at(),postDetail.getCategory_large(),postDetail.getCategory_middle(),postDetail.getCategory_small(),tags,postDetail.getPrice(),postDetail.getContent(),postDetail.getCount(),postDetail.getIs_exchangable(),postDetail.getSafepay(),postDetail.getDelivery_fee(),postDetail.getPcondition());
 
-            return postPostRes;
+        return postPostRes;
 //        } catch (Exception exception) {
 //            throw new BaseException(DATABAS_ERROR);
 //        }
@@ -54,10 +56,6 @@ public class PostService {
 
 //        try {
         int userId = user_id;
-
-//            PostPostReq postPostReq = postPostAssemble.getPostPostReq();
-//            PostPhotoReq postPhotoReq = postPostAssemble.getPostPhotoReq();
-//            PostTagReq postTagReq = postPostAssemble.getPostTagReq();
 
         int post_id = postDao.createPost(postPostReq, userId);
 
@@ -73,6 +71,51 @@ public class PostService {
 //        } catch (Exception exception) {
 //            throw new BaseException(DATABAS_ERROR);
 //        }
+
+    public int deletePost(int userId, int postId) throws BaseException {
+        try {
+            int checkUserAuth = postDao.checkUserAuth(userId, postId);
+            if (checkUserAuth == 0) {
+                return 0;
+            } else {
+                postDao.deletePost(postId);
+                postDao.deletePostPhotos(postId);
+                postDao.deletePostTags(postId);
+                return 1;
+            }
+
+        }catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
+
+    public int editPost(PostPostReq postPostReq, int userId, String imgUrl, int postId) throws BaseException {
+        try {
+            int checkUserAuth = postDao.checkUserAuth(userId, postId);
+            if (checkUserAuth == 0) {
+                return 0;
+            } else {
+
+                if (imgUrl != null) {
+                    postDao.deletePostPhotosReal(postId);
+                    postDao.addPhotos2(imgUrl, postId);
+                }
+
+                List<String> tags = postPostReq.getTags();
+                if (tags != null) {
+                    postDao.deletePostTagsReal(postId);
+                    postDao.addTags(postPostReq, postId);
+                }
+
+                postDao.editPost(postPostReq, postId);
+
+                return 1;
+            }
+
+        }catch (Exception exception){
+            throw new BaseException(DATABASE_ERROR);
+        }
     }
 
 //    public PostPhotoRes addPhoto(PostPhotoReq postPhotoReq) throws BaseException{

@@ -27,7 +27,7 @@ public class S3UploadController {
     @Autowired
     AmazonS3Client amazonS3Client;
 
-//    @GetMapping("/upload")
+    //    @GetMapping("/upload")
 //    public ResponseEntity<Object> upload(MultipartFile[] multipartFileList) throws Exception {
     public List<String> upload(MultipartFile[] multipartFileList) throws Exception {
         List<String> imagePathList = new ArrayList<>();
@@ -91,4 +91,3 @@ public class S3UploadController {
 
 
 }
-
