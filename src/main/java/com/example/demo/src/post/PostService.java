@@ -71,6 +71,8 @@ public class PostService {
 //        } catch (Exception exception) {
 //            throw new BaseException(DATABAS_ERROR);
 //        }
+    }
+
 
     public int deletePost(int userId, int postId) throws BaseException {
         try {
