@@ -134,10 +134,10 @@ com/example/demo/src/pay/PayProvider.java
  com.example.demo.src.pay.PayProvider
 com/example/demo/src/jjim/JjimService.java
  com.example.demo.src.jjim.JjimService
-com/example/demo/src/mypage_post/MyPagePostProvider.java
- com.example.demo.src.mypage_post.MyPagePostProvider
-com/example/demo/src/mypage_post/MyPagePostController.java
- com.example.demo.src.mypage_post.MyPagePostController
+com/example/demo/src/bungaeTalk/TalkProvider.java
+ com.example.demo.src.bungaeTalk.TalkProvider
+com/example/demo/src/user/UserProvider.java
+ com.example.demo.src.user.UserProvider
 com/example/demo/src/jjim/model/GetJjimCollectionPostRes.java
  com.example.demo.src.jjim.model.GetJjimCollectionPostRes
 com/example/demo/src/follow/FollowService.java
@@ -150,8 +150,8 @@ com/example/demo/src/pay/PayController.java
  com.example.demo.src.pay.PayController
 com/example/demo/src/point/PointController.java
  com.example.demo.src.point.PointController
-com/example/demo/src/mypage_post/MyPagePostDao.java
- com.example.demo.src.mypage_post.MyPagePostDao
+com/example/demo/src/follow/FollowProvider.java
+ com.example.demo.src.follow.FollowProvider
 com/example/demo/src/jjim/model/PostJjimCollectionRes.java
  com.example.demo.src.jjim.model.PostJjimCollectionRes
 com/example/demo/src/bungaeTalk/TalkService.java
@@ -216,9 +216,9 @@ com/example/demo/utils/JwtService.java
  com.example.demo.utils.JwtService
 com/example/demo/src/jjim/model/GetJjimPostsRes.java
  com.example.demo.src.jjim.model.GetJjimPostsRes
-com/example/demo/src/user/UserProvider.java
- com.example.demo.src.user.UserProvider
-com/example/demo/src/bungaeTalk/TalkProvider.java
- com.example.demo.src.bungaeTalk.TalkProvider
-com/example/demo/src/follow/FollowProvider.java
- com.example.demo.src.follow.FollowProvider
+com/example/demo/src/mypage_post/MyPagePostDao.java
+ com.example.demo.src.mypage_post.MyPagePostDao
+com/example/demo/src/mypage_post/MyPagePostProvider.java
+ com.example.demo.src.mypage_post.MyPagePostProvider
+com/example/demo/src/mypage_post/MyPagePostController.java
+ com.example.demo.src.mypage_post.MyPagePostController
