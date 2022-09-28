@@ -142,4 +142,7 @@ gradle-app.setting
 # Java heap dump
 *.hprof
 
+###AWSS#Config
+AwsS3Config.java
+
 # End of https://www.toptal.com/developers/gitignore/api/intellij,gradle
