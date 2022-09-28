@@ -75,6 +75,11 @@ git commit -m '[메세지]'
 git push -u origin post
 
 
+/*gitignore*/
+참조 : https://kyu9341.github.io/Git/2020/08/23/git_gitignore/
+
+
+
 ### Spring 명령어
 sudo ./gradlew clean build
 java -jar build/libs/demo-0.0.1-SNAPSHOT.jar
